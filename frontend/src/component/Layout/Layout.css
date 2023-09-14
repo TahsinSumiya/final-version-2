@@ -1,0 +1,47 @@
+.scroll{
+    max-height: 450px;
+    overflow: auto;
+    overflow-x:scroll !important;
+  }
+  .CodeMirror:nth-child(1){
+    display: none;
+   }
+   .scrollbox {
+    /* overflow: auto; */
+    /* width: 400px; */
+    /* max-height: 150px; */
+    
+    --g:radial-gradient(55% 20px, #0009, #0000);  
+    background: 
+      linear-gradient(#fff 10px, #0000 40px calc(100% - 40px),#fff calc(100% - 10px)) local, 
+      var(--g) top   /100% 200%,    
+      var(--g) bottom/100% 200%;
+  }
+  
+.pane  {
+    
+  
+
+    place-content:center;
+    font-size:25px; 
+
+  }
+
+  .html {
+    display: none;
+   
+    
+  
+  }
+  .css {
+    display: none;
+   
+    visibility: none;
+
+  }
+  .js {
+    display: none;
+    
+    visibility: none;
+   
+  }

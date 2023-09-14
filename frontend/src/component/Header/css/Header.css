@@ -1,0 +1,25 @@
+.hideMenuNav {
+    display: none;
+  }
+  .showMenuNav {
+    display: block;
+
+  }
+
+
+
+  .dropdown{
+ background-color: rgb(211, 153, 245) !important;
+ border: none;
+ border-bottom: none;
+ border-radius: 10%;
+ box-shadow: rgba(104, 3, 151, 0.35) 0px -50px 36px -28px inset;
+  }
+  .dropdown:hover{
+    background-color: rgb(233, 197, 253) !important;
+  }
+
+  .dropdowncenter{
+    position: absolute;
+    justify-content: center;
+  }
