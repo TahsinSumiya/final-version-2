@@ -57,7 +57,7 @@ useEffect(() => {
         <button class="shadow-lg shadow-purple-500 hover:shadow-purple-800  rounded-2xl absolute top-0 right-0 mr-2 mt-2">&times;</button>
         <div class="text-center text-md uppercase text-xl font-semibold "> 
         <div className='container'>
-        <div className='flex'>
+        {/* <div className='flex'>
             <ul className='flex cursor-pointer md:flex 
             md:flex-grow flex-row justify-end space-x-20'>
                  
@@ -84,14 +84,14 @@ useEffect(() => {
                    >js</li>
                    </ul>
   
-        </div>
+        </div> */}
         </div>
 <div>
 <div className=' 
         absolute left-2/4 mt-2 px-18 box-content 
         w-3/6 h-80 border-none'>
           
-
+{/* 
      {visible &&  <div className={isActive.id === 'divOne' ? `divOne` : 'divOne  css js'}>
       
       <SyntaxHighlighter language="html" 
@@ -113,7 +113,7 @@ useEffect(() => {
   {js}
         
       </SyntaxHighlighter>
-     </div>}
+     </div>} */}
     {/* <div 
   className={isActive.id === 'divOne'  ? `divOne ${visible} ? 'html'`   : 
    'divOne  d-none' 
@@ -138,7 +138,8 @@ useEffect(() => {
         {/* <div className='scrollbox h-72 '> */}
 
         
-        <iframe  className=' h-80 w-full  overflow-hidden '
+        <iframe  className=' h-80 '
+        width="100%"
         scrolling="yes"
           srcDoc={`
           <html>
@@ -177,8 +178,57 @@ useEffect(() => {
         ))}
    
         </div>
+        <div className='flex'>
+            <ul className='flex cursor-pointer md:flex 
+            md:flex-grow flex-row justify-end space-x-20'>
+                 
+                   <li className='mr-2 '
+                   id="divOne"
+                   onClick={(e) => {
+                   hideShowDiv(e)
+                   }}
+           
+                 >html</li>
+                   <li className='mr-2'
+                  //  onClick={() => setHidecss(css => !css)}
+                  id="divTwo"
+                  onClick={(e) => {
+                  hideShowDiv(e)
+                  }}
+                   >css</li>
+                   <li className='mr-2'
+                  //  onClick={() => setHidejs(js => !js)}
+                  id="divThree"
+                   onClick={(e) => {
+                hideShowDiv(e)
+                  }}
+                   >js</li>
+                   </ul>
   
+        </div>
 
+        {visible &&  <div className={isActive.id === 'divOne' ? `divOne` : 'divOne  css js'}>
+      
+      <SyntaxHighlighter language="html" 
+      className="scroll border-4 border-purple-300 rounded-lg"  showLineNumbers={true} wrapLines={true} >
+{html}
+     
+   </SyntaxHighlighter>
+  </div>}
+     {visible &&  <div className={isActive.id === 'divTwo' ? `divTwo` : 'divTwo d-none js css'}>
+      
+         <SyntaxHighlighter language="css" className="scroll border-4 border-purple-300 rounded-lg"  showLineNumbers={true} wrapLines={true} >
+  {css}
+        
+      </SyntaxHighlighter>
+     </div>}
+     {visible &&  <div className={isActive.id === 'divThree' ? `divThree` : 'divTwo d-none css html'}>
+       
+         <SyntaxHighlighter language="js" className="scroll border-4 border-purple-300 rounded-lg"  showLineNumbers={true} wrapLines={true} >
+  {js}
+        
+      </SyntaxHighlighter>
+     </div>}
       </form>
 
       </div>}
