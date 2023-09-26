@@ -8,6 +8,7 @@ import AllUser from './component/User/AllUser';
 import AddQuestion from "./component/Add-Question/Question";
 import ViewQuestion from "./component/ViewQuestion.js/ViewQuestion";
 import { login, logout, selectUser } from "./features/Slice";
+import AfterHome from './component/Home/AfterHome';
 import Auth from "./component/Auth/AuthIndex";
 import UserPost from './component/User/UserPost';
 import { useDispatch, useSelector } from "react-redux";
@@ -25,6 +26,8 @@ import AdminBoard from './component/Admin/AdminBoard';
 import CategoryUpload from './component/Category/CategoryUpload';
 import GetAllCategory from './component/Category/GetAllCategory';
 import LayoutUploader from './component/Layout/LayoutUploader';
+
+
 function App() {
   const user = useSelector(selectUser);
   const dispatch = useDispatch();
@@ -51,13 +54,16 @@ function App() {
   
   return (
     <>
- <Header/>
+
         <Routes>
         <Route element={<PrivateWrapper />}>
   {/* <Route path="/" element={<Header />} /> */}
 </Route>
+<Route element={<PrivateWrapper />}>
+  <Route path="/" element={<AfterHome />} />
+</Route>
         <Route element={<PrivateWrapper />}>
-  <Route path="/" element={<MainIndex />} />
+  <Route path="/allquestion" element={<MainIndex />} />
 </Route>
 <Route element={<PrivateWrapper />}>
   <Route path="/add-question" element={<AddQuestion />} />

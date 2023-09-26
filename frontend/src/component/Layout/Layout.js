@@ -60,7 +60,7 @@ useEffect(() => {
         <div className='flex'>
             <ul className='flex cursor-pointer md:flex 
             md:flex-grow flex-row justify-end space-x-20'>
-                  <li className='mr-2'>editor</li> 
+                 
                    <li className='mr-2 '
                    id="divOne"
                    onClick={(e) => {
@@ -94,7 +94,8 @@ useEffect(() => {
 
      {visible &&  <div className={isActive.id === 'divOne' ? `divOne` : 'divOne  css js'}>
       
-      <SyntaxHighlighter language="html" className="scroll border-4 border-purple-300 rounded-lg"  showLineNumbers={true} wrapLines={true} >
+      <SyntaxHighlighter language="html" 
+      className="scroll border-4 border-purple-300 rounded-lg"  showLineNumbers={true} wrapLines={true} >
 {html}
      
    </SyntaxHighlighter>
@@ -136,8 +137,9 @@ useEffect(() => {
 
         {/* <div className='scrollbox h-72 '> */}
 
-        <div className=" box-content h-80 border-1 pane ">
-        <iframe
+        
+        <iframe  className=' h-80 w-full  overflow-hidden '
+        scrolling="yes"
           srcDoc={`
           <html>
             <body>${html}</body>
@@ -147,11 +149,10 @@ useEffect(() => {
         `}
           title="output"
           
-        
-          width="100%"
-          height="100%"
+       
+       
         />
-      </div>
+    
         </div>
         </div>
 

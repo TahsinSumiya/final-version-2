@@ -1,6 +1,6 @@
 import React from 'react'
 import MainQuestion from './MainQuestion'
-import SideBar from '../StackOverFlow/SideBar'
+import SideBar from '../Sidebar/Sidebar';
 import "react-quill/dist/quill.snow.css";
 export default function ViewQuestion() {
   return (

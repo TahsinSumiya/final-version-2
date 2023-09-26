@@ -1,3 +1,4 @@
+process.env.NODE_OPTIONS = '--max-old-space-size=4096';
 const express = require("express");
 const cors = require("cors");
 const path = require("path");

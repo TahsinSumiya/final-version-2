@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
-import axios from 'axios';
+import axios, { all } from 'axios';
 
 import { selectUser } from '../../features/Slice';
 
@@ -27,6 +27,7 @@ export default function ViewProfile() {
       <h3>User Profile</h3>
       {userProfile ? (
         <div>
+        <img src={userProfile.user.photoURL} alt="photo"/>
           <h4>LinkedIn: {userProfile.linkedin}</h4>
           <h4>GitHub: {userProfile.github}</h4>
           <h4>Birthdate:  {userProfile.birthdate}</h4>
