@@ -5,6 +5,8 @@ import axios from 'axios';
 import { Link, useParams } from 'react-router-dom';
 // import Layout from './Layout';
 import Layout from '../Layout/Layout';
+import Sidebar from '../Sidebar/Sidebar'
+import bgimg from '../static/Images/wp7213373.webp'
 
 
 
@@ -14,12 +16,13 @@ const GetAllCategory = () => {
   const [categories, setCategories] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState();
   const [layout, setLayout] = useState([]);
-
+  const [alllayout, setallLayout] = useState([]);
   const [srcDoc, setSrcDoc] = useState('')
   // const [hidehtml, setHidehtml] = useState(true);
   // const [hidecss, setHidecss] = useState(true);
   // const [hidejs, setHidejs] = useState(true);
   const [visible, setVisible] = useState(false) 
+  const [categoryclick, setcategoryclick] = useState(false) 
   let [visibility, setVisibility] = useState("block"); 
   // function handleChange(editor, data, value) {
   //   onChange(value)
@@ -60,7 +63,18 @@ const toggleVisible = () => setVisible(!visible)
       console.error('Failed to fetch products:', error);
     }
   };
-
+  useEffect(() => {
+    // Fetch user profile by user UID
+    axios
+      .get('http://localhost:80/api/layouts/getalllayouts')
+      .then((response) => {
+       setcategoryclick(true)
+        setallLayout(response.data);
+      })
+      .catch((error) => {
+        console.error('Error fetching user profile:', error);
+      });
+  }, []);
 
     // Fetch all categories 
       // Fetch all categories from the backend
@@ -96,7 +110,84 @@ const toggleVisible = () => setVisible(!visible)
  
     <>
 
-    
+<div class="flex">
+
+<div class="bg-gradient-to-b gradient-to-r from-purple-200 to-purple-400
+w-64 min-h-screen p-4
+ overflow-y-auto relative">
+<Sidebar/>
+<div class="pl-20">
+               
+                {categories.map(category => (
+                <div class="category-item">
+                    <p  class="text-white"onClick={() => handleCategoryClick(category._id)}
+                     key={category._id} >
+                      {category.name}
+                     </p>
+                </div>
+             ))}
+                
+            </div>
+            
+  </div>
+  {selectedCategory ? (
+    <div class="flex-grow  p-4">
+          
+          <div class="bg-gradient-to-r from-purple-100 via-purle-100 to-purple-100 h-screen overflow-y-auto">
+              <div class="relative h-full bg-opacity-60 backdrop-blur-lg">
+                <img src={bgimg} alt="Background Image" class="object-cover 
+                w-full h-screen"/>
+                  <div class="absolute inset-0 bg-gray-100 bg-opacity-80">
+                    <div class="container mx-auto text-center">
+                        <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold text-purple-400">Layout Design</h1>
+                    </div>
+                {layout.map((layout) => (
+<Layout layoutId={layout._id} html={layout.html} css = {layout.css} js={layout.js} author={layout.author}/>
+               ))}
+                </div>
+                </div>
+                </div>
+  
+              </div> 
+  ):(
+    <div class="flex-grow  p-4">
+          
+          <div class="bg-gradient-to-r from-purple-100 via-purle-100 to-purple-100 h-screen overflow-y-auto">
+              <div class="relative h-full bg-opacity-60 backdrop-blur-lg">
+                <img src={bgimg} alt="Background Image" class="object-cover 
+                w-full h-screen"/>
+                  <div class="absolute inset-0 bg-gray-100 bg-opacity-80">
+                    <div class="container mx-auto text-center">
+                        <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold text-purple-400">Layout Design</h1>
+                    </div>
+                {alllayout.map((layout) => (
+<Layout layoutId={layout._id} html={layout.html} css = {layout.css} js={layout.js} author={layout.author}/>
+               ))}
+                </div>
+                </div>
+                </div>
+  
+              </div> 
+  )
+}
+  {/* <div class="flex-grow  p-4">
+          
+          <div class="bg-gradient-to-r from-purple-100 via-purle-100 to-purple-100 h-screen overflow-y-auto">
+              <div class="relative h-full bg-opacity-60 backdrop-blur-lg">
+                <img src={bgimg} alt="Background Image" class="object-cover 
+                w-full h-screen"/>
+                  <div class="absolute inset-0 bg-gray-100 bg-opacity-80">
+                    <div class="container mx-auto text-center">
+                        <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold text-purple-400">Layout Design</h1>
+                    </div>
+                {layout.map((layout) => (
+<Layout layoutId={layout._id} html={layout.html} css = {layout.css} js={layout.js} author={layout.author}/>
+               ))}
+                </div>
+                </div>
+                </div>
+                </div> */}
+  </div>
     {/* <div>
       <h2>Categories</h2>
       <ul>
@@ -124,9 +215,9 @@ const toggleVisible = () => setVisible(!visible)
         </ul>
       )}
     </div> */}
-         <div class="flex ">
+
           
-        <aside class="flex flex-col w-64 h-screen px-5 py-8 overflow-y-auto bg-purple-200 
+        {/* <aside class="flex flex-col w-64 h-screen px-5 py-8 overflow-y-auto bg-purple-200 
         border-r rtl:border-r-0 rtl:border-l  sticky top-0">
        
      
@@ -150,7 +241,7 @@ const toggleVisible = () => setVisible(!visible)
                 
             </div>
         
-        </aside>
+        </aside> */}
        
 
         {/* <div class="flex flex-col justify-between flex-1 mt-6">
@@ -173,12 +264,9 @@ const toggleVisible = () => setVisible(!visible)
 
             </div> */}
         {/* <!-- Cards --> */}
-      <div class="container my-12 mx-auto px-4 md:px-12">
-      {layout.map((layout) => (
-  <Layout layoutId={layout._id} html={layout.html} css = {layout.css} js={layout.js}/>
-                 ))}
-      </div>
-    </div> 
+
+
+
     </>
   );
 };

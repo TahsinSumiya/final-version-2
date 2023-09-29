@@ -2,21 +2,17 @@ import React, {useState,useEffect} from 'react'
 import axios from 'axios';
 import { login, logout, selectUser } from "../../features/Slice";
 import { useDispatch, useSelector } from "react-redux";
-export default function LayoutUploader() {
+
+export default function AdminUploader() {
     const user = useSelector(selectUser);
     const dispatch = useDispatch();
   const [categories, setCategories] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState('');
-  // const [html,setHtml] = useState('')
-  // const [id,setid] = useState('')
-  // const [css,setcss] = useState('')
-  // const [js,setjs] = useState('')
-  // const [author,setauthor] = useState('')
   const [product, setProduct] = useState({
     html: '',
     css: '',
     js: '',
-    author:'',
+    author:'Admin',
     id:''
   });
 
@@ -46,19 +42,18 @@ export default function LayoutUploader() {
     e.preventDefault();
     try {
       await axios.post('http://localhost:80/api/layouts/layoutUploader', 
-      { ...product, categoryId: selectedCategory,author:user.displayName,id:user.uid });
+      { ...product, categoryId: selectedCategory });
       // Reset the form
-      setProduct({ html: '', css: '', js: '',author:'' });
+      setProduct({ html: '', css: '', js: '',author:'',id:''});
       setSelectedCategory('');
       console.log('Product added successfully!');
     } catch (error) {
       console.error('Failed to add product:', error);
     }
   };
-
   return (
-   <>
-<body class="bg-gradient-to-r from-purple-100 via-yellow-100 to-blue-200 min-h-screen flex justify-center items-center p-4">
+    <>
+   <body class="bg-gradient-to-r from-purple-100 via-yellow-100 to-blue-200 min-h-screen flex justify-center items-center p-4">
     <div class="bg-opacity-30 backdrop-blur-lg p-9 rounded-md shadow-md w-full md:w-2/3 lg:w-1/2">
         <h1 class="text-3xl font-semibold mb-4 text-gray-500">Upload Design</h1>
         <form onSubmit={handleSubmit}>
@@ -98,10 +93,6 @@ export default function LayoutUploader() {
         </form>
     </div>
 </body>
-   </>
-  );
-
-      
-  
-  
+    </>
+  )
 }

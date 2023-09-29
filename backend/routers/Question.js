@@ -216,7 +216,21 @@ router.get("/", async (req, res) => {
       res.status(400).send(error);
     });
 });
+router.delete('/:id', async (req, res) => {
+  try {
+    const Id = req.params.id;
+    const deleted = await QuestionDB.findByIdAndDelete(Id);
 
+    if (!deleted) {
+      return res.status(404).json({ success: false, message: ' not found' });
+    }
+
+    return res.status(200).json({ success: true, message: ' deleted successfully' });
+  } catch (error) {
+    console.error('Error deleting :', error);
+    res.status(500).json({ success: false, message: 'Internal server error' });
+  }
+});
 
 
 

@@ -9,7 +9,7 @@ import { AiOutlineSearch } from "react-icons/ai";
 export default function Sidebar() {
     const handleClick = () => {
         logout();
-     
+        localStorage.removeItem('user');
       };
   return (
 <nav class="main-menu">

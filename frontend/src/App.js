@@ -15,7 +15,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { auth } from "./firebase";
 import { useEffect } from 'react';
 import Searchjob from './component/User/SearchJob';
-import PrivateRoute from './PrivateRoute';
 import {BrowserRouter , Routes , Route, Navigate,Outlet} from 'react-router-dom'
 import AllSpecificUser from './component/User/AllSpecificUser';
 import Search from './component/User/Search';
@@ -26,13 +25,41 @@ import AdminBoard from './component/Admin/AdminBoard';
 import CategoryUpload from './component/Category/CategoryUpload';
 import GetAllCategory from './component/Category/GetAllCategory';
 import LayoutUploader from './component/Layout/LayoutUploader';
+import AdminUploader from './component/Layout/AdminUploader';
+import Notification from './component/Admin/Notification';
 
 
 function App() {
   const user = useSelector(selectUser);
   const dispatch = useDispatch();
+  // useEffect(() => {
+   
+  //   auth.onAuthStateChanged((authUser) => {
+  //     if (authUser) {
+  //       dispatch(
+  //         login({
+  //           uid: authUser.uid,
+  //           photo: authUser.photoURL,
+  //           displayName: authUser.displayName,
+  //           email: authUser.email,
+  //         })
+  //       );
+  //     } else {
+  //       dispatch(logout());
+  //     }
+  //     // console.log(authUser);
+  //   });
+  
+  // }, [dispatch]);
+
   useEffect(() => {
-    auth.onAuthStateChanged((authUser) => {
+    const storedUser = JSON.parse(localStorage.getItem('user'));
+
+    if (storedUser) {
+      dispatch(login(storedUser));
+    }
+
+    const unsubscribe = auth.onAuthStateChanged((authUser) => {
       if (authUser) {
         dispatch(
           login({
@@ -45,9 +72,15 @@ function App() {
       } else {
         dispatch(logout());
       }
-      // console.log(authUser);
     });
+
+    return () => unsubscribe();
   }, [dispatch]);
+
+  // If user authentication state is not loaded yet, show a loading spinner or some loading indicator
+  if (user === undefined) {
+    return <div>Loading...</div>;
+  }
   const PrivateWrapper = () => {
     return user ? <Outlet /> : <Navigate to="/auth" />;
   };
@@ -103,6 +136,12 @@ function App() {
 </Route>
 <Route element={<PrivateWrapper />}>
 <Route exact path='/categoryuploader' element={<CategoryUpload/>} />
+</Route>
+<Route element={<PrivateWrapper />}>
+<Route exact path='/adminboard/adminlayout' element={<AdminUploader/>} />
+</Route>
+<Route element={<PrivateWrapper />}>
+<Route exact path='adminboard/notification' element={<Notification/>} />
 </Route>
 <Route element={<PrivateWrapper />}>
 <Route exact path='/getcategory' element={<GetAllCategory/>} />

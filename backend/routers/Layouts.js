@@ -4,8 +4,8 @@ const layout = require('../models/Layout')
 router.post("/layoutUploader", async (req, res) => {
 
     try {
-        const {  categoryId,html,css,js, publish,author,id } = req.body;
-        const product = new layout({ html,css,js, publish,author, categoryId,id});
+        const {  categoryId,html,css,js, publish,author,id ,comment} = req.body;
+        const product = new layout({ html,css,js, publish,author, categoryId,id,comment});
         await product.save();
         res.status(201).json(product);
       } catch (error) {
@@ -37,6 +37,34 @@ router.post("/layoutUploader", async (req, res) => {
     }
       
       
+  });
+
+  router.get("/getalllayouts", async (req, res) => {
+    try {
+     
+      const Layout = await layout.find();
+      res.json(Layout);
+    } catch (err) {
+      console.error(err);
+      res.status(500).json({ message: 'Internal server error' });
+    }
+      
+      
+  });
+  router.delete('/:id', async (req, res) => {
+    try {
+      const layoutId = req.params.id;
+      const deletedLayout = await layout.findByIdAndDelete(layoutId);
+  
+      if (!deletedLayout) {
+        return res.status(404).json({ success: false, message: 'Layout not found' });
+      }
+  
+      return res.status(200).json({ success: true, message: 'Layout deleted successfully' });
+    } catch (error) {
+      console.error('Error deleting layout:', error);
+      res.status(500).json({ success: false, message: 'Internal server error' });
+    }
   });
 
  

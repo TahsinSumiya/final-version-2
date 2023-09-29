@@ -7,7 +7,7 @@ import { useState } from "react";
 import axios from "axios";
 import './TagsInput.css'
 import TagsInput from 'react-tagsinput'
-
+import bgimg from '../static/Images/wp7213373.webp'
 import 'react-tagsinput/react-tagsinput.css'
 import { useDispatch, useSelector } from "react-redux";
 import { login, logout, selectUser } from "../../features/Slice";
@@ -105,42 +105,25 @@ const navigate = useNavigate()
     ];
   return (
     <>
-   <div className="container  mx-auto px-4 md:px-12 w-screen h-screen ">
-        {/* <div class="flex min-h-screen 
-   flex-col justify-center
-  items-center md:flex-col  md:space-y-14 sm:flex-col sm:space-y-14 sm:justify-content"> */}
-
-
-  
-        <div className='container'>
-     
-     <div class=" rounded-xl shadow-lg shadow-purple-500/40 bg-purple-100">
-       <div class="p-8 border  rounded-b-xl mx-3 mt-3 relative">
-       <div className='flex'>
-       <h1>ask a question</h1>
-  
-        </div>
-        <div>  
+   <div class="bg-gradient-to-r from-blue-200 via-blue-300 to-blue-400 h-screen">
+        <div class="relative h-full bg-opacity-60 backdrop-blur-lg">
             
-            
-              <div className='container  '>
-     
-     <div class=" rounded-xl shadow-lg shadow-purple-500/40 bg-purple-100 ">
-       <div class="p-8 border border-purple-500 rounded-b-xl mx-3 mt-3 relative">
-         <button class="shadow-lg shadow-purple-500 hover:shadow-purple-800  
-         rounded-2xl absolute top-0 right-0 mr-2 mt-2">&times;</button>
-         <div class=" text-md  text-xl font-semibold my-10 "> 
-          <div className='flex m-3' >
-  <h3>Title</h3>
- 
-<textarea className='px-2 mx-2 w-screen' cols={10} rows={1} value={title}
-                  onChange={(e) => setTitle(e.target.value)}/>
-          </div>
-         </div>
-         <div class=" text-md  text-xl font-semibold "> 
-          <div className='flex m-3' >
-  <h3>Body</h3>
-  <ReactQuill  className='h-80 w-screen overscroll-contain quill'   
+          <img src={bgimg} alt="Background Image" class="object-cover w-full h-full"/>
+          <div class="absolute inset-0 bg-gray-100 bg-opacity-80">
+            <div class="container mx-auto text-center">
+                <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold text-purple-400">Ask a Questions</h1>
+            </div>
+           
+             <form class="px-6 pt-9 mt-5 shadow-xl border border-gray-200 rounded-lg bg-gradient-to-b from-white via-purple-100 to-purple-200">
+                <div class=" items-center py-2 px-3 gap-3 mt-4 text-gray-900">
+                    <input  value={title}
+                  onChange={(e) => setTitle(e.target.value)}
+                     type="text" placeholder="Question Title" class="w-full text-gray-900 p-3 border-0 text-2xl focus:border-transparent focus:outline-none rounded-lg"/>
+                </div>
+                <div class="mb-4 w-full rounded-lg border border-purple-200">
+                    <div class="py-2 px-4 bg-white rounded-t-lg h-96">
+                        <label for="Question" class="sr-only"></label>
+                        <ReactQuill  className='h-80 quill px-0 w-full text-sm text-gray-900 bg-white border-0 focus:border-transparent focus:outline-none'   
              value={body}
              onChange={handleQuill}
              modules={Editor.modules}
@@ -148,46 +131,31 @@ const navigate = useNavigate()
                   theme="snow"
              
                  />
-          </div>
-         </div>
-         <div class=" text-md  text-xl font-semibold "> 
-          <div className='flex relative my-10 mt-16' >
-  <h3 className='mt-2'>Tags</h3>
- 
-  <div className="tag-container">
-        {/* {tags.map((tag, index) => {
-          return (
-            <div key={index} className="tag"    >
-              {tag} <span onClick={() => removeTag(tag)} >x</span>
-            </div>
-          );
-        })}
-
-        <input onKeyDown={addTag} value={tag}
-            onChange={setTag} /> */}
-            <TagsInput  value={tag}
+                    </div>
+                    <div class=" items-center py-2 px-3 gap-3 mt-4 text-gray-900">
+                    {/* <p 
+                      class="w-full bg-slate-50 text-gray-900 p-8 border-0 text-2xl
+                       focus:border-transparent focus:outline-none rounded-lg"/> */}
+                        <TagsInput  value={tag}
+                            class="w-full bg-slate-500 text-gray-900 p-8 border-0 text-2xl
+                            focus:border-transparent focus:outline-none rounded-lg"
                   onChange={setTag}
                   name="fruits"
-                  placeHolder="press enter to add new tag" />
-      </div>
-    
-
-       
-      
-          </div>
-          <button type='submit' className=''onClick={handleSubmit} >add</button>
-         </div>
-
-
-       </div>
- 
-     
-     </div>
-     </div>
-     </div></div></div></div>
-     
-     
-      </div>
+                 />
+                </div>
+                    <div class="flex justify-between items-center py-2 px-3 border-t dark:border-gray-600">
+                        <button onClick={handleSubmit}
+                         type="submit" class="inline-flex items-center py-2.5 px-4 text-xs font-medium text-center text-white bg-purple-500 rounded-lg focus:ring-4 focus:ring-purple-200 hover:bg-purple-600">
+                            Add Question
+                        </button>
+                    </div>
+                </div>
+            </form>
+            
+         
+            </div>
+    </div>
+</div>
         
 
 

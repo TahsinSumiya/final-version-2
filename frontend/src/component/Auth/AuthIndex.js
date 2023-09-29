@@ -30,6 +30,7 @@ import {
         .then((res) => {
           setLoading(false);
           console.log(res);
+          localStorage.setItem('user', JSON.stringify(res.user));
           navigate("/");
 
           // return (

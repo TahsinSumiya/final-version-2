@@ -45,7 +45,7 @@
   ::-webkit-scrollbar{
     width: 12px;
 }
-::-webkit-scrollbar-thumb{
+/* ::-webkit-scrollbar-thumb{
     background: linear-gradient(rgb(178, 11, 239),rgb(240, 188, 240));
     border-radius: 6px;
-}
+} */

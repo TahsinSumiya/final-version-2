@@ -18,11 +18,12 @@ export default function Allquestions({ data }) {
   
   return (
     <>
-     <SideBar/>
-      <div  >  
+   <SideBar/>
+      <div className='overflow-y-auto h-screen' >  
         
-
+     
         <form class="px-9 pt-9">
+        
             <div class="flex justify-between items-center py-2 px-3 gap-3  mt-4 text-gray-900">
                 
                 <span class="relative inline-block w-full text-gray-900 text-xl rounded-lg">
@@ -49,11 +50,16 @@ export default function Allquestions({ data }) {
                 </div>
                 <div class="flex justify-between items-center py-2
                  px-3 border-t dark:border-gray-600">
-                   {tags.map((_tag) => (
-                    <p class="inline-flex items-center py-2.5 px-4 text-xs font-medium text-center text-white bg-purple-500 rounded-lg focus:ring-4 focus:ring-purple-200">
+                  <div className='flex justify-around gap-3'>
+                  {tags.map((_tag) => (
+                    <p class=" inline-flex gap-5 items-center py-2.5 px-4 text-xs font-medium text-center text-white bg-purple-500 rounded-lg focus:ring-4 focus:ring-purple-200">
                      {_tag}
                     </p>
                      ))}
+
+                  </div>
+                  
+                   
                   <div class="flex justify-around gap-3">
                     <button type="submit" class="inline-flex items-center py-2.5 px-4 text-xs font-medium text-center text-white bg-purple-500 rounded-lg focus:ring-4 focus:ring-purple-200">
                     {data?.answerDetails?.length}<span className='mx-2'>ans</span>

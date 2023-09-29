@@ -1,5 +1,5 @@
 ::-webkit-scrollbar{
-    width: 12px;
+    width: 5px;
 }
 ::-webkit-scrollbar-thumb{
     background: linear-gradient(rgb(178, 11, 239),rgb(240, 188, 240));
