@@ -4,6 +4,7 @@ import axios from 'axios'
 
 import { NavLink, redirect, useNavigate ,Link} from "react-router-dom";
 import {FaEye} from 'react-icons/fa'
+import Sidebar from "../Sidebar/Sidebar";
 const Admin = (e) => {
 
   const [id,setId]=useState('');
@@ -22,39 +23,39 @@ const Admin = (e) => {
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    const response = await fetch('http://localhost:80/api/admin/login',{
-      method:'POST',
-      headers:{'Content-Type':'application/json'},
-      body:JSON.stringify({id,password})
-  })
-  const json = await response.json()
-  navigate("/adminboard")
-   setData(json)
-   console.log(setData)
-console.log(json)
-
-// try {
-//   const response = await fetch('http://localhost:7000/admin/login', {
-//     method: 'POST',
-//     headers: {
-//       'Content-Type': 'application/json',
-//     },
-//     body: JSON.stringify({ id, password }),
-//   });
+//     const response = await fetch('http://localhost:80/api/admin/login',{
+//       method:'POST',
+//       headers:{'Content-Type':'application/json'},
+//       body:JSON.stringify({id,password})
+//   })
 //   const json = await response.json()
-//   // console.log(json)
-//   if(!response.ok){
+//   navigate("/adminboard")
+//    setData(json)
+//    console.log(setData)
+// console.log(json)
+
+try {
+  const response = await fetch('http://localhost:80/api/admin/login', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ id, password }),
+  });
+  const json = await response.json()
+  // console.log(json)
+  if(!response.ok){
    
-//     alert(json.error)
-// }
-// if(response.ok){
-//     localStorage.setItem('user',JSON.stringify(json))
-//     dispatch({type:'LOGIN',payload:json})
-//     navigate("/adminboard")
-// }
-// } catch (error) {
-//   console.log('Error occurred during login', error);
-// }
+    alert(json.error)
+}
+if(response.ok){
+    localStorage.setItem('user',JSON.stringify(json))
+    // dispatch({type:'LOGIN',payload:json})
+    navigate("/adminboard")
+}
+} catch (error) {
+  console.log('Error occurred during login', error);
+}
   
   
   // }
@@ -124,7 +125,11 @@ console.log(json)
       
     //   </form>
     // </div>
-    <div class="lg:flex bg-purple-100 w-screen justify-center" >
+    <>
+    <Sidebar/>
+      <div class=" p-4 overflow-y-auto ml-16 ">
+          
+      <div class="lg:flex bg-purple-100 w-screen justify-center" >
       <div
         class="min-h-screen py-6 flex flex-col justify-center sm:py-12 lg:w-1/2 xl:max-w-screen-sm"
       >
@@ -203,7 +208,7 @@ console.log(json)
                         <div
                     class="mt-10 text-sm font-display font-semibold text-gray-700 text-center"
                   >
-                       {message ? <p >Password Succesfulyy Update </p> : ""}
+                    
                   
                       {/* {error && <div className="mt-30">{error}</div>} */}
 
@@ -225,6 +230,8 @@ console.log(json)
 
     
     </div> 
+          </div></>
+  
   );
 };
 export default Admin

@@ -7,7 +7,7 @@ import { Link, useParams } from 'react-router-dom';
 import Layout from '../Layout/Layout';
 import Sidebar from '../Sidebar/Sidebar'
 import bgimg from '../static/Images/wp7213373.webp'
-
+import './dropdown.css'
 
 
 // import { Controlled as CodeMirror } from 'react-codemirror2-react-17'
@@ -109,17 +109,17 @@ const toggleVisible = () => setVisible(!visible)
   return (
  
     <>
-
+<Sidebar/>
 <div class="flex">
 
-<div class="bg-gradient-to-b gradient-to-r from-purple-200 to-purple-400
+{/* <div class="bg-gradient-to-b gradient-to-r from-purple-200 to-purple-400
 w-64 min-h-screen p-4
  overflow-y-auto relative">
-<Sidebar/>
+
 <div class="pl-20">
                
                 {categories.map(category => (
-                <div class="category-item">
+                <div class="category-item py-2">
                     <p  class="text-white"onClick={() => handleCategoryClick(category._id)}
                      key={category._id} >
                       {category.name}
@@ -129,17 +129,19 @@ w-64 min-h-screen p-4
                 
             </div>
             
-  </div>
+  </div> */}
   {selectedCategory ? (
-    <div class="flex-grow  p-4">
+    <div class="overflow-y-auto ml-16 flex">
           
           <div class="bg-gradient-to-r from-purple-100 via-purle-100 to-purple-100 h-screen overflow-y-auto">
               <div class="relative h-full bg-opacity-60 backdrop-blur-lg">
                 <img src={bgimg} alt="Background Image" class="object-cover 
                 w-full h-screen"/>
                   <div class="absolute inset-0 bg-gray-100 bg-opacity-80">
-                    <div class="container mx-auto text-center">
-                        <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold text-purple-400">Layout Design</h1>
+                    <div class="container mx-auto flex flex-auto justify-end">
+                    <div className='absolute flex end-6 my-2'>
+ 
+                    </div>
                     </div>
                 {layout.map((layout) => (
 <Layout layoutId={layout._id} html={layout.html} css = {layout.css} js={layout.js} author={layout.author}/>
@@ -150,16 +152,15 @@ w-64 min-h-screen p-4
   
               </div> 
   ):(
-    <div class="flex-grow  p-4">
+    <div class="overflow-y-auto ml-16 flex">
           
           <div class="bg-gradient-to-r from-purple-100 via-purle-100 to-purple-100 h-screen overflow-y-auto">
               <div class="relative h-full bg-opacity-60 backdrop-blur-lg">
                 <img src={bgimg} alt="Background Image" class="object-cover 
                 w-full h-screen"/>
                   <div class="absolute inset-0 bg-gray-100 bg-opacity-80">
-                    <div class="container mx-auto text-center">
-                        <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold text-purple-400">Layout Design</h1>
-                    </div>
+                 
+
                 {alllayout.map((layout) => (
 <Layout layoutId={layout._id} html={layout.html} css = {layout.css} js={layout.js} author={layout.author}/>
                ))}
@@ -170,6 +171,7 @@ w-64 min-h-screen p-4
               </div> 
   )
 }
+
   {/* <div class="flex-grow  p-4">
           
           <div class="bg-gradient-to-r from-purple-100 via-purle-100 to-purple-100 h-screen overflow-y-auto">
@@ -187,6 +189,19 @@ w-64 min-h-screen p-4
                 </div>
                 </div>
                 </div> */}
+ <div
+                class="bg-gradient-to-b from-purple-200 to-purple-400 w-48 h-screen px-4 py-9 overflow-y-auto relative md:relative">
+                <h1 class="text-2xl font-semibold text-white mb-4">Categories</h1>
+                {categories.map(category => (
+                <div class="category-item my-2">
+                    <p  class="text-white"onClick={() => handleCategoryClick(category._id)}
+                     key={category._id} >
+                      {category.name}
+                     </p>
+                </div>
+             ))}
+                 
+            </div>
   </div>
     {/* <div>
       <h2>Categories</h2>

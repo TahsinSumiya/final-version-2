@@ -4,6 +4,8 @@ export default function AfterHome() {
   return (
     <div>
 <Link to='allquestion'>questions</Link>
+<Link to='
+getcategory'>Layouts</Link>
     </div>
   )
 }

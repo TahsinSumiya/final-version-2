@@ -2,6 +2,7 @@ import React, {useState,useEffect} from 'react'
 import axios from 'axios';
 import { login, logout, selectUser } from "../../features/Slice";
 import { useDispatch, useSelector } from "react-redux";
+import Sidebar from '../Sidebar/Sidebar';
 
 export default function AdminUploader() {
     const user = useSelector(selectUser);
@@ -53,7 +54,9 @@ export default function AdminUploader() {
   };
   return (
     <>
-   <body class="bg-gradient-to-r from-purple-100 via-yellow-100 to-blue-200 min-h-screen flex justify-center items-center p-4">
+    <Sidebar/>
+      <div class=" p-4 overflow-y-auto ml-16 ">
+      <div class="bg-gradient-to-r from-purple-100 via-yellow-100 to-blue-200 min-h-screen flex justify-center items-center p-4">
     <div class="bg-opacity-30 backdrop-blur-lg p-9 rounded-md shadow-md w-full md:w-2/3 lg:w-1/2">
         <h1 class="text-3xl font-semibold mb-4 text-gray-500">Upload Design</h1>
         <form onSubmit={handleSubmit}>
@@ -92,7 +95,10 @@ export default function AdminUploader() {
             <button type="submit" class="bg-purple-500 hover:bg-purple-600 text-white py-2 px-4 rounded-md transition duration-300">Submit</button>
         </form>
     </div>
-</body>
+</div>
+           
+</div>
+  
     </>
   )
 }

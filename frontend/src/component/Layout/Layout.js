@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 import axios from 'axios';
 import './Layout.css'
 import Comment from './Comment';
+import Sidebar from '../Sidebar/Sidebar';
 export default function Layout({html,css,js,layoutId,userId,author}) {
     const user = useSelector(selectUser);
     const [comments, setComments] = useState([]);
@@ -32,8 +33,8 @@ export default function Layout({html,css,js,layoutId,userId,author}) {
   return (
     <>
 
-                 
-                     <div class="px-6 pt-9 pb-9 mt-5 shadow-xl border border-gray-200 
+  <div class=" p-4 overflow-y-auto ml-16 ">
+  <div class="px-6 pt-9 pb-9 mt-5 shadow-xl border border-gray-200 
                      rounded-lg bg-gradient-to-b from-purple-100 via-purple-200 to-purple-300">
                         
                         <div class="flex justify-end items-center py-2 px-3 gap-3 mt-4 text-gray-900">
@@ -145,6 +146,10 @@ export default function Layout({html,css,js,layoutId,userId,author}) {
                        
                         </div>
                     </div>
+           
+</div>
+                 
+                
                    
     </>
   )

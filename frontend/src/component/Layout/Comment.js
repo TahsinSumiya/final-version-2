@@ -39,8 +39,11 @@ useEffect(() => {
                                 id="Question" rows="4" class="px-0 w-full text-sm text-gray-900 bg-white border-0 focus:border-transparent focus:outline-none" placeholder="Comment..."></textarea>
                             </div>
         
-                            <div class="flex justify-start items-center py-2 px-3 border-t dark:border-gray-600">
-                                <button type="submit" class="inline-flex items-center py-2.5 px-4 text-xs font-medium text-center text-white bg-purple-500 rounded-lg focus:ring-4 focus:ring-purple-200 hover:bg-purple-600">
+                            <div class="flex justify-end items-center py-2 px-3 border-t dark:border-gray-600">
+                                <button type="submit" class="inline-flex end
+                                items-center py-2.5 px-4 text-xs font-medium 
+                                text-center text-white bg-purple-500 rounded-lg focus:ring-4
+                                 focus:ring-purple-200 hover:bg-purple-600">
                                     Comment
                                 </button>
                             </div>

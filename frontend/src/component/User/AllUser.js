@@ -4,6 +4,7 @@ import axios from 'axios';
 import { login, logout, selectUser } from "../../features/Slice";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from 'react-router-dom';
+import Sidebar from '../Sidebar/Sidebar';
 export default function AllUser() {
     const user = useSelector(selectUser);
     const dispatch = useDispatch();
@@ -24,7 +25,10 @@ export default function AllUser() {
 }, []);
 
   return (
-<div className='h-screen bg-gradient-to-r from-purple-100 via-teal-100 to-blue-100 py-16 animate-gradient'>
+    <>
+    <Sidebar/>
+      <div class=" p-4 overflow-y-auto ml-16 ">
+      <div className='h-screen bg-gradient-to-r from-purple-100 via-teal-100 to-blue-100 py-16 animate-gradient'>
 
 <div class="container mx-auto text-center">
         <h1 class="text-3xl sm:text-4xl md:text-4xl font-bold text-purple-400">All Users</h1>
@@ -51,6 +55,11 @@ export default function AllUser() {
         ))}
     
     </div>
+           
+</div>
+
+
+    </>
 
 
 

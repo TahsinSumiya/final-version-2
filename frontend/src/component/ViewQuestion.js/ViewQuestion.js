@@ -13,6 +13,7 @@ import { selectUser } from "../../features/Slice";
 import axios from "axios";
 import bgimg from '../static/Images/bg.jpg'
 import SideBar from '../Sidebar/Sidebar';
+import Sidebar from "../Sidebar/Sidebar";
 
 export default function ViewQuestion() {
   const user = useSelector(selectUser);
@@ -116,7 +117,10 @@ export default function ViewQuestion() {
 
   return (
     <>
-    <div class="bg-gradient-to-r from-blue-200 via-blue-300 to-blue-400 h-screen">
+    <div className="bg-gradient-to-r from-purple-100 via-yellow-100 to-gray-100 h-screen overflow-y-auto">
+    <Sidebar/>
+      <div class=" p-32  ml-16 ">
+      <div class="bg-gradient-to-r from-blue-200 via-blue-300 to-blue-400 h-screen">
         <div class="relative h-full bg-opacity-60 backdrop-blur-lg">
             <img 
             src={bgimg}
@@ -216,6 +220,9 @@ class="px-6 pt-9 mt-5 shadow-xl border border-gray-200 rounded-lg bg-gradient-to
             </div>
         </div>
     </div>
+           
+</div>
+</div>
     </>
   )
 }

@@ -11,6 +11,7 @@ import bgimg from '../static/Images/wp7213373.webp'
 import 'react-tagsinput/react-tagsinput.css'
 import { useDispatch, useSelector } from "react-redux";
 import { login, logout, selectUser } from "../../features/Slice";
+import Sidebar from '../Sidebar/Sidebar';
 export default function Question() {
   const user = useSelector(selectUser);
   const dispatch = useDispatch();
@@ -49,7 +50,7 @@ const navigate = useNavigate()
           .then((res) => {
             // console.log(res.data);
             alert("Question added successfully");
-           navigate("/");
+     
           })
           .catch((err) => {
             console.log(err);
@@ -105,14 +106,16 @@ const navigate = useNavigate()
     ];
   return (
     <>
-   <div class="bg-gradient-to-r from-blue-200 via-blue-300 to-blue-400 h-screen">
+    <div className='bg-gradient-to-r from-purple-100 via-yellow-100 to-gray-100 h-screen overflow-y-auto'>
+     <Sidebar/>
+      <div class=" p-24 overflow-y-auto ml-16   ">
+   
+      <div class="bg-gradient-to-r from-blue-200 via-blue-300 to-blue-400 h-screen ">
         <div class="relative h-full bg-opacity-60 backdrop-blur-lg">
             
           <img src={bgimg} alt="Background Image" class="object-cover w-full h-full"/>
           <div class="absolute inset-0 bg-gray-100 bg-opacity-80">
-            <div class="container mx-auto text-center">
-                <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold text-purple-400">Ask a Questions</h1>
-            </div>
+           
            
              <form class="px-6 pt-9 mt-5 shadow-xl border border-gray-200 rounded-lg bg-gradient-to-b from-white via-purple-100 to-purple-200">
                 <div class=" items-center py-2 px-3 gap-3 mt-4 text-gray-900">
@@ -156,8 +159,10 @@ const navigate = useNavigate()
             </div>
     </div>
 </div>
-        
+             
+</div>
 
+</div>
 
   
  

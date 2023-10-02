@@ -12,6 +12,7 @@ import Comment from '../Layout/Comment';
 import ReactHtmlParser from "react-html-parser"
 import './css/profile.css'
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
+import Sidebar from '../Sidebar/Sidebar';
 export default function AllSpecificUser() {
     const [linkedin, setlinkedin] = useState("");
     const [github, setgithub] = useState("");
@@ -138,6 +139,9 @@ export default function AllSpecificUser() {
   
 
     return (
+      <>
+      <Sidebar/>
+        <div class=" p-4 overflow-y-auto ml-16 ">
         <div class="bg-gradient-to-l from-blue-100 via-blue-100 to-purple-100 p-4">
         <div class="bg-gradient-to-r from-purple-100 via-yellow-100 to-gray-100 p-4 rounded-lg shadow-md hover:shadow-xl transition duration-300 cursor-pointer">
               <h1 class="text-2xl font-semibold mb-4 text-gray-500">
@@ -363,5 +367,9 @@ className="scroll border-4 border-purple-300 rounded-lg"  showLineNumbers={true}
         
         
   </div>
+           
+</div>
+      </>
+    
     );
 }

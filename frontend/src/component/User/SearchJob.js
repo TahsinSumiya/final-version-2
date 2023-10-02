@@ -49,6 +49,7 @@ function SearchJob() {
                 <div type="submit" class="inline-flex items-center py-2.5 px-4 text-l font-medium text-center text-white hover:text-gray-900 bg-gradient-to-r from-purple-400 via-purple-300 to-purple-200 hover:from-purple-500 hover:via-purple-600 hover:to-purple-700 rounded-lg w-full">
                     <i class="bi bi-person-lines-fill mr-2"></i>
                     {item.name}
+                    <p>{item.desc}</p>
                 </div>
             </div>
             
@@ -63,11 +64,23 @@ function SearchJob() {
     ) : (
         APIData.map((item) => {
             return (
-                <div class="flex justify-between items-center px-16 gap-3 mt-4 text-gray-900">
+                <>
+
+                  <div class=" p-4 overflow-y-auto ml-16 ">
+
+                  <div class="flex justify-between items-center px-16 gap-3 mt-4 text-gray-900">
                 <div class="flex-grow bg-gradient-to-r from-purple-100 via-purple-200 to-purple-300">
-                    <div type="submit" class="inline-flex items-center py-2.5 px-4 text-l font-medium text-center text-white hover:text-gray-900 bg-gradient-to-r from-purple-400 via-purple-300 to-purple-200 hover:from-purple-500 hover:via-purple-600 hover:to-purple-700 rounded-lg w-full">
-                        <i class="bi bi-person-lines-fill mr-2"></i>
-                        {item.name}
+                <div class="flex-grow bg-gradient-to-r from-purple-100 via-purple-200 to-purple-300">
+                <div type="submit" class="inline-flex items-center py-2.5 px-4 text-l font-medium text-center text-white hover:text-gray-900 bg-gradient-to-r from-purple-400 via-purple-300 to-purple-200 hover:from-purple-500 hover:via-purple-600 hover:to-purple-700 rounded-lg w-full">
+                    <i class="bi bi-person-lines-fill mr-2"></i>
+                    {item.name}
+                    <p>{item.desc}</p>
+                </div>
+            </div>
+                    <div >
+                       
+                       
+                        <p className=''>{item.desc}</p>
                     </div>
                 </div>
                 
@@ -75,7 +88,10 @@ function SearchJob() {
                     <span class="text-l font-semibold text-purple-700">Click to see</span>
                     <Link to={`/specificuser?s=${item.uuid}`} class="text-purple-900 text-sm font-medium hover:underline">Profile</Link>
                 </div>        
-            </div>
+            </div> 
+</div>
+                </>
+          
                            
             
             )

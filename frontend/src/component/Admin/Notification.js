@@ -10,6 +10,7 @@ import Comment from '../Layout/Comment';
 import '../User/css/profile.css'
 import axios from "axios";
 import DeleteLayout from '../User/DeleteLayout';
+import Sidebar from '../Sidebar/Sidebar';
 
 export default function Notification() {
     const user = useSelector(selectUser);
@@ -87,7 +88,9 @@ export default function Notification() {
   }, []);
   return (
     <>
-           {Layouts.map((layout) => (
+    <Sidebar/>
+        <div class=" p-4 overflow-y-auto ml-16 ">
+        {Layouts.map((layout) => (
                       
                       <div class="px-6 pt-9 pb-9 mt-5 shadow-xl border border-gray-200 
                            rounded-lg bg-gradient-to-b from-purple-100 via-purple-200 to-purple-300">
@@ -201,6 +204,10 @@ export default function Notification() {
                               
                           </div>
                             ))}
+           
+</div>  
+        
+      
     </>
   )
 }

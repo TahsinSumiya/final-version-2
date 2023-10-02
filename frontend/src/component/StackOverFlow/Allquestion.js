@@ -5,6 +5,7 @@ import "react-quill/dist/quill.snow.css";
 import Editor from "react-quill/lib/toolbar";
 import ReactHtmlParser from "react-html-parser";
 import SideBar from '../Sidebar/Sidebar'
+import Sidebar from '../Sidebar/Sidebar';
 export default function Allquestions({ data }) {
   // let tags = JSON.parse(data?.tags[0]);
   
@@ -18,22 +19,33 @@ export default function Allquestions({ data }) {
   
   return (
     <>
-   <SideBar/>
-      <div className='overflow-y-auto h-screen' >  
+    {/* <Sidebar/> */}
+
+
+
+
+
+ 
         
      
-        <form class="px-9 pt-9">
-        
+        <div class="px-9 pt-9">
+        <SideBar/>
+        <div class="overflow-y-auto bg-gradient-to-r from-purple-100 via-yellow-200 to-purple-200 p-4 backdrop-blur-md">
             <div class="flex justify-between items-center py-2 px-3 gap-3  mt-4 text-gray-900">
                 
                 <span class="relative inline-block w-full text-gray-900 text-xl rounded-lg">
                     
-                    <Link to={`/question?q=${data?._id}`} class="block bg-white p-3 shadow-md hover:shadow-lg transition duration-300 rounded-lg text-gray-500 font-bold text-l">
+                    <Link to={`/question?q=${data?._id}`} class="block
+                     bg-white p-3 shadow-md hover:shadow-lg transition
+                      duration-300 rounded-lg text-gray-500 font-bold text-l">
                     {data.title}
                     </Link>
                   </span>
                   
-                <button type="submit" class="inline-flex items-center py-2.5 px-4 text-xs font-medium text-center text-white bg-purple-400 hover:bg-purple-500 rounded-lg">
+                <button type="submit" class="inline-flex items-center py-2.5 px-4 
+                text-xs font-medium text-center text-white bg-purple-400
+                
+                hover:bg-purple-500 rounded-lg">
                     {/* <i class="bi bi-person-lines-fill mr-2"></i>  */}
                     {data?.user?.displayName ? data?.user?.displayName :
                String(data?.user?.email).split('@')[0]}              
@@ -70,14 +82,21 @@ export default function Allquestions({ data }) {
                   </div>
                 </div>
             </div>
-         </form>
-
+         </div>
+         </div>
 
          
 
        
 
-        </div>
+  
+   
+
+
+
+
+
+  
     </>
   )
 }

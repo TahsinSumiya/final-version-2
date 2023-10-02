@@ -12,6 +12,8 @@ export default function Sidebar() {
         localStorage.removeItem('user');
       };
   return (
+   
+<div className='h-screen  md:w-64 sidebar fixed top-0 left-0 z-40'>
 <nav class="main-menu">
 
 
@@ -114,5 +116,9 @@ export default function Sidebar() {
     </ul>
 </div>
 </nav>
+</div>
+
+ 
+
   )
 }

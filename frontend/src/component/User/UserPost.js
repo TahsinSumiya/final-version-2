@@ -11,6 +11,7 @@ import './css/profile.css'
 import DeleteLayout from './DeleteLayout';
 import axios from "axios";
 import DeeletQ from './DeeletQ';
+import Sidebar from '../Sidebar/Sidebar';
 function UserPost() {
     const user = useSelector(selectUser);
   const dispatch = useDispatch();
@@ -108,223 +109,228 @@ const handleDelete = (layoutId) => {
     });
 };
   return (
-    <div class="bg-gradient-to-r from-purple-100 via-yellow-100 to-gray-100 p-4 h-screen">
+    <>
+    <Sidebar/>
+     <div class=" p-4 overflow-y-auto ml-16 ">
+     <div class="bg-gradient-to-r from-purple-100 via-yellow-100 to-gray-100 p-4 h-screen">
 
-      <div class="flex flex-col items-center justify-center">
-        <div class="max-w-screen-lg w-full p-4">
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-9 justify-center">
-            <button id="One"
-                  onClick={(e) => {
-                  hideShow(e)
-                  }}
-             class="bg-yellow-100 text-2xl text-center shadow-lg rounded-lg p-4 hover:shadow-xl transition duration-300 transform hover:-translate-y-1 hover:scale-105">
-           
-             Questions
-            </button>
-            <button  id="Two"
-                  onClick={(e) => {
-                  hideShow(e)
-                  }}
-             class="bg-yellow-100 text-2xl text-center shadow-lg rounded-lg p-4 hover:shadow-xl transition duration-300 transform hover:-translate-y-1 hover:scale-105">
-             
-              Layouts
-            </button>
-          </div>
-        </div>
-      </div>
-
-
-      <div className=''>
-          {hide && <div className={Active.id === 'One' ? `One` : 'One hide '}>
-            <div className='overflow-y-auto h-screen' >  
-        
-            {userPosts.map((post) => (
-        <div class="px-9 pt-9 ">
-        
-            <div class="flex justify-between items-center py-2 px-3 gap-3  mt-4 text-gray-900">
-                
-                <span class="relative inline-block w-full text-gray-900 text-xl rounded-lg">
-                    
-                    <Link to={`/question?q=${post._id}`} class="block bg-white p-3 shadow-md hover:shadow-lg transition duration-300 rounded-lg text-gray-500 font-bold text-l">
-                    {post.title}
-                    </Link>
-                  </span>
-                  <button type="submit" class="inline-flex items-center py-2.5 px-4 text-xs font-medium text-center text-white bg-purple-400 hover:bg-purple-500 rounded-lg">
-                    {/* <i class="bi bi-person-lines-fill mr-2"></i>  */}
-                    {post?.user?.displayName ? post?.user?.displayName :
-               String(post?.user?.email).split('@')[0]}              
-                </button>
-              
-            </div>
-            <div class="mb-4 w-full bg-purple-200 rounded-lg border border-purple-200">
-                <div class="py-2 px-4 bg-white rounded-t-lg">
-                    <label for="answers" class="sr-only"></label>
-                    <p class="w-full text-lg text-gray-900 bg-white border-0 border-b border-dashed focus:border-transparent focus:outline-none py-1">
-                    {ReactHtmlParser(truncate(post.body, 200))}
-                      </p>
-                      
-                   
-                </div>
-           
-                <div class="flex justify-between items-center py-2
-                 px-3 border-t dark:border-gray-600">
-                  <div className='flex justify-around gap-3'>
-                  <button type="submit" class="inline-flex items-center py-2.5 px-4 text-xs font-medium text-center text-white bg-purple-500 rounded-lg focus:ring-4 focus:ring-purple-200">
-                    {post?.answerDetails?.length}<span className='mx-2'>ans</span>
-                    </button>
-                    <button type="submit" class="inline-flex items-center py-2.5 px-4 text-xs font-medium text-center text-white bg-purple-500 rounded-lg focus:ring-4 focus:ring-purple-200">
-                    {new Date(post?.created_at).toLocaleString()}
-                    </button>
-
-                  </div>
-                  
-                   
-                  <div class="flex justify-around gap-3">
-                  <DeeletQ qid={post._id}/>
-                  </div>
-                </div>
-                  
-                   
-                  {/* <div class="flex justify-around gap-3">
-                 
-                    <button type="submit" class="inline-flex items-center py-2.5 px-4 text-xs font-medium text-center text-white bg-purple-500 rounded-lg focus:ring-4 focus:ring-purple-200">
-                    {post?.answerDetails?.length}<span className='mx-2'>ans</span>
-                    </button>
-                    <button type="submit" class="inline-flex items-center py-2.5 px-4 text-xs font-medium text-center text-white bg-purple-500 rounded-lg focus:ring-4 focus:ring-purple-200">
-                    {new Date(post?.created_at).toLocaleString()}
-                    </button>
-                    
-            
-                   
-                  </div> */}
-             
-           
-            </div>
-         </div>
-  ))}
-
-         
-
+<div class="flex flex-col items-center justify-center">
+  <div class="max-w-screen-lg w-full p-4">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-9 justify-center">
+      <button id="One"
+            onClick={(e) => {
+            hideShow(e)
+            }}
+       class="bg-yellow-100 text-2xl text-center shadow-lg rounded-lg p-4 hover:shadow-xl transition duration-300 transform hover:-translate-y-1 hover:scale-105">
+     
+       Questions
+      </button>
+      <button  id="Two"
+            onClick={(e) => {
+            hideShow(e)
+            }}
+       class="bg-yellow-100 text-2xl text-center shadow-lg rounded-lg p-4 hover:shadow-xl transition duration-300 transform hover:-translate-y-1 hover:scale-105">
        
+        Layouts
+      </button>
+    </div>
+  </div>
+</div>
 
-        </div>
-                </div>}
-                {hide &&   <div className={Active.id === 'Two' ? `Two` : 
-                'Two hide '}>
-                    {Layouts.map((layout) => (
-                      
-                <div class="px-6 pt-9 pb-9 mt-5 shadow-xl border border-gray-200 
-                     rounded-lg bg-gradient-to-b from-purple-100 via-purple-200 to-purple-300">
-                         
-                        <div class="flex justify-end items-center py-2 px-3 gap-3 mt-4
-                         text-gray-900">
-                          
-                        <p class="inline-flex items-center py-2.5 px-4 
-                            text-xs font-medium text-center text-white
-                             bg-purple-400 hover:bg-purple-500 rounded-lg
-                              focus:border-transparent focus:outline-none"
-                            
-                              
-                              >
-                                {layout.author}
-                            </p>
-                            <button class="inline-flex items-center py-2.5 px-4 text-xs
-                             font-medium text-center text-white bg-purple-400
-                              hover:bg-purple-500 rounded-lg focus:border-transparent
-                               focus:outline-none"
-                               id="divOne"
-                               onClick={(e) => {
-                               hideShowDiv(e)
-                               }}
-                               >
-                                Html
-                            </button>
-                            <button class="inline-flex items-center 
-                            py-2.5 px-4 text-xs font-medium text-center text-white
-                             bg-purple-400 hover:bg-purple-500 rounded-lg"
-                             id="divTwo"
-                  onClick={(e) => {
-                  hideShowDiv(e)
-                  }}
-                             
-                             >
-                                CSS
-                            </button>
-                            <button type="submit" class="inline-flex items-center py-2.5 
-                            px-4 text-xs font-medium text-center text-white bg-purple-400
-                             hover:bg-purple-500 rounded-lg"
-                             id="divThree"
-                             onClick={(e) => {
-                          hideShowDiv(e)
-                            }}
-                            title='output'
-                             >
-                                Js
-                            </button>
-                            <DeleteLayout layoutId={layout._id}/>
-                        </div>
-                        {visible &&  <div className={isActive.id === 'divOne' ? `divOne` : 'divOne  css js'}>
+
+<div className=''>
+    {hide && <div className={Active.id === 'One' ? `One` : 'One hide '}>
+      <div className='overflow-y-auto h-screen' >  
+  
+      {userPosts.map((post) => (
+  <div class="px-9 pt-9 ">
+  
+      <div class="flex justify-between items-center py-2 px-3 gap-3  mt-4 text-gray-900">
+          
+          <span class="relative inline-block w-full text-gray-900 text-xl rounded-lg">
+              
+              <Link to={`/question?q=${post._id}`} class="block bg-white p-3 shadow-md hover:shadow-lg transition duration-300 rounded-lg text-gray-500 font-bold text-l">
+              {post.title}
+              </Link>
+            </span>
+            <button type="submit" class="inline-flex items-center py-2.5 px-4 text-xs font-medium text-center text-white bg-purple-400 hover:bg-purple-500 rounded-lg">
+              {/* <i class="bi bi-person-lines-fill mr-2"></i>  */}
+              {post?.user?.displayName ? post?.user?.displayName :
+         String(post?.user?.email).split('@')[0]}              
+          </button>
+        
+      </div>
+      <div class="mb-4 w-full bg-purple-200 rounded-lg border border-purple-200">
+          <div class="py-2 px-4 bg-white rounded-t-lg">
+              <label for="answers" class="sr-only"></label>
+              <p class="w-full text-lg text-gray-900 bg-white border-0 border-b border-dashed focus:border-transparent focus:outline-none py-1">
+              {ReactHtmlParser(truncate(post.body, 200))}
+                </p>
+                
+             
+          </div>
+     
+          <div class="flex justify-between items-center py-2
+           px-3 border-t dark:border-gray-600">
+            <div className='flex justify-around gap-3'>
+            <button type="submit" class="inline-flex items-center py-2.5 px-4 text-xs font-medium text-center text-white bg-purple-500 rounded-lg focus:ring-4 focus:ring-purple-200">
+              {post?.answerDetails?.length}<span className='mx-2'>ans</span>
+              </button>
+              <button type="submit" class="inline-flex items-center py-2.5 px-4 text-xs font-medium text-center text-white bg-purple-500 rounded-lg focus:ring-4 focus:ring-purple-200">
+              {new Date(post?.created_at).toLocaleString()}
+              </button>
+
+            </div>
+            
+             
+            <div class="flex justify-around gap-3">
+            <DeeletQ qid={post._id}/>
+            </div>
+          </div>
+            
+             
+            {/* <div class="flex justify-around gap-3">
+           
+              <button type="submit" class="inline-flex items-center py-2.5 px-4 text-xs font-medium text-center text-white bg-purple-500 rounded-lg focus:ring-4 focus:ring-purple-200">
+              {post?.answerDetails?.length}<span className='mx-2'>ans</span>
+              </button>
+              <button type="submit" class="inline-flex items-center py-2.5 px-4 text-xs font-medium text-center text-white bg-purple-500 rounded-lg focus:ring-4 focus:ring-purple-200">
+              {new Date(post?.created_at).toLocaleString()}
+              </button>
+              
       
-      <SyntaxHighlighter language="html" 
-      className="scroll border-4 border-purple-300 rounded-lg"  showLineNumbers={true} wrapLines={true} >
+             
+            </div> */}
+       
+     
+      </div>
+   </div>
+))}
+
+   
+
+ 
+
+  </div>
+          </div>}
+          {hide &&   <div className={Active.id === 'Two' ? `Two` : 
+          'Two hide '}>
+              {Layouts.map((layout) => (
+                
+          <div class="px-6 pt-9 pb-9 mt-5 shadow-xl border border-gray-200 
+               rounded-lg bg-gradient-to-b from-purple-100 via-purple-200 to-purple-300">
+                   
+                  <div class="flex justify-end items-center py-2 px-3 gap-3 mt-4
+                   text-gray-900">
+                    
+                  <p class="inline-flex items-center py-2.5 px-4 
+                      text-xs font-medium text-center text-white
+                       bg-purple-400 hover:bg-purple-500 rounded-lg
+                        focus:border-transparent focus:outline-none"
+                      
+                        
+                        >
+                          {layout.author}
+                      </p>
+                      <button class="inline-flex items-center py-2.5 px-4 text-xs
+                       font-medium text-center text-white bg-purple-400
+                        hover:bg-purple-500 rounded-lg focus:border-transparent
+                         focus:outline-none"
+                         id="divOne"
+                         onClick={(e) => {
+                         hideShowDiv(e)
+                         }}
+                         >
+                          Html
+                      </button>
+                      <button class="inline-flex items-center 
+                      py-2.5 px-4 text-xs font-medium text-center text-white
+                       bg-purple-400 hover:bg-purple-500 rounded-lg"
+                       id="divTwo"
+            onClick={(e) => {
+            hideShowDiv(e)
+            }}
+                       
+                       >
+                          CSS
+                      </button>
+                      <button type="submit" class="inline-flex items-center py-2.5 
+                      px-4 text-xs font-medium text-center text-white bg-purple-400
+                       hover:bg-purple-500 rounded-lg"
+                       id="divThree"
+                       onClick={(e) => {
+                    hideShowDiv(e)
+                      }}
+                      title='output'
+                       >
+                          Js
+                      </button>
+                      <DeleteLayout layoutId={layout._id}/>
+                  </div>
+                  {visible &&  <div className={isActive.id === 'divOne' ? `divOne` : 'divOne  css js'}>
+
+<SyntaxHighlighter language="html" 
+className="scroll border-4 border-purple-300 rounded-lg"  showLineNumbers={true} wrapLines={true} >
 {/* {html} */}
 {layout.html}
-   </SyntaxHighlighter>
-  </div>}
-     {visible &&  <div className={isActive.id === 'divTwo' ? `divTwo` : 'divTwo d-none js css'}>
-      
-         <SyntaxHighlighter language="css" className="scroll 
-         border-4 border-purple-300 rounded-lg"  showLineNumbers={true} wrapLines={true} >
-  {/* {css} */}
-  {layout.css}
-      </SyntaxHighlighter>
-     </div>}
-     {visible &&  <div className={isActive.id === 'divThree' ? `divThree` : 'divTwo d-none css html'}>
-       
-         <SyntaxHighlighter language="js" className="scroll border-4 border-purple-300 rounded-lg"
-           showLineNumbers={true} wrapLines={true} >
-  {/* {js} */}
-  {layout.js}
-      </SyntaxHighlighter>
-     </div>}
-    
-       
-  
-                     
-                        <div class="py-2 px-4 bg-white rounded-t-lg">
-                            <label for="codepan" class="sr-only"></label>
-                       
-                            <div class="relative h-96">
-                                <iframe id="codepan" class="w-full 
-                                h-96 bg-white border-0 focus:border-transparent 
-                                focus:outline-none" 
-                                srcDoc={`
-          <html>
-            <body>${layout.html}</body>
-            <style>${layout.css}</style>
-            <script>${layout.js}</script>
-          </html>
-        `}
-        height="100%"
-        width="100%"
-                                
-                                ></iframe>
-                               
-                            </div>
-                        </div>
-        
-        
-                        <Comment layoutId={layout._id}/>
-        
-                        
-                    </div>
-                      ))}
-                </div>}
+</SyntaxHighlighter>
+</div>}
+{visible &&  <div className={isActive.id === 'divTwo' ? `divTwo` : 'divTwo d-none js css'}>
 
-          </div>
-      
-       
-      </div>
+   <SyntaxHighlighter language="css" className="scroll 
+   border-4 border-purple-300 rounded-lg"  showLineNumbers={true} wrapLines={true} >
+{/* {css} */}
+{layout.css}
+</SyntaxHighlighter>
+</div>}
+{visible &&  <div className={isActive.id === 'divThree' ? `divThree` : 'divTwo d-none css html'}>
+ 
+   <SyntaxHighlighter language="js" className="scroll border-4 border-purple-300 rounded-lg"
+     showLineNumbers={true} wrapLines={true} >
+{/* {js} */}
+{layout.js}
+</SyntaxHighlighter>
+</div>}
+
+ 
+
+               
+                  <div class="py-2 px-4 bg-white rounded-t-lg">
+                      <label for="codepan" class="sr-only"></label>
+                 
+                      <div class="relative h-96">
+                          <iframe id="codepan" class="w-full 
+                          h-96 bg-white border-0 focus:border-transparent 
+                          focus:outline-none" 
+                          srcDoc={`
+    <html>
+      <body>${layout.html}</body>
+      <style>${layout.css}</style>
+      <script>${layout.js}</script>
+    </html>
+  `}
+  height="100%"
+  width="100%"
+                          
+                          ></iframe>
+                         
+                      </div>
+                  </div>
+  
+  
+                  <Comment layoutId={layout._id}/>
+  
+                  
+              </div>
+                ))}
+          </div>}
+
+    </div>
+
+ 
+</div>
+      </div></>
+ 
       
       
       

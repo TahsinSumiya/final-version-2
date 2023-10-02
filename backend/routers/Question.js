@@ -12,6 +12,7 @@ router.post("/", async (req, res) => {
     body: req.body.body,
     tags: req.body.tag,
     user: req.body.user,
+    uuid:req.body.uuid
   });
 
   await questionData

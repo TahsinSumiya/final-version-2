@@ -1,8 +1,13 @@
 import React from 'react'
 import { NavLink, redirect, useNavigate ,Link} from "react-router-dom";
+import Sidebar from '../Sidebar/Sidebar';
 export default function AdminBoard() {
   return (
-    <div>
+    <>
+    <Sidebar/>
+      <div class=" p-4 overflow-y-auto ml-16 ">
+
+      <div>
 <div>
     <div
         class="bg-gradient-to-r from-purple-100 via-yellow-100 to-blue-200 min-h-screen flex justify-center items-center p-4">
@@ -52,6 +57,9 @@ export default function AdminBoard() {
         </div>
     </div>
 </div>
-    </div>
+    </div>   
+</div>
+    </>
+ 
   )
 }
