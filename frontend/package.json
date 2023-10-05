@@ -14,8 +14,10 @@
     "bootstrap-icons": "^1.11.1",
     "buffer": "^6.0.3",
     "codemirror": "^5.65.15",
+    "email-js": "^2.0.2",
     "firebase": "^10.3.0",
     "firebase-admin": "^11.10.1",
+    "nodemailer": "^6.9.5",
     "react": "^18.2.0",
     "react-bootstrap": "^2.8.0",
     "react-bootstrap-icons": "^1.10.3",
@@ -30,7 +32,6 @@
     "react-syntax-highlighter": "^15.5.0",
     "react-tagsinput": "^3.20.3",
     "web-vitals": "^2.1.4"
- 
   },
   "scripts": {
     "start": "react-scripts start",

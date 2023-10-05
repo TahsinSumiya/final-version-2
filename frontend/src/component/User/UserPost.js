@@ -265,7 +265,7 @@ const handleDelete = (layoutId) => {
                        >
                           Js
                       </button>
-                      <DeleteLayout layoutId={layout._id}/>
+                      <DeleteLayout layoutId={layout._id} email={layout.email}/>
                   </div>
                   {visible &&  <div className={isActive.id === 'divOne' ? `divOne` : 'divOne  css js'}>
 

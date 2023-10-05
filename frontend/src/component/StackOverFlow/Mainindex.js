@@ -4,6 +4,7 @@ import SideBar from '../Sidebar/Sidebar'
 import Main from './Main'
 import { useState ,useEffect} from 'react';
 import axios from 'axios';
+import Sidebar from '../Sidebar/Sidebar';
 export default function Mainindex() {
   const [questions, setQuestions] = useState([]);
   //  useEffect(()=>{
@@ -26,11 +27,15 @@ export default function Mainindex() {
     getQuestion();
   }, []);
   return (
+    <>
+    <Sidebar/>
     <div className='bg-gradient-to-r from-purple-100 via-yellow-200 to-purple-200 p-12 backdrop-blur-md'>
        <div class="container mx-auto text-center">
             <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold text-purple-400">All Questions</h1>
         </div>
       <Main questions={questions}/>
     </div>
+    </>
+
   )
 }

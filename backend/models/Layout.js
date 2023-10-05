@@ -26,6 +26,7 @@ const layoutSchema = new mongoose.Schema({
       default: Date.now 
     
   },
+  email:String,
   categoryId: {
     type: mongoose.Schema.Types.ObjectId,
   

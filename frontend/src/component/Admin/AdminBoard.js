@@ -46,6 +46,16 @@ export default function AdminBoard() {
                     </NavLink>
                 </div>
             </div>
+            <div
+                class="max-w-md mx-auto bg-gradient-to-r from-purple-100 via-yellow-100 to-gray-100 p-4 rounded-lg shadow-md hover:shadow-xl transition duration-300 cursor-pointer mt-4 w-full md:w-4/5">
+                <h1 class="text-3xl font-semibold mb-4 text-gray-500 text-center">Admin Layouts</h1>
+
+                <div class="flex justify-center items-center py-2 px-3 gap-3 mt-4">
+                    <NavLink to="/layoutbyadmin" class="items-center py-2.5 px-4 text-xs font-medium text-center text-white hover:shadow-lg rounded-lg">
+                        <i class="bi bi-cloud-arrow-up-fill text-purple-400 text-3xl"></i> 
+                    </NavLink>
+                </div>
+            </div>
 
             <div class="flex justify-center items-center py-2 px-3 gap-3 mt-4">
                 <a href="#" class="inline-flex items-center py-3 px-6 text-lg font-medium text-center text-purple-400 shadow-md">

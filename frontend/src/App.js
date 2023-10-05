@@ -25,9 +25,10 @@ import AdminBoard from './component/Admin/AdminBoard';
 import CategoryUpload from './component/Category/CategoryUpload';
 import GetAllCategory from './component/Category/GetAllCategory';
 import LayoutUploader from './component/Layout/LayoutUploader';
-import AdminUploader from './component/Layout/AdminUploader';
+import AdminUploader from './component/Admin/AdminUploader';
 import Notification from './component/Admin/Notification';
-
+import LayoutByAdmin from './component/Admin/LayoutByAdmin';
+// import PrivateWrapper from './PrivateWrapper';
 
 function App() {
   const user = useSelector(selectUser);
@@ -88,7 +89,7 @@ function App() {
   return (
     <>
 
-        <Routes>
+<Routes>
         <Route element={<PrivateWrapper />}>
   {/* <Route path="/" element={<Header />} /> */}
 </Route>
@@ -148,6 +149,9 @@ function App() {
 </Route>
 <Route element={<PrivateWrapper />}>
 <Route exact path='/layoutuploader' element={<LayoutUploader/>} />
+</Route>
+<Route element={<PrivateWrapper />}>
+<Route exact path='/layoutbyadmin' element={<LayoutByAdmin/>} />
 </Route>
 <Route exact path='/auth' element={<Auth/>} />
 {/* <Route exact path='/add-question' element={<AddQuestion/>} />

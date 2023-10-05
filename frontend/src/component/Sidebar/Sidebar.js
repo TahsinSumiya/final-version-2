@@ -1,14 +1,15 @@
 import React from 'react'
 import { Link, useParams } from 'react-router-dom';
 import { useSelector } from "react-redux";
-
+import { useDispatch } from 'react-redux';
 import { login, logout, selectUser } from "../../features/Slice";
 import './SideNavbar.css'
 import { IoHomeOutline } from "react-icons/io5";
 import { AiOutlineSearch } from "react-icons/ai";
 export default function Sidebar() {
+
     const handleClick = () => {
-        logout();
+     logout()
         localStorage.removeItem('user');
       };
   return (
@@ -114,6 +115,8 @@ export default function Sidebar() {
             </Link>
         </li>
     </ul>
+    
+
 </div>
 </nav>
 </div>

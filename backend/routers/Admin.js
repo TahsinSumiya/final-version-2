@@ -1,5 +1,4 @@
-
-
+const layout = require("../models/Layout")
 const AdminDb = require("../models/Adminauth")
 const express = require("express");
 const router = express.Router();
@@ -26,7 +25,18 @@ router.post("/login", async (req, res) => {
         console.error(error);
       }
         })
-        
+        router.get("/", async (req, res) => {
+          try {
+           
+            const Layout = await layout.find({ id:'' });
+            res.json(Layout);
+          } catch (err) {
+            console.error(err);
+            res.status(500).json({ message: 'Internal server error' });
+          }
+            
+            
+        });     
         function checkCredentials(id, password) {
             // Manually compare the username and password with the expected values in the database
             const expectedUsername = process.env.ADMIN_ID;

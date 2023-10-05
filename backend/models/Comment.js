@@ -5,6 +5,7 @@ const mongoose = require("mongoose");
     layoutId: { type: mongoose.Schema.Types.ObjectId, ref: 'Layout' },
     user: Object,
     text: String,
+    name:String,
     
   });
 

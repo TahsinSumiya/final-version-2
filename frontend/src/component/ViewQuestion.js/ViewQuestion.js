@@ -117,7 +117,7 @@ export default function ViewQuestion() {
 
   return (
     <>
-    <div className="bg-gradient-to-r from-purple-100 via-yellow-100 to-gray-100 h-screen overflow-y-auto">
+    <div className="bg-purple-200 h-screen overflow-y-auto">
     <Sidebar/>
       <div class=" p-32  ml-16 ">
       <div class="bg-gradient-to-r from-blue-200 via-blue-300 to-blue-400 h-screen">

@@ -29,7 +29,7 @@ export default function Allquestions({ data }) {
         
      
         <div class="px-9 pt-9">
-        <SideBar/>
+     
         <div class="overflow-y-auto bg-gradient-to-r from-purple-100 via-yellow-200 to-purple-200 p-4 backdrop-blur-md">
             <div class="flex justify-between items-center py-2 px-3 gap-3  mt-4 text-gray-900">
                 

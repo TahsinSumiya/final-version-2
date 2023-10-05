@@ -1,11 +1,16 @@
-import React, { useEffect } from 'react'
+import React, { useEffect,useState } from 'react'
 import axios from 'axios';
-export default function DeleteLayout({layoutId}) {
+import emailjs from 'email-js';
+
+export default function DeleteLayout({layoutId,email}) {
+ 
     const handleDelete = () => {
+      
         axios.delete(`http://localhost:80/api/layouts/${layoutId}`)
           .then(response => {
             alert('deleted succesfully')
-            console.log(response.data.message); // Layout deleted successfully message
+            console.log(response.data.message);
+           
             // You may want to refresh the layouts after deletion
             // You can use state management libraries like Redux for this purpose
           })

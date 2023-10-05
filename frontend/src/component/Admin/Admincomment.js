@@ -3,7 +3,7 @@ import axios from 'axios';
 import { useState,useEffect } from 'react';
 import { login, logout, selectUser } from "../../features/Slice";
 import { useDispatch, useSelector } from "react-redux";
-export default function Comment({layoutId}) {
+export default function Admincomment({layoutId}) {
     const [comments, setComments] = useState([]);
     const user = useSelector(selectUser);
     const [text, setText] = useState('');
@@ -11,7 +11,7 @@ export default function Comment({layoutId}) {
     const handleCommentSubmit = (e) => {
         e.preventDefault();
         axios.post(`http://localhost:80/api/comment/comments/${layoutId}`, { 
-          text,user:user, layoutId,name:user.displayName})
+          text,user:user, layoutId,name:'admin'})
           .then(response => {
             setText('');
             handlegetCommentSubmit ()

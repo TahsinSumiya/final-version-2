@@ -3,6 +3,7 @@ import Allquestion from "./Allquestion"
 import { Link } from 'react-router-dom'
 import { useState ,useEffect} from 'react';
 import axios from 'axios';
+import Sidebar from '../Sidebar/Sidebar';
 export default function Main({questions}) {
 
   return (
@@ -10,7 +11,6 @@ export default function Main({questions}) {
    
 
   
-
 
      
         <div> 

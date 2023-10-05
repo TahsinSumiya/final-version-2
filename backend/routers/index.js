@@ -8,6 +8,7 @@ const UserRouter = require('./UserProfile')
 const AdminRouter = require('./Admin')
 const CategoryRouter = require('./Category')
 const LayoutRouter = require('./Layouts')
+const email = require('./Autoemail')
 router.get("/", (req, res) => {
     res.send("Welcome to our page");
   });
@@ -19,4 +20,5 @@ router.get("/", (req, res) => {
   router.use('/user', UserRouter)
   router.use('/category', CategoryRouter)
   router.use('/layouts', LayoutRouter)
+  router.use('/autoemail', email)
   module.exports = router;

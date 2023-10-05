@@ -1,3 +1,4 @@
+
 import React from 'react'
 import { login, logout, selectUser } from "../../features/Slice";
 import { useDispatch, useSelector } from "react-redux";
@@ -12,86 +13,82 @@ import axios from "axios";
 import DeleteLayout from '../User/DeleteLayout';
 import Sidebar from '../Sidebar/Sidebar';
 import Admincomment from './Admincomment';
-import DeleteLayoutByAdmin from './DeleteLayoutByAdmin';
-
-export default function Notification() {
-    const user = useSelector(selectUser);
-    const dispatch = useDispatch();
-      const [userPosts, setUserPosts] = useState([]);
-      const [Layouts, setLayouts] = useState([]);
-      const [hide, sethide] = useState(false) 
-      const [visible, setVisible] = useState(false) 
-      const [text, setText] = useState('');
-      const [comments, setComments] = useState([]);
-      function truncate(str, n) {
-        return str?.length > n ? str.substr(0, n - 1) + "..." : str;
-      }
-   
-    const toggle = () => sethide(!hide) 
-      const [Active, setActive] = useState({
-        id: 'One',
+export default function LayoutByAdmin() {
+    const [userPosts, setUserPosts] = useState([]);
+    const [Layouts, setLayouts] = useState([]);
+    const [hide, sethide] = useState(false) 
+    const [visible, setVisible] = useState(false) 
+    const [text, setText] = useState('');
+    const [comments, setComments] = useState([]);
+    function truncate(str, n) {
+      return str?.length > n ? str.substr(0, n - 1) + "..." : str;
+    }
+ 
+  const toggle = () => sethide(!hide) 
+    const [Active, setActive] = useState({
+      id: 'One',
+      })
+ 
+        const hideShow = (e) => {
+        setActive({
+        id: e.target.id,
         })
-   
-          const hideShow = (e) => {
-          setActive({
-          id: e.target.id,
+        toggle()
+        }
+        const toggleVisible = () => setVisible(!visible) 
+        const [isActive, setIsActive] = useState({
+          id: 'divOne',
           })
-          toggle()
-          }
-          const toggleVisible = () => setVisible(!visible) 
-          const [isActive, setIsActive] = useState({
-            id: 'divOne',
+     
+            const hideShowDiv = (e) => {
+            setIsActive({
+            id: e.target.id,
             })
-       
-              const hideShowDiv = (e) => {
-              setIsActive({
-              id: e.target.id,
-              })
-              toggleVisible()
-              }
+            toggleVisible()
+            }
 
-            
-      useEffect(() => {
-        // Fetch user profile by user UID
-        axios
-          .get('http://localhost:80/api/layouts/getalllayouts')
-          .then((response) => {
-           
-            setLayouts(response.data);
-          })
-          .catch((error) => {
-            console.error('Error fetching user profile:', error);
-          });
-      }, []); 
-  
-  //     const handleCommentSubmit = (e,layoutId) => {
-  //       e.preventDefault();
-  //       axios.post(`http://localhost:80/api/comment/comments/${layoutId}`, { 
-  //         text,user:user})
-  //         .then(response => {
-  //           setText('');
-  //           handlegetCommentSubmit ()
-            
-  //         })
-  //         .catch(error => console.error('Error submitting comment:', error));
-  //     };
-  //     const handlegetCommentSubmit = async (layoutId) => {
-  //       try {
-  //         const response = await axios.get(`http://localhost:80/api/comment/getcomments/${layoutId}`);
-  //         setComments(response.data);
-  //         console.log(response);
-  //       } catch (error) {
-  //         console.error('Error fetching comments:', error);
-  //       }
-  //     };
-  //    // onMount
-  // useEffect((layoutId) => {
-  // handlegetCommentSubmit ()
-  // }, []);
+          
+    useEffect(() => {
+   
+      axios
+        .get('http://localhost:80/api/admin/')
+        .then((response) => {
+         
+          setLayouts(response.data);
+        })
+        .catch((error) => {
+          console.error('Error fetching user profile:', error);
+        });
+    }, []); 
+
+    const handleCommentSubmit = (e,layoutId) => {
+      e.preventDefault();
+      axios.post(`http://localhost:80/api/comment/comments/${layoutId}`, { 
+        text})
+        .then(response => {
+          setText('');
+          handlegetCommentSubmit ()
+          
+        })
+        .catch(error => console.error('Error submitting comment:', error));
+    };
+    const handlegetCommentSubmit = async (layoutId) => {
+      try {
+        const response = await axios.get(`http://localhost:80/api/comment/getcomments/${layoutId}`);
+        setComments(response.data);
+        console.log(response);
+      } catch (error) {
+        console.error('Error fetching comments:', error);
+      }
+    };
+   // onMount
+useEffect((layoutId) => {
+handlegetCommentSubmit ()
+}, []);
   return (
     <>
     <Sidebar/>
-        <div class=" p-4 overflow-y-auto ml-16 ">
+            <div class=" p-4 overflow-y-auto ml-16 ">
         {Layouts.map((layout) => (
                       
                       <div class="px-6 pt-9 pb-9 mt-5 shadow-xl border border-gray-200 
@@ -148,7 +145,7 @@ export default function Notification() {
                                    >
                                       Js
                                   </button>
-                                  <DeleteLayoutByAdmin  layoutId={layout._id} email={layout.email}/>
+                                  <DeleteLayout  layoutId={layout._id}/>
                               </div>
                               {visible &&  <div className={isActive.id === 'divOne' ? `divOne` : 'divOne  css js'}>
             
@@ -208,8 +205,6 @@ export default function Notification() {
                             ))}
            
 </div>  
-        
-      
     </>
   )
 }

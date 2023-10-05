@@ -18,7 +18,9 @@ export default function LayoutUploader() {
     css: '',
     js: '',
     author:'',
-    id:''
+    id:'',
+    email:''
+  
   });
 
   useEffect(() => {
@@ -47,9 +49,9 @@ export default function LayoutUploader() {
     e.preventDefault();
     try {
       await axios.post('http://localhost:80/api/layouts/layoutUploader', 
-      { ...product, categoryId: selectedCategory,author:user.displayName,id:user.uid });
+      { ...product, categoryId: selectedCategory,author:user.displayName,id:user.uid ,email:user.email});
       // Reset the form
-      setProduct({ html: '', css: '', js: '',author:'' });
+      setProduct({ html: '', css: '', js: '',author:'',email:'' });
       setSelectedCategory('');
       console.log('Product added successfully!');
     } catch (error) {

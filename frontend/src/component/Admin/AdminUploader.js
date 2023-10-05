@@ -38,12 +38,20 @@ export default function AdminUploader() {
   const handleProductChange = (e) => {
     setProduct({ ...product, [e.target.name]: e.target.value });
   };
-
+  const [id, setId] = useState('');
+  useEffect(() => {
+    try {
+      const response = axios.get('http://localhost:80/api/admin/login');
+      setId(response.data.id);
+    } catch (error) {
+      console.error('Failed to fetch categories:', error);
+    }
+  }, []); 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
       await axios.post('http://localhost:80/api/layouts/layoutUploader', 
-      { ...product, categoryId: selectedCategory });
+      { ...product, categoryId: selectedCategory, id: id });
       // Reset the form
       setProduct({ html: '', css: '', js: '',author:'',id:''});
       setSelectedCategory('');
