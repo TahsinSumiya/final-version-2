@@ -13,6 +13,7 @@ import axios from "axios";
 import DeleteLayout from '../User/DeleteLayout';
 import Sidebar from '../Sidebar/Sidebar';
 import Admincomment from './Admincomment';
+import Tags from '../Layout/Tags';
 export default function LayoutByAdmin() {
     const [userPosts, setUserPosts] = useState([]);
     const [Layouts, setLayouts] = useState([]);
@@ -199,8 +200,7 @@ handlegetCommentSubmit ()
               
               
                               <Admincomment layoutId={layout._id}/>
-              
-                              
+                              <Tags tags={JSON.parse(layout.tags[0])}/>
                           </div>
                             ))}
            

@@ -11,6 +11,9 @@ import ViewProfile from './ViewProfile';
 import './css/profile.css'
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import Sidebar from '../Sidebar/Sidebar';
+import CreateProfileforms from './CreateProfileforms';
+import UpdateUser from './UpdateUser'
+
 export default function Profile() {
     const [linkedin, setlinkedin] = useState("");
     const [github, setgithub] = useState("");
@@ -19,7 +22,7 @@ export default function Profile() {
     const [email, setemail] = useState("");
     const [desc, setDesc] = useState("");
     const user = useSelector(selectUser);
-
+    const [profileCreated, setProfileCreated] = useState(false);
     const dispatch = useDispatch();
     const [visible, setVisible] = useState(false) 
 
@@ -38,40 +41,40 @@ export default function Profile() {
         }
    
       
-    const handleSubmit = async (e) => {
-        e.preventDefault();
+    // const handleSubmit = async (e) => {
+    //     e.preventDefault();
 
-        try {
-            const bodyJSON = {
-                linkedin: linkedin,
-                github: github,
-                birthdate: date, // Use the date state directly
-                user: user,
-                uuid: user.uid,
-                name: user.displayName,
-                category: category,
-                email: category === 'hiring' ? email : '',
-                desc:desc 
-            };
+    //     try {
+    //         const bodyJSON = {
+    //             linkedin: linkedin,
+    //             github: github,
+    //             birthdate: date, // Use the date state directly
+    //             user: user,
+    //             uuid: user.uid,
+    //             name: user.displayName,
+    //             category: category,
+    //             email: category === 'hiring' ? email : '',
+    //             desc:desc 
+    //         };
 
-            const response = await axios.post("http://localhost:80/api/user/profile", bodyJSON);
+    //         const response = await axios.post("http://localhost:80/api/user/profile", bodyJSON);
 
-            if (response.status === 200) { // Check the response status
-                alert('User created successfully!');
-                // Reset the form or perform any other necessary actions
-                setlinkedin("");
-                setgithub("");
-                setdate(null);
-                setcategory("looking-for-job");
-                setemail("");
-                setDesc("")
-            } else {
-                alert('Failed to create user.');
-            }
-        } catch (error) {
-            console.error('Error creating user:', error);
-        }
-    };
+    //         if (response.status === 200) { // Check the response status
+    //             alert('User created successfully!');
+    //             // Reset the form or perform any other necessary actions
+    //             setlinkedin("");
+    //             setgithub("");
+    //             setdate(null);
+    //             setcategory("looking-for-job");
+    //             setemail("");
+    //             setDesc("")
+    //         } else {
+    //             alert('Failed to create user.');
+    //         }
+    //     } catch (error) {
+    //         console.error('Error creating user:', error);
+    //     }
+    // };
     const [userProfile, setUserProfile] = useState(null);
   
   
@@ -81,6 +84,7 @@ export default function Profile() {
         .get(`http://localhost:80/api/user/getuserpofile/${user.uid}`)
         .then((response) => {
           setUserProfile(response.data);
+          setProfileCreated(true);
         })
         .catch((error) => {
           console.error('Error fetching user profile:', error);
@@ -118,12 +122,13 @@ export default function Profile() {
   
         <div class="bg-gradient-to-r from-purple-100 via-yellow-100 to-gray-100 p-4 rounded-lg shadow-md hover:shadow-xl transition duration-300 cursor-pointer mt-8">
          
-  
-          <div class="mb-4">
-              <a href="https://www.linkedin.com/" target="_blank" class="text-purple-600 hover:underline mr-4">LinkedIn</a>
-              <a href="https://github.com/" target="_blank" class="text-gray-800 hover:underline">GitHub</a>
-          </div>
-  
+        {profileCreated ? ( 
+                    <UpdateUser/>
+                ) : (
+                  <CreateProfileforms/>
+                )}
+        
+{/*   
 
           <div class="mb-4">
               <div class="relative">
@@ -170,15 +175,8 @@ export default function Profile() {
             </div>
               
           </div>
-  
-          <div class="flex justify-around">
-              <button type="submit" class="bg-purple-500 hover:bg-purple-600
-               text-white py-2 px-4 rounded-md transition duration-300"
-               onClick={handleSubmit}
-               >Submit</button>
-              <Link to='updateprofile' type="submit" class="bg-purple-500 hover:bg-purple-600
-               text-white py-2 px-4 rounded-md transition duration-300">Update</Link>
-          </div>
+   */}
+
   
       <UserPost/>
       </div>

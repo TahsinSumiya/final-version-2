@@ -82,21 +82,6 @@ useEffect(() => {
         
         
         
-                        
-                            <div class="flex gap-3 items-center py-2 px-3 border-t dark:border-gray-600">
-                                <span class="inline-flex items-center py-2.5 px-4 text-s font-medium text-center text-purple-600">
-                                    Tags:
-                                </span>
-                                <span class="inline-flex items-center py-2.5 px-4 text-xs font-medium text-center text-white bg-purple-500 rounded-lg focus:ring-4 focus:ring-purple-200 hover:bg-purple-600">
-                                    Html
-                                </span>
-                                <span class="inline-flex items-center py-2.5 px-4 text-xs font-medium text-center text-white bg-purple-500 rounded-lg focus:ring-4 focus:ring-purple-200 hover:bg-purple-600">
-                                    CSS
-                                </span>
-                                <span class="inline-flex items-center py-2.5 px-4 text-xs font-medium text-center text-white bg-purple-500 rounded-lg focus:ring-4 focus:ring-purple-200 hover:bg-purple-600">
-                                    Responsive
-                                </span>
-                            </div>
                         </div>
     </>
   )

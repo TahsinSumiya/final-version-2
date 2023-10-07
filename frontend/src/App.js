@@ -22,7 +22,7 @@ import Profile from './component/User/Profile';
 import ViewProfile from './component/User/ViewProfile';
 import Admin from './component/Admin/Admin';
 import AdminBoard from './component/Admin/AdminBoard';
-import CategoryUpload from './component/Category/CategoryUpload';
+import CategoryUpload from './component/Admin/CategoryUpload'
 import GetAllCategory from './component/Category/GetAllCategory';
 import LayoutUploader from './component/Layout/LayoutUploader';
 import AdminUploader from './component/Admin/AdminUploader';

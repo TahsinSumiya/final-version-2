@@ -4,8 +4,8 @@ const layout = require('../models/Layout')
 router.post("/layoutUploader", async (req, res) => {
 
     try {
-        const {  categoryId,html,css,js, publish,author,id ,email} = req.body;
-        const product = new layout({ html,css,js, publish,author, categoryId,id,email});
+        const {  categoryId,html,css,js, publish,author,id ,email,tags} = req.body;
+        const product = new layout({ html,css,js, publish,author, categoryId,id,email,tags});
         await product.save();
         res.status(201).json(product);
       } catch (error) {

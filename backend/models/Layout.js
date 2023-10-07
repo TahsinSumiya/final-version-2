@@ -33,6 +33,7 @@ const layoutSchema = new mongoose.Schema({
     ref: 'Category',
     
   },
+  tags: [],
 
 //   comments: [{
 //     text: { type: String },

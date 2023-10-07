@@ -1,41 +1,52 @@
-import React from 'react'
-import './css/index.css'
-import SideBar from '../Sidebar/Sidebar'
-import Main from './Main'
-import { useState ,useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Sidebar from '../Sidebar/Sidebar';
+import Main from './Main';
+
 export default function Mainindex() {
   const [questions, setQuestions] = useState([]);
-  //  useEffect(()=>{
-  //   const getQuestion = async (e) => {
-  //     await axios.get('http://localhost:80/api/question/').then((res)=>{
-  //         console.log(res.data)
-  //   }).catch((err)=>{
-  //     console.log(err)
-  //   })
-  //   }
+  const [APIData, setAPIData] = useState([]);
+  const [searchInput, setSearchInput] = useState('');
 
-  //  },[])
   useEffect(() => {
     async function getQuestion() {
       await axios.get("http://localhost:80/api/question/").then((res) => {
         setQuestions(res.data.reverse());
-        // console.log(res.data)
+        setAPIData(res.data);
       });
     }
     getQuestion();
   }, []);
+
+  const filteredQuestions = searchInput
+    ? APIData.filter((item) =>
+        item.title.toLowerCase().includes(searchInput.toLowerCase())
+      )
+    : questions;
+
   return (
     <>
-    <Sidebar/>
-    <div className='bg-gradient-to-r from-purple-100 via-yellow-200 to-purple-200 p-12 backdrop-blur-md'>
-       <div class="container mx-auto text-center">
-            <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold text-purple-400">All Questions</h1>
+      <Sidebar />
+      <div className='bg-gradient-to-r from-purple-100 via-yellow-200 to-purple-200 p-12 backdrop-blur-md'>
+        <div className="container mx-auto text-center">
+          {/* Your other content */}
         </div>
-      <Main questions={questions}/>
-    </div>
+        <div className="relative mx-12">
+          <input
+            onChange={(e) => setSearchInput(e.target.value)}
+            type="text"
+            className="w-full pl-10 pr-4 py-2 border rounded-md focus:ring focus:ring-purple-400 focus:ring-opacity-50 focus:border-transparent focus:outline-none rounded-lg"
+            placeholder="Search questions by title"
+          />
+          <button className="absolute right-3 bottom-3 text-gray-500 hover:text-purple-800 focus:outline-none">
+            <i className="bi bi-search"></i>
+          </button>
+        </div>
+        <p className="mt-3 mx-12 inline-flex items-center py-2.5 px-4 text-xs font-medium text-center text-white bg-purple-400 hover:bg-purple-500 rounded-lg">
+          {filteredQuestions.length} questions
+        </p>
+        <Main questions={filteredQuestions} />
+      </div>
     </>
-
-  )
+  );
 }

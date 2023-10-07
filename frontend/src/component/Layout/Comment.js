@@ -26,7 +26,9 @@ export default function Comment({layoutId}) {
 
           console.log(response)
       };
-     // onMount
+ 
+     const commentHeight = 80;
+     const totalHeight = comments.length * commentHeight;
 useEffect(() => {
 	handlegetCommentSubmit ()
 }, [layoutId]);
@@ -49,11 +51,15 @@ useEffect(() => {
                                 </button>
                             </div>
                             </form>
+                            <div  className="overflow-y-auto"
+      style={{ maxHeight: totalHeight + 'px' }}>
                             {comments.map(comment => (
-                            <div class="mb-4 w-full rounded-lg border border-purple-200 overflow-y-auto">
-                                <div class="py-2 px-4 bg-white rounded-t-lg">
-                                    <label for="Question" class="sr-only"></label>
-                                    <p key={comment._id} id="Question" rows="3" class="px-0 w-full 
+                            
+                            <div class="mb-4 w-full rounded-lg border
+                             border-purple-200 overflow-y-auto">
+                                <div class="py-2 px-4 bg-white rounded-t-lg overflow-y-auto">
+                                  
+                                    <p key={comment._id} id="Question"  class="px-0 w-full 
                                     text-sm text-gray-900 bg-white border-0 
                                     focus:border-transparent focus:outline-none">
                                     {comment.text}
@@ -67,14 +73,14 @@ useEffect(() => {
                                     {comment.name}
                                     </p>
                                     <p class="inline-flex items-center py-2.5 px-4 text-xs font-medium text-center text-white bg-purple-500 rounded-lg focus:ring-4 focus:ring-purple-200 hover:bg-purple-600">
-                                        23/07/2023
+                                    {new Date(comment.created_at).toLocaleString()}
                                     </p>
             
                                 </div>
                             </div>
-                           
+                          
               ))}
-        
+          </div>
                     
         
         
@@ -83,20 +89,7 @@ useEffect(() => {
         
         
                         
-                            <div class="flex gap-3 items-center py-2 px-3 border-t dark:border-gray-600">
-                                <span class="inline-flex items-center py-2.5 px-4 text-s font-medium text-center text-purple-600">
-                                    Tags:
-                                </span>
-                                <span class="inline-flex items-center py-2.5 px-4 text-xs font-medium text-center text-white bg-purple-500 rounded-lg focus:ring-4 focus:ring-purple-200 hover:bg-purple-600">
-                                    Html
-                                </span>
-                                <span class="inline-flex items-center py-2.5 px-4 text-xs font-medium text-center text-white bg-purple-500 rounded-lg focus:ring-4 focus:ring-purple-200 hover:bg-purple-600">
-                                    CSS
-                                </span>
-                                <span class="inline-flex items-center py-2.5 px-4 text-xs font-medium text-center text-white bg-purple-500 rounded-lg focus:ring-4 focus:ring-purple-200 hover:bg-purple-600">
-                                    Responsive
-                                </span>
-                            </div>
+                  
                         </div>
     </>
   )

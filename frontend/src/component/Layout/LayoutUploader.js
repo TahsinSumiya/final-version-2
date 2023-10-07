@@ -3,6 +3,9 @@ import axios from 'axios';
 import { login, logout, selectUser } from "../../features/Slice";
 import { useDispatch, useSelector } from "react-redux";
 import Sidebar from '../Sidebar/Sidebar';
+import TagsInput from 'react-tagsinput'
+import '../Add-Question/TagsInput.css'
+import 'react-tagsinput/react-tagsinput.css'
 export default function LayoutUploader() {
     const user = useSelector(selectUser);
     const dispatch = useDispatch();
@@ -19,7 +22,8 @@ export default function LayoutUploader() {
     js: '',
     author:'',
     id:'',
-    email:''
+    email:'',
+    tags:[],
   
   });
 
@@ -42,16 +46,23 @@ export default function LayoutUploader() {
   };
 
   const handleProductChange = (e) => {
-    setProduct({ ...product, [e.target.name]: e.target.value });
+    if (e.target) {
+      // Regular input change event
+      setProduct({ ...product, [e.target.name]: e.target.value });
+    } else if (Array.isArray(e)) {
+      // TagsInput change event
+      setProduct({ ...product, tags: e });
+    }
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
       await axios.post('http://localhost:80/api/layouts/layoutUploader', 
-      { ...product, categoryId: selectedCategory,author:user.displayName,id:user.uid ,email:user.email});
+      { ...product, categoryId: selectedCategory,
+        author:user.displayName,id:user.uid ,email:user.email,tags:JSON.stringify(product.tags)});
       // Reset the form
-      setProduct({ html: '', css: '', js: '',author:'',email:'' });
+      setProduct({ html: '', css: '', js: '',author:'',email:'',tags:[]});
       setSelectedCategory('');
       console.log('Product added successfully!');
     } catch (error) {
@@ -94,12 +105,21 @@ export default function LayoutUploader() {
                 value={product.css} onChange={handleProductChange}
                 rows="4" class="w-full px-3 py-2 border rounded-md focus:ring focus:ring-purple-400 focus:ring-opacity-50 focus:border-transparent focus:outline-none rounded-lg"></textarea>
             </div>
+          
             <div class="mb-4">
                 <label for="js" class="block text-sm font-medium text-gray-700">JS</label>
                 <textarea id="js" name="js"
                  value={product.js} onChange={handleProductChange} 
                 rows="4" class="w-full px-3 py-2 border rounded-md focus:ring focus:ring-purple-400 focus:ring-opacity-50 focus:border-transparent focus:outline-none rounded-lg"></textarea>
             </div>
+            <div className='mb-4'>
+            <TagsInput  value={product.tags}
+                            class="w-full bg-slate-500 text-gray-900 p-8 border-0 text-2xl
+                            focus:border-transparent focus:outline-none rounded-lg"
+                  onChange={handleProductChange}
+                  name="fruits"
+                 />
+                 </div>
             <button type="submit" class="bg-purple-500 hover:bg-purple-600 text-white py-2 px-4 rounded-md transition duration-300">Submit</button>
         </form>
     </div>

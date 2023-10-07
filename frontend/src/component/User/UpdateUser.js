@@ -39,7 +39,7 @@ export default function Profile() {
           const response = await axios.put(`http://localhost:80/api/user/profile/${user.uid}`, bodyJSON);
 
           if (response.status === 200) { // Check the response status
-              alert('User created successfully!');
+              
               // Reset the form or perform any other necessary actions
               setlinkedin("");
               setgithub("");
@@ -58,15 +58,12 @@ export default function Profile() {
 
   return (
     <>
-    <Sidebar/>
+
     <div className='px-24'>
     <div class="px-12 bg-gradient-to-r from-purple-100 via-yellow-100 to-gray-100 p-4 rounded-lg shadow-md hover:shadow-xl transition duration-300 cursor-pointer mt-8">
          
   
-         <div class="mb-4">
-             <a href="https://www.linkedin.com/" target="_blank" class="text-purple-600 hover:underline mr-4">LinkedIn</a>
-             <a href="https://github.com/" target="_blank" class="text-gray-800 hover:underline">GitHub</a>
-         </div>
+
  
 
          <div class="mb-4">
@@ -117,7 +114,7 @@ export default function Profile() {
           
          </div>
  
-     <UserPost/>
+    
      </div>
      </div>
     </>

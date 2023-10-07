@@ -5,7 +5,7 @@ import { useEffect ,useState} from "react";
 import { Link } from 'react-router-dom';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import ReactHtmlParser from "react-html-parser"
-
+import Tags from '../Layout/Tags';
 import Comment from '../Layout/Comment';
 import '../User/css/profile.css'
 import axios from "axios";
@@ -202,7 +202,7 @@ export default function Notification() {
               
               
                               <Admincomment layoutId={layout._id}/>
-              
+                              <Tags tags={JSON.parse(layout.tags[0])}/>
                               
                           </div>
                             ))}

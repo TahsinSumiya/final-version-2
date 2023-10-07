@@ -12,6 +12,7 @@ import DeleteLayout from './DeleteLayout';
 import axios from "axios";
 import DeeletQ from './DeeletQ';
 import Sidebar from '../Sidebar/Sidebar';
+import Tags from '../Layout/Tags';
 function UserPost() {
     const user = useSelector(selectUser);
   const dispatch = useDispatch();
@@ -172,7 +173,10 @@ const handleDelete = (layoutId) => {
      
           <div class="flex justify-between items-center py-2
            px-3 border-t dark:border-gray-600">
-            <div className='flex justify-around gap-3'>
+            {/* <div className='flex justify-around gap-3'>
+            <button type="submit" class="inline-flex items-center py-2.5 px-4 text-xs font-medium text-center text-white bg-purple-500 rounded-lg focus:ring-4 focus:ring-purple-200">
+              {JSON.parse(post.tags[0])}<span className='mx-2'></span>
+              </button>
             <button type="submit" class="inline-flex items-center py-2.5 px-4 text-xs font-medium text-center text-white bg-purple-500 rounded-lg focus:ring-4 focus:ring-purple-200">
               {post?.answerDetails?.length}<span className='mx-2'>ans</span>
               </button>
@@ -180,12 +184,32 @@ const handleDelete = (layoutId) => {
               {new Date(post?.created_at).toLocaleString()}
               </button>
 
-            </div>
-            
-             
-            <div class="flex justify-around gap-3">
+            </div> */}
+                           
+                  <div className='flex justify-around gap-3'>
+                  
+                  <Tags tags={JSON.parse(post.tags[0])}/>
+                  </div>
+                  
+                   
+                  <div class="flex justify-around gap-3">
+                 
+                    <button type="submit" class="inline-flex items-center py-2.5 px-4 text-xs font-medium text-center text-white bg-purple-500 rounded-lg focus:ring-4 focus:ring-purple-200">
+                    {post?.answerDetails?.length}<span className='mx-2'>ans</span>
+                    </button>
+                    <button type="submit" class="inline-flex items-center py-2.5 px-4 text-xs font-medium text-center text-white bg-purple-500 rounded-lg focus:ring-4 focus:ring-purple-200">
+                    {new Date(post?.created_at).toLocaleString()}
+                    </button>
+                    
+                          <div class="flex justify-around ">
             <DeeletQ qid={post._id}/>
             </div>
+                  </div>
+               
+             
+            {/* <div class="flex justify-around gap-3">
+            <DeeletQ qid={post._id}/>
+            </div> */}
           </div>
             
              
@@ -319,7 +343,7 @@ className="scroll border-4 border-purple-300 rounded-lg"  showLineNumbers={true}
   
   
                   <Comment layoutId={layout._id}/>
-  
+  <Tags tags={JSON.parse(layout.tags[0])}/>
                   
               </div>
                 ))}

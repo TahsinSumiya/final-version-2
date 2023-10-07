@@ -15,7 +15,11 @@ router.post("/comments/:layoutId", async (req, res) => {
     } catch (error) {
       res.status(500).json({ error: 'Could not create comment' });
     }
-});
+
+  });
+
+  
+
 router.get("/getcomments/:layoutId", async (req, res) => {
   try {
     const comments = await commentDB.find({ layoutId: req.params.layoutId });

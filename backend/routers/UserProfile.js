@@ -6,10 +6,10 @@ const QuestionDB = require("../models/Question");
 var serviceAccount = require("../ServiceAccountKey.json");
 const UserDb = require("../models/UserProfile")
 
-// admin.initializeApp({
-//   credential: admin.credential.cert(serviceAccount),
-//   databaseURL: "https://final-c4f40-default-rtdb.firebaseio.com"
-// });
+admin.initializeApp({
+  credential: admin.credential.cert(serviceAccount),
+  databaseURL: "https://final-c4f40-default-rtdb.firebaseio.com"
+});
 
 router.post("/profile", async (req, res) => {
     const userData = new UserDb({
@@ -92,21 +92,21 @@ router.get('/postbyid/:uuid', async (req, res) => {
       res.status(500).json({ message: 'Internal server error' });
     }
   });
-// router.get("/getfirebaseAllUsers", async (req, res) => {
-//   try {
-//     const userRecords = await admin.auth().listUsers();
-//     const users = userRecords.users.map((userRecord) => ({
-//       uid: userRecord.uid,
-//       email: userRecord.email,
-//       displayName: userRecord.displayName,
-//       // Add more user properties as needed
-//     }));
-//     res.status(200).json(users);
-//   } catch (error) {
-//     console.error("Error listing users:", error);
-//     res.status(500).json({ error: "Unable to retrieve users" });
-//   }
-// });
+router.get("/getfirebaseAllUsers", async (req, res) => {
+  try {
+    const userRecords = await admin.auth().listUsers();
+    const users = userRecords.users.map((userRecord) => ({
+      uid: userRecord.uid,
+      email: userRecord.email,
+      displayName: userRecord.displayName,
+      // Add more user properties as needed
+    }));
+    res.status(200).json(users);
+  } catch (error) {
+    console.error("Error listing users:", error);
+    res.status(500).json({ error: "Unable to retrieve users" });
+  }
+});
 
 // router.get("/searchusers/:query", async (req, res) => {
 //     const searchQuery = req.params.query.toLowerCase(); // Get the search query from the URL

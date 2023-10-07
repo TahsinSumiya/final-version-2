@@ -15,8 +15,8 @@ export default function DeeletQ({qid}) {
           });
       };
   return (
-    <div>
-      <buttpn onClick={handleDelete}><i class="bi bi-trash3"></i></buttpn>
+    <div className=''>
+      <buttpn onClick={handleDelete}><i class=" mb-4 bi bi-trash3 text-purple-400 text-s"></i></buttpn>
     </div>
   )
 }

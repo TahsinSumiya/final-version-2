@@ -3,7 +3,10 @@ import axios from 'axios';
 import { login, logout, selectUser } from "../../features/Slice";
 import { useDispatch, useSelector } from "react-redux";
 import Sidebar from '../Sidebar/Sidebar';
-
+import TagsInput from 'react-tagsinput'
+import '../Add-Question/TagsInput.css'
+import 'react-tagsinput/react-tagsinput.css'
+import { Link } from 'react-router-dom';
 export default function AdminUploader() {
     const user = useSelector(selectUser);
     const dispatch = useDispatch();
@@ -14,7 +17,8 @@ export default function AdminUploader() {
     css: '',
     js: '',
     author:'Admin',
-    id:''
+    id:'',
+    tags:[]
   });
 
   useEffect(() => {
@@ -36,8 +40,15 @@ export default function AdminUploader() {
   };
 
   const handleProductChange = (e) => {
-    setProduct({ ...product, [e.target.name]: e.target.value });
+    if (e.target) {
+      // Regular input change event
+      setProduct({ ...product, [e.target.name]: e.target.value });
+    } else if (Array.isArray(e)) {
+      // TagsInput change event
+      setProduct({ ...product, tags: e });
+    }
   };
+
   const [id, setId] = useState('');
   useEffect(() => {
     try {
@@ -51,9 +62,9 @@ export default function AdminUploader() {
     e.preventDefault();
     try {
       await axios.post('http://localhost:80/api/layouts/layoutUploader', 
-      { ...product, categoryId: selectedCategory, id: id });
+      { ...product, categoryId: selectedCategory, id: id,tags:JSON.stringify(product.tags) });
       // Reset the form
-      setProduct({ html: '', css: '', js: '',author:'',id:''});
+      setProduct({ html: '', css: '', js: '',author:'',id:'',tags:[]});
       setSelectedCategory('');
       console.log('Product added successfully!');
     } catch (error) {
@@ -100,13 +111,41 @@ export default function AdminUploader() {
                  value={product.js} onChange={handleProductChange} 
                 rows="4" class="w-full px-3 py-2 border rounded-md focus:ring focus:ring-purple-400 focus:ring-opacity-50 focus:border-transparent focus:outline-none rounded-lg"></textarea>
             </div>
-            <button type="submit" class="bg-purple-500 hover:bg-purple-600 text-white py-2 px-4 rounded-md transition duration-300">Submit</button>
+            <div className='mb-4'>
+            <TagsInput  value={product.tags}
+                            class="w-full bg-slate-500 text-gray-900 p-8 border-0 text-2xl
+                            focus:border-transparent focus:outline-none rounded-lg"
+                  onChange={handleProductChange}
+                  name="fruits"
+                 />
+                 </div>
+            <button type="submit" class="bg-purple-500
+             hover:bg-purple-600 text-white py-2 px-4 rounded-md transition duration-300">Submit</button>
         </form>
     </div>
 </div>
-           
+    
 </div>
-  
+<div class="fixed top-0 right-0 bg-gradient-to-r  min-h-screen flex flex-col justify-center items-center p-4">
+        <div class="h-screen overflow-y-auto flex flex-col justify-center items-center">
+         
+            <Link to='/categoryuploader' class="bg-purple-500 hover:bg-purple-600 text-white py-2 px-3 rounded-md transition duration-300 mb-2">
+                <i class="bi bi-plus-square-fill text-xl"></i>
+            </Link>
+
+            
+            <Link to='/adminboard/adminlayout' class="bg-purple-500 hover:bg-purple-600 text-white py-2 px-3 rounded-md transition duration-300 mb-2">
+                <i class="bi bi-cloud-arrow-up-fill text-xl"></i>
+            </Link>
+            <Link to='/layoutbyadmin' class="bg-purple-500 hover:bg-purple-600 text-white py-2 px-3 rounded-md transition duration-300 mb-2">
+                <i class="bi bi-cloud-arrow-up-fill text-xl"></i>
+            </Link>
+            <Link to='/adminboard/notification' class="bg-purple-500 hover:bg-purple-600 text-white py-2 px-3 rounded-md transition duration-300 mb-2">
+                <i class="bi bi-cloud-arrow-up-fill text-xl"></i>
+            </Link>
+
+        </div>
+    </div>
     </>
   )
 }

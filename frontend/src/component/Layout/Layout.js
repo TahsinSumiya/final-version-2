@@ -8,13 +8,14 @@ import axios from 'axios';
 import './Layout.css'
 import Comment from './Comment';
 import Sidebar from '../Sidebar/Sidebar';
-export default function Layout({html,css,js,layoutId,userId,author}) {
+import Tags from './Tags';
+export default function Layout({html,css,js,layoutId,userId,author,tags}) {
     const user = useSelector(selectUser);
     const [comments, setComments] = useState([]);
     const [visible, setVisible] = useState(false) 
-
     const [text, setText] = useState('');
     const [open, setOpen] = useState('');
+
   const toggleVisible = () => setVisible(!visible) 
     const [isActive, setIsActive] = useState({
       id: 'divOne',
@@ -38,7 +39,7 @@ export default function Layout({html,css,js,layoutId,userId,author}) {
                      rounded-lg bg-gradient-to-b from-purple-100 via-purple-200 to-purple-300">
                         
                         <div class="flex justify-end items-center py-2 px-3 gap-3 mt-4 text-gray-900">
-                             
+                      
                         <p class="inline-flex items-center py-2.5 px-4 text-xs
                              font-medium text-center text-white bg-purple-400
                               hover:bg-purple-500 rounded-lg focus:border-transparent
@@ -140,11 +141,12 @@ export default function Layout({html,css,js,layoutId,userId,author}) {
         
                        <Comment layoutId={layoutId}/>
         
-        
-        
+      
+              
                         
                        
                         </div>
+                        <Tags tags={tags}/>
                     </div>
            
 </div>
