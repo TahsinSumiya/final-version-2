@@ -1,7 +1,7 @@
 import React from 'react'
 import ReactQuill from 'react-quill'
 import "react-quill/dist/quill.snow.css";
-import { useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import Editor from "react-quill/lib/toolbar";
 import { useState } from "react";
 import axios from "axios";
@@ -49,6 +49,7 @@ const navigate = useNavigate()
           .post("http://localhost:80/api/question/", bodyJSON)
           .then((res) => {
             // console.log(res.data);
+           navigate('/allquestion')
             alert("Question added successfully");
      
           })

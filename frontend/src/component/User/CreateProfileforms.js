@@ -29,7 +29,7 @@ export default function     CreateProfileforms() {
                 uuid: user.uid,
                 name: user.displayName,
                 category: category,
-                email: category === 'hiring' ? email : '',
+                email: email,
                 desc:desc 
             };
 

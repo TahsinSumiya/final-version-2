@@ -126,9 +126,7 @@ export default function ViewQuestion() {
             src={bgimg}
                 alt="Background Image" class="object-cover w-full h-full"/>
             <div class="absolute inset-0 bg-gray-100 bg-opacity-80">
-                <div class="container mx-auto text-center">
-                    <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold text-purple-400">View Questions</h1>
-                </div>
+             
  
                 <div class="bg-gradient-to-r from-purple-100 via-yellow-100 to-gray-100 p-4 rounded-lg shadow-md hover:shadow-xl transition duration-300 cursor-pointer mt-4">
                     <div class="flex justify-end items-center py-2 px-3 gap-3 mt-4 text-gray-900">
@@ -138,13 +136,13 @@ export default function ViewQuestion() {
                             <i class="bi bi-calendar-date-fill mr-2"></i>
                             {new Date(questionData?.created_at).toLocaleString()}
                         </button>
-                        <button type="submit"
+                        <Link to={`/specificuser?s=${questionData?.user.uid}`}
                             class="inline-flex items-center py-2.5 px-4 text-xs font-medium text-center text-white bg-purple-400 hover:bg-purple-500 rounded-lg">
                             <i class="bi bi-person-lines-fill mr-2"></i>
                             {questionData?.user?.displayName
                       ? questionData?.user?.displayName
                       : "coco"}
-                        </button>
+                        </Link>
                     </div>
 
                   
@@ -174,11 +172,11 @@ export default function ViewQuestion() {
 
                     <div class="flex justify-end items-center py-2 px-3 border-t dark:border-gray-600 gap-3">
 
-                         <button type="submit" class="inline-flex items-center py-2.5 px-4 text-xs font-medium text-center text-white bg-purple-500 rounded-lg focus:ring-4 focus:ring-purple-200 hover:bg-purple-600">
+                         <Link to={`/specificuser?s=${_q.user.uid}`} type="submit" class="inline-flex items-center py-2.5 px-4 text-xs font-medium text-center text-white bg-purple-500 rounded-lg focus:ring-4 focus:ring-purple-200 hover:bg-purple-600">
                          {_q?.user?.displayName
                           ? _q?.user?.displayName
                           : "Natalia lee"}
-                        </button>
+                        </Link>
                         <p class="inline-flex items-center py-2.5 px-4 text-xs font-medium text-center text-white bg-purple-500 rounded-lg focus:ring-4 focus:ring-purple-200 hover:bg-purple-600">
                         {new Date(_q.created_at).toLocaleString()}
                         </p>

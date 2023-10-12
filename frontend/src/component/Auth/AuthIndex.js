@@ -94,30 +94,20 @@ import {
     // };
     return (
       <div className="auth">
-        <div className="auth-container">
-          <p>Add another way to log in using any of the following services. </p>
-          <div className="sign-options">
-            <div onClick={handleGoogleSignIN} className="single-option">
-              <img
-                alt="google"
-                src="https://image.flaticon.com/icons/png/512/281/281764.png"
-              />
-              <p>{loading ? "Signing in..." : "Login with Google"}</p>
-            </div>
-            <div className="single-option">
-              <img
-                alt="github"
-                src="https://image.flaticon.com/icons/png/512/270/270798.png"
-              />
-              <p>Login with Github</p>
-            </div>
-            <div className="single-option">
-              <img
-                alt="facebook"
-                src="https://image.flaticon.com/icons/png/512/733/733547.png"
-              />
-              <p>Login with Facebook</p>
-            </div>
+        <div className=" flex">
+          <p><i class="bi bi-google text-violet-500"></i> </p>
+          <div className="sign-option s">
+            <button onClick={handleGoogleSignIN} className="single-option text-2xl
+            auth-container  mx-1 my-3 inline-flex items-center py-2.5 px-4 text-xs
+            font-medium text-center text-white bg-purple-400
+             hover:bg-purple-500 rounded-lg focus:border-transparent
+              focus:outline-none
+            ">
+        
+             
+              Login with Google
+            </button>
+            <p>{loading ? "Signing in..." :''}</p>
           </div>
           <div className="auth-login">
         

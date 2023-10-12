@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 
 const CommentSchema = new mongoose.Schema({
   layoutId: { type: mongoose.Schema.Types.ObjectId, ref: 'Layout' },
-  user: Object,
+  id: String,
   text: String,
   name: String,
   created_at: {

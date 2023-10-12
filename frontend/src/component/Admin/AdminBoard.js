@@ -1,11 +1,16 @@
 import React from 'react'
 import { NavLink, redirect, useNavigate ,Link} from "react-router-dom";
+import { login, logout, selectUser } from "../../features/Slice";
 import Sidebar from '../Sidebar/Sidebar';
 export default function AdminBoard() {
+    const handleClick = () => {
+        logout()
+           localStorage.removeItem('user');
+         };
   return (
     <>
-    <Sidebar/>
-      <div class=" p-4 overflow-y-auto ml-16 ">
+
+      <div >
 
       <div>
 <div>
@@ -42,7 +47,7 @@ export default function AdminBoard() {
 
                 <div class="flex justify-center items-center py-2 px-3 gap-3 mt-4">
                     <NavLink to="/adminboard/notification" class="items-center py-2.5 px-4 text-xs font-medium text-center text-white hover:shadow-lg rounded-lg">
-                        <i class="bi bi-cloud-arrow-up-fill text-purple-400 text-3xl"></i> 
+                        <i class="bi bi-check-all text-purple-400 text-3xl"></i> 
                     </NavLink>
                 </div>
             </div>
@@ -52,17 +57,18 @@ export default function AdminBoard() {
 
                 <div class="flex justify-center items-center py-2 px-3 gap-3 mt-4">
                     <NavLink to="/layoutbyadmin" class="items-center py-2.5 px-4 text-xs font-medium text-center text-white hover:shadow-lg rounded-lg">
-                        <i class="bi bi-cloud-arrow-up-fill text-purple-400 text-3xl"></i> 
+                        <i class="bi bi-person-check-fill text-purple-400 text-3xl"></i> 
                     </NavLink>
                 </div>
             </div>
 
-            <div class="flex justify-center items-center py-2 px-3 gap-3 mt-4">
-                <a href="#" class="inline-flex items-center py-3 px-6 text-lg font-medium text-center text-purple-400 shadow-md">
+            <di class="flex justify-center items-center py-2 px-3 gap-3 mt-4">
+                <Link to='/auth' class="inline-flex items-center py-3 px-6 text-lg font-medium text-center text-purple-400 shadow-md">
                     <i class="bi bi-house-fill text-2xl mr-2"></i> 
                     Go to Home
-                </a>
-            </div>
+                </Link>
+         
+            </di>
             
         </div>
     </div>

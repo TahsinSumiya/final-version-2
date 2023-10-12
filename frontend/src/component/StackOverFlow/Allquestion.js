@@ -42,14 +42,14 @@ export default function Allquestions({ data }) {
                     </Link>
                   </span>
                   
-                <button type="submit" class="inline-flex items-center py-2.5 px-4 
+                <Link to={`/specificuser?s=${data.user.uid}`}  class="inline-flex items-center py-2.5 px-4 
                 text-xs font-medium text-center text-white bg-purple-400
                 
                 hover:bg-purple-500 rounded-lg">
                     {/* <i class="bi bi-person-lines-fill mr-2"></i>  */}
                     {data?.user?.displayName ? data?.user?.displayName :
                String(data?.user?.email).split('@')[0]}              
-                </button>
+                </Link>
             </div>
             <div class="mb-4 w-full bg-purple-200 rounded-lg border border-purple-200">
                 <div class="py-2 px-4 bg-white rounded-t-lg">

@@ -3,6 +3,7 @@ import axios from 'axios';
 import { useState,useEffect } from 'react';
 import { login, logout, selectUser } from "../../features/Slice";
 import { useDispatch, useSelector } from "react-redux";
+import { Link } from 'react-router-dom';
 export default function Admincomment({layoutId}) {
     const [comments, setComments] = useState([]);
     const user = useSelector(selectUser);
@@ -11,7 +12,7 @@ export default function Admincomment({layoutId}) {
     const handleCommentSubmit = (e) => {
         e.preventDefault();
         axios.post(`http://localhost:80/api/comment/comments/${layoutId}`, { 
-          text,user:user, layoutId,name:'admin'})
+          text,id:"", layoutId,name:'admin'})
           .then(response => {
             setText('');
             handlegetCommentSubmit ()
@@ -63,9 +64,9 @@ useEffect(() => {
                                 <div class="flex justify-end items-center py-2 px-3 
                                 border-t dark:border-gray-600 gap-3">
             
-                                     <p type="submit" class="inline-flex items-center py-2.5 px-4 text-xs font-medium text-center text-white bg-purple-500 rounded-lg focus:ring-4 focus:ring-purple-200 hover:bg-purple-600">
+                                     <Link to={comment.id ? `/specificuser?s=${comment.id}` : '/'} type="submit" class="inline-flex items-center py-2.5 px-4 text-xs font-medium text-center text-white bg-purple-500 rounded-lg focus:ring-4 focus:ring-purple-200 hover:bg-purple-600">
                                     {comment.name}
-                                    </p>
+                                    </Link>
                                     <p class="inline-flex items-center py-2.5 px-4 text-xs font-medium text-center text-white bg-purple-500 rounded-lg focus:ring-4 focus:ring-purple-200 hover:bg-purple-600">
                                         23/07/2023
                                     </p>

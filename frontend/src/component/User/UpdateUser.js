@@ -1,5 +1,5 @@
 import { Axios } from 'axios';
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import DatePicker from "react-datepicker";  
 import axios from 'axios';
 import "react-datepicker/dist/react-datepicker.css"; 
@@ -10,7 +10,7 @@ import { auth } from "../../firebase";
 import UserPost from './UserPost';
 import ViewProfile from './ViewProfile';
 import Sidebar from '../Sidebar/Sidebar';
-export default function Profile() {
+export default function UpdateUser() {
   const [linkedin, setlinkedin] = useState("");
   const [github, setgithub] = useState("");
   const [date, setdate] = useState(null); // Change the initial state for date to null
@@ -19,7 +19,25 @@ export default function Profile() {
   const [desc, setDesc] = useState("");
   const user = useSelector(selectUser);
   const dispatch = useDispatch();
-  
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        
+        const response = await axios.get(`http://localhost:80/api/user/getuserpofile/${user.uid}`);
+        const userData = response.data;
+
+        setlinkedin(userData.linkedin || '');
+        setgithub(userData.github || '');
+        setcategory(userData.category || '');
+        setemail(userData.email || '');
+        setDesc(userData.desc || '');
+      } catch (error) {
+        console.error('Error fetching user data:', error);
+      }
+    };
+
+    fetchData(); // Call the fetch function when the component mounts
+  }, [user.uid]);
   const handleSubmit = async (e) => {
       e.preventDefault();
 
@@ -32,7 +50,7 @@ export default function Profile() {
               uuid: user.uid,
               name: user.displayName,
               category: category,
-              email: category === 'hiring' ? email : '',
+              email: email,
               desc:desc  
           };
 
@@ -99,6 +117,8 @@ export default function Profile() {
              <label for="textarea1" class="my-3 block text-sm font-medium text-gray-700">Category</label>
              <select onChange={(e) => setcategory(e.target.value)}
               class="mt-2 w-full px-3 py-2 border rounded-md focus:ring focus:ring-purple-400 focus:ring-opacity-50 focus:border-transparent focus:outline-none rounded-lg">
+                
+                <option value="">Select a category</option>
                  <option value="looking for Job">Looking for Job</option>
                  <option value="hiring">Hiring</option>
              </select>

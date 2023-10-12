@@ -89,12 +89,12 @@ export default function Sidebar() {
 
     </ul>
 
-    <li>
+    {/* <li>
         <Link to="/admin">
             <i class="bi bi-person-fill"></i>
             <span class="nav-text">Admin</span>
         </Link>
-    </li>
+    </li> */}
 
     <li>
         <Link to="/userpost">
@@ -102,7 +102,12 @@ export default function Sidebar() {
             <span class="nav-text">Notification</span>
         </Link>
     </li>
-
+    <li>
+        <Link to="/editor">
+            <i class="bi bi-bell-fill"></i>
+            <span class="nav-text">Editor</span>
+        </Link>
+    </li>
 
     <ul class="logout">
         <li>

@@ -4,12 +4,12 @@ const router = express.Router();
 const commentDB = require("../models/Comment");
 
 router.post("/comments/:layoutId", async (req, res) => {
-  const { text,user,name} = req.body;
+  const { text,id,name} = req.body;
     const layoutId = req.params.layoutId;
    
     
     try {
-      const newComment = new commentDB({ text,layoutId,user,name});
+      const newComment = new commentDB({ text,layoutId,id,name});
       await newComment.save();
       res.status(201).json(newComment);
     } catch (error) {

@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 import axios from 'axios';
 import Sidebar from '../Sidebar/Sidebar';
-
+import AdminSideBar from './AdminSideBar';
 export default function CategoryUpload() {
     const [newCategory, setNewCategory] = useState('');
    
@@ -24,8 +24,8 @@ export default function CategoryUpload() {
       };
   return (
     <>
-    <Sidebar/>
-      <div class=" p-4 overflow-y-auto ml-16 ">
+    <AdminSideBar/>
+      <div class="px-4 overflow-y-auto ml-16  ">
       <div
         class="bg-gradient-to-r from-purple-100 via-yellow-100 to-blue-200 min-h-screen flex justify-center items-center p-4">
         <div class="bg-opacity-30 backdrop-blur-lg p-9 rounded-md shadow-lg w-full md:w-4/5 lg:w-2/3">

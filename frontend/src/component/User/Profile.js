@@ -116,7 +116,7 @@ export default function Profile() {
               <p class="text-gray-500 mb-4">Email: {userProfile.email}</p>
         </div>
       ) : (
-        <p>Loading user profile...</p>
+        <p>Create Profile too show details</p>
       )}
         </div>
   
@@ -178,7 +178,7 @@ export default function Profile() {
    */}
 
   
-      <UserPost/>
+      
       </div>
          
         

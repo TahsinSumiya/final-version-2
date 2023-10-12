@@ -9,7 +9,8 @@ import './Layout.css'
 import Comment from './Comment';
 import Sidebar from '../Sidebar/Sidebar';
 import Tags from './Tags';
-export default function Layout({html,css,js,layoutId,userId,author,tags}) {
+import { Link } from 'react-router-dom';
+export default function Layout({html,css,js,layoutId,userId,author,tags,id}) {
     const user = useSelector(selectUser);
     const [comments, setComments] = useState([]);
     const [visible, setVisible] = useState(false) 
@@ -40,14 +41,14 @@ export default function Layout({html,css,js,layoutId,userId,author,tags}) {
                         
                         <div class="flex justify-end items-center py-2 px-3 gap-3 mt-4 text-gray-900">
                       
-                        <p class="inline-flex items-center py-2.5 px-4 text-xs
+                        <Link to={id ? `/specificuser?s=${id}` : ''} class="inline-flex items-center py-2.5 px-4 text-xs
                              font-medium text-center text-white bg-purple-400
                               hover:bg-purple-500 rounded-lg focus:border-transparent
                                focus:outline-none"
                            
                                >
                                 {author}
-                            </p>
+                            </Link>
                             <button class="inline-flex items-center py-2.5 px-4 text-xs
                              font-medium text-center text-white bg-purple-400
                               hover:bg-purple-500 rounded-lg focus:border-transparent
@@ -130,26 +131,29 @@ export default function Layout({html,css,js,layoutId,userId,author,tags}) {
                             </div>
                         </div>
         
-        
-                       
-                        <div class="my-4 w-full rounded-lg border border-purple-200">
-                         
-           
-        
-                    
-        
-        
-                       <Comment layoutId={layoutId}/>
-        
+                      
+                        <Tags tags={tags}/>
+                        <div class="flex justify-end items-center py-2 px-3 border-t dark:border-gray-600">
+                                <button type="submit" class="inline-flex end
+                                items-center py-2.5 px-4 text-xs font-medium 
+                                text-center text-white bg-purple-500 rounded-lg focus:ring-4
+                                 focus:ring-purple-200 hover:bg-purple-600"
+                                 onClick={() => setOpen(hide => !hide)}
+                                 >
+                                    Comment
+                                </button>
+                            </div>
+
+                            {open &&    <Comment layoutId={layoutId}/>}
       
               
                         
                        
                         </div>
-                        <Tags tags={tags}/>
+                      
                     </div>
            
-</div>
+
                  
                 
                    

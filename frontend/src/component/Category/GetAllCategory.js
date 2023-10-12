@@ -95,35 +95,26 @@ const toggleVisible = () => setVisible(!visible)
 <div class="flex">
 
   {selectedCategory ? (
-    <div class="overflow-y-auto  flex ">
-          
-         
-              <div class="relative h-full w-screen bg-opacity-60 backdrop-blur-lg   ">
-                
-               
-   
-                  <div class="absolute inset-0 bg-gray-100 bg-opacity-80">
-                  <p class="mx-24   my-5 inline-flex items-center py-2.5 px-4 text-xs font-medium text-center
-       text-white bg-purple-400 hover:bg-purple-500 rounded-lg">
-                    
-                    {layout.length} Layouts            
-                            </p>
-                    <div class="container mx-auto flex flex-auto justify-end">
-                    <div className='absolute flex end-6 my-2'>
- 
-                    </div>
-                    </div>
-                {layout.map((layout) => (
-<Layout layoutId={layout._id} html={layout.html} css = {layout.css} js={layout.js}
- author={layout.author} 
- tags={JSON.parse(layout.tags[0])}
+     <div class="overflow-y-auto  flex">
+    
+        
+     <div class="relative h-full w-screen bg-opacity-60 backdrop-blur-lg">
+       
+         <div class="absolute inset-0 bg-gray-100 bg-opacity-80">
+<p class="mx-24  my-5 inline-flex items-center py-2.5 px-4 text-xs font-medium text-center
+text-white bg-purple-400 hover:bg-purple-500 rounded-lg">
+           
+           {layout.length} Layouts            
+                   </p>
+       {layout.map((layout) => (
+<Layout layoutId={layout._id} html={layout.html} css = {layout.css} js={layout.js} author={layout.author} 
+tags={JSON.parse(layout.tags[0])} id={layout.id}
 
 />
-               ))}
-                </div>
-                </div>
-                </div>
-  
+      ))}
+       </div>
+       </div>
+       </div>
           
   ):(
     <div class="overflow-y-auto  flex">
@@ -139,7 +130,7 @@ const toggleVisible = () => setVisible(!visible)
                             </p>
                 {alllayout.map((layout) => (
 <Layout layoutId={layout._id} html={layout.html} css = {layout.css} js={layout.js} author={layout.author} 
-tags={JSON.parse(layout.tags[0])}
+tags={JSON.parse(layout.tags[0])} id={layout.id}
 
 />
                ))}

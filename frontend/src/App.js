@@ -28,6 +28,9 @@ import LayoutUploader from './component/Layout/LayoutUploader';
 import AdminUploader from './component/Admin/AdminUploader';
 import Notification from './component/Admin/Notification';
 import LayoutByAdmin from './component/Admin/LayoutByAdmin';
+import Editorindex from './component/Editor/Editorindex';
+import BeforeHome from './component/Home/BeforeHome';
+import Footer from './component/Home/Footer';
 // import PrivateWrapper from './PrivateWrapper';
 
 function App() {
@@ -153,13 +156,16 @@ function App() {
 <Route element={<PrivateWrapper />}>
 <Route exact path='/layoutbyadmin' element={<LayoutByAdmin/>} />
 </Route>
-<Route exact path='/auth' element={<Auth/>} />
+<Route element={<PrivateWrapper />}>
+<Route exact path='/editor' element={<Editorindex/>} />
+</Route>
+<Route exact path='/auth' element={<BeforeHome/>} />
 {/* <Route exact path='/add-question' element={<AddQuestion/>} />
 <Route exact path='/question' element={<ViewQuestion/>} /> */}
 
 
 </Routes>
- 
+
 
     </>
   );

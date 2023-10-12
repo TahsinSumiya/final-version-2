@@ -30,9 +30,7 @@ export default function AllUser() {
       <div class=" p-4 overflow-y-auto ml-16 ">
       <div className='h-screen bg-gradient-to-r from-purple-100 via-teal-100 to-blue-100 py-16 animate-gradient'>
 
-<div class="container mx-auto text-center">
-        <h1 class="text-3xl sm:text-4xl md:text-4xl font-bold text-purple-400">All Users</h1>
-    </div>
+
       
         {users.map((u) => (
               <div class="flex justify-between items-center pt-4 px-16 gap-3 mt-4 text-gray-900">

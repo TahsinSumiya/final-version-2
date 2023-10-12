@@ -22,6 +22,7 @@ function UserPost() {
     const [visible, setVisible] = useState(false) 
     const [text, setText] = useState('');
     const [comments, setComments] = useState([]);
+    const [open, setOpen] = useState('');
     function truncate(str, n) {
       return str?.length > n ? str.substr(0, n - 1) + "..." : str;
     }
@@ -154,11 +155,11 @@ const handleDelete = (layoutId) => {
               {post.title}
               </Link>
             </span>
-            <button type="submit" class="inline-flex items-center py-2.5 px-4 text-xs font-medium text-center text-white bg-purple-400 hover:bg-purple-500 rounded-lg">
+            <Link to={`/specificuser?s=${post.user.uid}`}  type="submit" class="inline-flex items-center py-2.5 px-4 text-xs font-medium text-center text-white bg-purple-400 hover:bg-purple-500 rounded-lg">
               {/* <i class="bi bi-person-lines-fill mr-2"></i>  */}
               {post?.user?.displayName ? post?.user?.displayName :
          String(post?.user?.email).split('@')[0]}              
-          </button>
+          </Link>
         
       </div>
       <div class="mb-4 w-full bg-purple-200 rounded-lg border border-purple-200">
@@ -247,7 +248,7 @@ const handleDelete = (layoutId) => {
                   <div class="flex justify-end items-center py-2 px-3 gap-3 mt-4
                    text-gray-900">
                     
-                  <p class="inline-flex items-center py-2.5 px-4 
+                  <Link to={`/specificuser?s=${layout.id}`}  class="inline-flex items-center py-2.5 px-4 
                       text-xs font-medium text-center text-white
                        bg-purple-400 hover:bg-purple-500 rounded-lg
                         focus:border-transparent focus:outline-none"
@@ -255,7 +256,7 @@ const handleDelete = (layoutId) => {
                         
                         >
                           {layout.author}
-                      </p>
+                      </Link>
                       <button class="inline-flex items-center py-2.5 px-4 text-xs
                        font-medium text-center text-white bg-purple-400
                         hover:bg-purple-500 rounded-lg focus:border-transparent
@@ -342,9 +343,37 @@ className="scroll border-4 border-purple-300 rounded-lg"  showLineNumbers={true}
                   </div>
   
   
-                  <Comment layoutId={layout._id}/>
-  <Tags tags={JSON.parse(layout.tags[0])}/>
                   
+  <Tags tags={JSON.parse(layout.tags[0])}/>
+ 
+                         
+           
+        
+                    
+        
+        
+                    
+                  {/* <Tags tags={JSON.parse(layout.tags[0])}/> */}
+                    
+                    <div class="flex justify-end items-center py-2 px-3 border-t dark:border-gray-600">
+                        <button type="submit" class="inline-flex end
+                        items-center py-2.5 px-4 text-xs font-medium 
+                        text-center text-white bg-purple-500 rounded-lg focus:ring-4
+                         focus:ring-purple-200 hover:bg-purple-600"
+                         onClick={() => setOpen(hide => !hide)}
+                         >
+                            Comment
+                        </button>
+                    </div>
+
+                    {open &&    <Comment layoutId={layout._id}/>}
+          
+        
+                
+                          
+                         
+                          
+    
               </div>
                 ))}
           </div>}

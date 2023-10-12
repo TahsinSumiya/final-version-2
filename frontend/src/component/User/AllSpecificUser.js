@@ -13,6 +13,7 @@ import ReactHtmlParser from "react-html-parser"
 import './css/profile.css'
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import Sidebar from '../Sidebar/Sidebar';
+import Tags from '../Layout/Tags';
 export default function AllSpecificUser() {
     const [linkedin, setlinkedin] = useState("");
     const [github, setgithub] = useState("");
@@ -21,7 +22,7 @@ export default function AllSpecificUser() {
     const [email, setemail] = useState("");
     const [desc, setDesc] = useState("");
     const user = useSelector(selectUser);
-
+    const [open, setOpen] = useState('');
     const dispatch = useDispatch();
     let search = window.location.search;
     const params = new URLSearchParams(search);
@@ -351,7 +352,37 @@ className="scroll border-4 border-purple-300 rounded-lg"  showLineNumbers={true}
                   </div>
   
   
-                  <Comment layoutId={layout._id}/>
+             
+                       
+                           
+                         
+           
+                  <Tags tags={JSON.parse(layout.tags[0])}/>
+                    
+                            <div class="flex justify-end items-center py-2 px-3 border-t dark:border-gray-600">
+                                <button type="submit" class="inline-flex end
+                                items-center py-2.5 px-4 text-xs font-medium 
+                                text-center text-white bg-purple-500 rounded-lg focus:ring-4
+                                 focus:ring-purple-200 hover:bg-purple-600"
+                                 onClick={() => setOpen(hide => !hide)}
+                                 >
+                                    Comment
+                                </button>
+                            </div>
+
+                            {open &&    <Comment layoutId={layout._id}/>}
+          
+        
+                
+                          
+                         
+                          
+        
+      
+              
+                        
+                       
+                        
   
                   
               </div>

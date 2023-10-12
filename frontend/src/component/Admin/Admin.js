@@ -126,8 +126,8 @@ if(response.ok){
     //   </form>
     // </div>
     <>
-    <Sidebar/>
-      <div class=" p-4 overflow-y-auto ml-16 ">
+
+
           
       <div class="lg:flex bg-purple-100 w-screen justify-center" >
       <div
@@ -230,7 +230,7 @@ if(response.ok){
 
     
     </div> 
-          </div></>
+       </>
   
   );
 };

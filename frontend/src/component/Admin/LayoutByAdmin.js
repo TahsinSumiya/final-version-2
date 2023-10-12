@@ -14,6 +14,7 @@ import DeleteLayout from '../User/DeleteLayout';
 import Sidebar from '../Sidebar/Sidebar';
 import Admincomment from './Admincomment';
 import Tags from '../Layout/Tags';
+import AdminSideBar from './AdminSideBar';
 export default function LayoutByAdmin() {
     const [userPosts, setUserPosts] = useState([]);
     const [Layouts, setLayouts] = useState([]);
@@ -21,6 +22,8 @@ export default function LayoutByAdmin() {
     const [visible, setVisible] = useState(false) 
     const [text, setText] = useState('');
     const [comments, setComments] = useState([]);
+    const [open, setOpen] = useState('');
+
     function truncate(str, n) {
       return str?.length > n ? str.substr(0, n - 1) + "..." : str;
     }
@@ -88,8 +91,8 @@ handlegetCommentSubmit ()
 }, []);
   return (
     <>
-    <Sidebar/>
-            <div class=" p-4 overflow-y-auto ml-16 ">
+<AdminSideBar/>
+            <div class=" px-4 overflow-y-auto ml-16  ">
         {Layouts.map((layout) => (
                       
                       <div class="px-6 pt-9 pb-9 mt-5 shadow-xl border border-gray-200 
@@ -198,8 +201,18 @@ handlegetCommentSubmit ()
                                   </div>
                               </div>
               
-              
-                              <Admincomment layoutId={layout._id}/>
+                                     <div class="flex justify-end items-center py-2 px-3 border-t dark:border-gray-600">
+                                <button type="submit" class="inline-flex end
+                                items-center py-2.5 px-4 text-xs font-medium 
+                                text-center text-white bg-purple-500 rounded-lg focus:ring-4
+                                 focus:ring-purple-200 hover:bg-purple-600"
+                                 onClick={() => setOpen(hide => !hide)}
+                                 >
+                                    Comment
+                                </button>
+                            </div>
+
+                            {open &&    <Admincomment layoutId={layout._id}/>}
                               <Tags tags={JSON.parse(layout.tags[0])}/>
                           </div>
                             ))}
