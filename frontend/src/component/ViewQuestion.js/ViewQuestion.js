@@ -17,7 +17,7 @@ import Sidebar from "../Sidebar/Sidebar";
 
 export default function ViewQuestion() {
   const user = useSelector(selectUser);
-
+console.log(user)
   // const [comments, setComments] = useState([]);
   const [questionData, setQuestionData] = useState();
   const [answer, setAnswer] = useState("");

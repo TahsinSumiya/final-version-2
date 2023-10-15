@@ -5,7 +5,7 @@ import Sidebar from '../Sidebar/Sidebar'
 export default function Editorindex() {
   return (
     <>
-    <Sidebar/>
+
       <Code/>
     </>
   )

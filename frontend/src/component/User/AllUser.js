@@ -5,6 +5,7 @@ import { login, logout, selectUser } from "../../features/Slice";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from 'react-router-dom';
 import Sidebar from '../Sidebar/Sidebar';
+
 export default function AllUser() {
     const user = useSelector(selectUser);
     const dispatch = useDispatch();
@@ -27,15 +28,19 @@ export default function AllUser() {
   return (
     <>
     <Sidebar/>
-      <div class=" p-4 overflow-y-auto ml-16 ">
-      <div className='h-screen bg-gradient-to-r from-purple-100 via-teal-100 to-blue-100 py-16 animate-gradient'>
+      <div class=" p-4 ml-16 h-screen  overflow-y-auto">
+      <div className=' bg-gradient-to-r from-purple-100
+       via-teal-100 to-blue-100 py-16 animate-gradient overflow-y-auto'>
 
 
       
         {users.map((u) => (
-              <div class="flex justify-between items-center pt-4 px-16 gap-3 mt-4 text-gray-900">
+              <div class="flex justify-between items-center pt-4 px-16 gap-3 mt-4 text-gray-900 ">
               <div class="flex-grow">
-                  <div class="flex items-center justify-between text-xl font-medium text-white hover:text-gray-900 bg-gradient-to-r from-purple-400 via-purple-500 to-purple-600 hover:from-purple-500 hover:via-purple-600 hover:to-purple-700 rounded-lg w-full py-2.5 px-4">
+                  <div class="flex items-center justify-between text-xl font-medium
+                   text-white hover:text-gray-900 bg-gradient-to-r
+                    from-purple-400 via-purple-500 to-purple-600 hover:from-purple-500
+                     hover:via-purple-600 hover:to-purple-700 rounded-lg w-full py-2.5 px-4">
                       <div class=" flex">
                           <i class="bi bi-person-lines-fill mr-2"></i>
                           <span className='mt-3'> {u.displayName}</span>

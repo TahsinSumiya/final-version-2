@@ -27,7 +27,7 @@ export default function Mainindex() {
   return (
     <>
       <Sidebar />
-      <div className='bg-gradient-to-r from-purple-100 via-yellow-200 to-purple-200 p-12 backdrop-blur-md'>
+      <div className='bg-gradient-to-r bg-blue-100 p-12 backdrop-blur-md'>
     
         <div className="relative mx-12">
           <input

@@ -10,12 +10,14 @@ import UserPost from './UserPost';
 import ViewProfile from './ViewProfile';
 export default function     CreateProfileforms() {
     const user = useSelector(selectUser);
+    console.log(user)
     const [linkedin, setlinkedin] = useState("");
     const [github, setgithub] = useState("");
     const [date, setdate] = useState(null); // Change the initial state for date to null
     const [category, setcategory] = useState("looking-for-job");
     const [email, setemail] = useState("");
     const [desc, setDesc] = useState("");
+    const [name, setName] = useState("");
     const dispatch = useDispatch();
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -35,7 +37,7 @@ export default function     CreateProfileforms() {
 
             const response = await axios.post("http://localhost:80/api/user/profile", bodyJSON);
 
-           
+           setName("")
                 setlinkedin("");
                 setgithub("");
                 setdate(null);

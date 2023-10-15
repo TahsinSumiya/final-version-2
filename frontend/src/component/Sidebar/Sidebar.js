@@ -103,8 +103,8 @@ export default function Sidebar() {
         </Link>
     </li>
     <li>
-        <Link to="/editor">
-            <i class="bi bi-bell-fill"></i>
+        <Link to="/editor" target="_blank">
+        <i class="bi bi-brush-fill"></i>
             <span class="nav-text">Editor</span>
         </Link>
     </li>
