@@ -9,7 +9,7 @@ import AddQuestion from "./component/Add-Question/Question";
 import ViewQuestion from "./component/ViewQuestion.js/ViewQuestion";
 import { login, logout, selectUser } from "./features/Slice";
 import AfterHome from './component/Home/AfterHome';
-import Auth from "./component/Auth/AuthIndex";
+
 import UserPost from './component/User/UserPost';
 import { useDispatch, useSelector } from "react-redux";
 import { auth } from "./firebase";
@@ -31,30 +31,13 @@ import LayoutByAdmin from './component/Admin/LayoutByAdmin';
 import Editorindex from './component/Editor/Editorindex';
 import BeforeHome from './component/Home/BeforeHome';
 import Footer from './component/Home/Footer';
+import AuthIndex from './component/Auth/AuthIndex';
 // import PrivateWrapper from './PrivateWrapper';
 
 function App() {
   const user = useSelector(selectUser);
   const dispatch = useDispatch();
-  // useEffect(() => {
-   
-  //   auth.onAuthStateChanged((authUser) => {
-  //     if (authUser) {
-  //       dispatch(
-  //         login({
-  //           uid: authUser.uid,
-  //           photo: authUser.photoURL,
-  //           displayName: authUser.displayName,
-  //           email: authUser.email,
-  //         })
-  //       );
-  //     } else {
-  //       dispatch(logout());
-  //     }
-  //     // console.log(authUser);
-  //   });
-  
-  // }, [dispatch]);
+
 
   useEffect(() => {
     const storedUser = JSON.parse(localStorage.getItem('user'));
@@ -88,6 +71,7 @@ function App() {
   const PrivateWrapper = () => {
     return user ? <Outlet /> : <Navigate to="/auth" />;
   };
+
   
   return (
     <>
@@ -159,7 +143,7 @@ function App() {
 <Route element={<PrivateWrapper />}>
 <Route exact path='/editor' element={<Editorindex/>} />
 </Route>
-<Route exact path='/auth' element={<BeforeHome/>} />
+<Route exact path='/auth' element={<AuthIndex/>} />
 {/* <Route exact path='/add-question' element={<AddQuestion/>} />
 <Route exact path='/question' element={<ViewQuestion/>} /> */}
 

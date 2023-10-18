@@ -24,7 +24,7 @@ export default function BeforeHome() {
 
 
 </div>
-      </div> *
+      </div> 
    
 
 

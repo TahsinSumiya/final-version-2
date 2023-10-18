@@ -1,43 +1,33 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import Footer from './Footer'
+import Image from '../static/Images/young-people-engaged-web-design-website-page-development-flat-d-character-concept-web-design-young-people-engaged.jpg'
 export default function AfterHome() {
   return (
   <>
-    <div className='bg-purple-100 h-screen w-screen'>
-    <div className='relative justify-center align-middle '>
-{/* <Link to='allquestion'>questions</Link>
-<Link to='
-getcategory'>Layouts</Link> */}
-<div className='mx-28 my-20 bg-purple-200 absolute rounded-3xl px-10'>
-  <p className='my-10'>A formalized developer community functions as a multifaceted solution. It provides a collaborative space for problem-solving, supports backend developers with design resources, promotes the work of UI designers, aids professionals in finding employment, and simplifies the hiring process for businesses. By facilitating these essential aspects, the developer community significantly contributes to the growth and advancement of the technology sector, fostering a dynamic and innovative environment for all stakeholders involved.
-  A formalized developer community offers a comprehensive solution, fostering collaboration for problem-solving, assisting backend developers with design resources, promoting UI designers' work, aiding professionals in job searches, and simplifying hiring for businesses. This initiative significantly propels the technology sector's growth, creating a dynamic and innovative environment for all stakeholders involved.
-  </p>
+    <div class="bg-gradient-to-r from-purple-100 via-teal-100 to-blue-100 py-16 animate-gradient ">
 
-  <div class="relative flex flex-col items-center justify-center my-20">
-  
-  <div class="max-w-screen-lg w-full p-4">
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-9 justify-center">
-      <Link  to='allquestion'
-       class="bg-yellow-100 text-2xl text-center shadow-lg rounded-lg p-4 hover:shadow-xl transition duration-300 transform hover:-translate-y-1 hover:scale-105">
-     
-       Questions
-      </Link>
-      <Link to='
-getcategory'
-       class="bg-yellow-100 text-2xl text-center shadow-lg rounded-lg p-4 hover:shadow-xl transition duration-300 transform hover:-translate-y-1 hover:scale-105">
-       
-        Layouts
-      </Link>
+<section class="h-screen py-28 ">
+    <div class="container mx-auto flex flex-col md:flex-row items-center">
+        <div class="md:w-1/2">
+            <h1 class="text-4xl md:text-6xl font-bold mb-4">Welcome to Our Website</h1>
+            <p class="text-lg md:text-xl mb-8 text-slate-700">We offer knowledge,resouce,encourgement.Share your knowledge with us to.get help from fellow developers.We offer you oppurtunity to expand your knowledge
+            </p>
+            
+            <div class="flex flex-row gap-4">
+                <Link to='/allquestion' class="bg-purple-300 hover:bg-purple-400 text-teal-200 py-2 px-6 rounded-lg text-lg font-semibold transition duration-300">Discussion</Link>
+                <Link to='/getcategory' class="bg-purple-300 hover:bg-purple-400 text-teal-200 py-2 px-6 rounded-lg text-lg font-semibold transition duration-300">Layout Designs</Link>
+              </div>
+              
+        </div>
+        <div class="md:w-1/2 mt-8 md:mt-0">
+            <img src={Image} alt="Image" 
+            class="w-full rounded-lg shadow-lg opacity-6"/>
+        </div>
     </div>
-  </div>
-</div>
-</div>
+</section>
 
-    </div>
-   
-    </div>
-    <Footer/>
+</div>
     </> 
   )
 }

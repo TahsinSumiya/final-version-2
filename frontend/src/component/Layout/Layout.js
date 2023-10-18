@@ -12,7 +12,7 @@ import Tags from './Tags';
 import { Link } from 'react-router-dom';
 export default function Layout({html,css,js,layoutId,userId,author,tags,id}) {
     const user = useSelector(selectUser);
-    console.log(user)
+
     const [comments, setComments] = useState([]);
     const [visible, setVisible] = useState(false) 
     const [text, setText] = useState('');
