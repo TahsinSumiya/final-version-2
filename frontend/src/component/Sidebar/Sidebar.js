@@ -6,15 +6,17 @@ import { login, logout, selectUser } from "../../features/Slice";
 import './SideNavbar.css'
 import { IoHomeOutline } from "react-icons/io5";
 import { AiOutlineSearch } from "react-icons/ai";
+import { auth } from '../../firebase';
 export default function Sidebar() {
-
+    const dispatch = useDispatch();
     const handleClick = () => {
-     logout()
+        dispatch(logout());
+       
         localStorage.removeItem('user');
       };
   return (
    
-<div className='h-screen  md:w-64 sidebar fixed top-0 left-0 z-40'>
+<div className='h-screen  md:w-34 sidebar fixed top-0 left-0 z-40'>
 <nav class="main-menu">
 
 

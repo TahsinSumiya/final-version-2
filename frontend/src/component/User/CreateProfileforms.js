@@ -4,13 +4,14 @@ import axios from 'axios';
 import "react-datepicker/dist/react-datepicker.css"; 
 import { login, logout, selectUser } from "../../features/Slice"; 
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from 'react-router-dom';
+import { Link, Navigate } from 'react-router-dom';
 import { auth } from "../../firebase";
 import UserPost from './UserPost';
 import ViewProfile from './ViewProfile';
+import { useNavigate } from "react-router-dom";
 export default function     CreateProfileforms() {
     
-    
+    const navigate = useNavigate()
     const [linkedin, setlinkedin] = useState("");
     const [github, setgithub] = useState("");
     const [date, setdate] = useState(null); // Change the initial state for date to null
@@ -38,7 +39,7 @@ export default function     CreateProfileforms() {
             const response = await axios.post("http://localhost:80/api/user/profile", bodyJSON);
 
      
-
+                
                 setlinkedin("");
                 setgithub("");
                 setdate(null);

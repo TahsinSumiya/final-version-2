@@ -2,15 +2,20 @@ import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   signInWithPopup,
-  updateProfile 
+  updateProfile ,
+  signInWithRedirect,
+  signInWithCredential
 } from "firebase/auth";
 import React, { useState,useEffect } from "react";
+import { login, logout, selectUser } from "../../features/Slice";
 import { useNavigate } from "react-router-dom";
 import { auth, provider } from "../../firebase";
+import { useDispatch, useSelector } from "react-redux";
 // import "./index.css";
 import bg from "../static/Images/360_F_314065916_W0GSc7ucoh5frt233zaSyGUdoWhxKoZg.jpg"
 function AuthIndex() {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const [register, setRegister] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -31,18 +36,14 @@ function AuthIndex() {
 
   const handleGoogleSignIN = () => {
     setLoading(true);
-    signInWithPopup(auth, provider)
+    signInWithRedirect(auth, provider)
       .then((res) => {
         setLoading(false);
         console.log(res);
         localStorage.setItem('user', JSON.stringify(res.user));
         navigate("/");
 
-        // return (
-        //   <>
-
-        //   </>
-        // );
+        
       })
       .catch((error) => {
         setLoading(false);
@@ -62,7 +63,8 @@ function AuthIndex() {
     } else {
       signInWithEmailAndPassword(auth, email, password)
         .then((res) => {
-          localStorage.setItem('user', JSON.stringify(res.user)); // Set user data in local storage
+          localStorage.setItem('user', JSON.stringify(res.user));
+          dispatch(login(res.user)); // Set user data in local storage
           navigate("/");
           setLoading(false);
         })
@@ -100,7 +102,8 @@ function AuthIndex() {
           })
             .then(() => {
               console.log("Display Name set successfully:", username);
-              localStorage.setItem('user', JSON.stringify(userCredential.user)); // Set user data in local storage
+              localStorage.setItem('user', JSON.stringify(userCredential.user));
+              dispatch(login(userCredential.user)); // Set user data in local storage
               navigate("/");
               setLoading(false);
             })
@@ -120,7 +123,7 @@ function AuthIndex() {
   
   
   return (
-<div class="lg:flex bg-purple-100 w-screen " >
+<div class="lg:flex bg-purple-100 w-screen h-screen" >
     <div
       class="min-h-screen py-6 flex flex-col justify-center sm:py-12 lg:w-1/2 xl:max-w-screen-sm"
     >
@@ -137,25 +140,25 @@ function AuthIndex() {
           <div class="relative">
          
           <div className="sign-option flex justify-center ">
-          <p><i class="bi bi-google text-violet-500"></i> </p>
-            <button onClick={handleGoogleSignIN} className="single-option text-2xl
-            auth-container  mx-1 my-3 inline-flex items-center py-2.5 px-4 text-xs
+          
+            <button onClick={handleGoogleSignIN} className="single-option align-middle justify-center
+            auth-container  mx-1 my-3 inline-flex items-center  px-2 text-xs
             font-medium text-center text-white bg-purple-400
              hover:bg-purple-500 rounded-lg focus:border-transparent
               focus:outline-none
             ">
         
-             
+        <p><i class="bi bi-google text-white text-xs"></i> </p>
               Login with Google
             </button>
            
           </div>
             <div class="relative">
-              <h2
-                class="text-center text-2xl text-purple-900 font-display font-semibold lg:text-left xl:text-4xl xl:text-bold"
+              <h6
+                class="text-center text-sm text-purple-900 font-display font-semibold lg:text-left xl:text-4xl xl:text-bold"
               >
                 {register ? "Register" : "Login"} 
-              </h2>
+              </h6>
             </div>
         {register ? (
           <>
@@ -290,10 +293,10 @@ function AuthIndex() {
           </>
         )}
 
-        <p
+        <p className="mt-2"
           onClick={() => setRegister(!register)}
           style={{
-            marginTop: "10px",
+            marginTop: "2px",
             textAlign: "center",
             color: "#0095ff",
             textDecoration: "underline",
@@ -302,9 +305,7 @@ function AuthIndex() {
         >
           {register ? "Login" : "Register"} ?
         </p>
-      </div>
-    </div>
-    {error !== "" && (
+        {error !== "" && (
       <p
         style={{
           color: "red",
@@ -314,6 +315,9 @@ function AuthIndex() {
         {error}
       </p>
     )}
+      </div>
+    </div>
+
       </div>
 </div>
 <div

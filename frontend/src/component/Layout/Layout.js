@@ -12,12 +12,21 @@ import Tags from './Tags';
 import { Link } from 'react-router-dom';
 export default function Layout({html,css,js,layoutId,userId,author,tags,id}) {
     const user = useSelector(selectUser);
-
+console.log(user)
     const [comments, setComments] = useState([]);
     const [visible, setVisible] = useState(false) 
     const [text, setText] = useState('');
     const [open, setOpen] = useState('');
-
+    const [isCopied, setIsCopied] = useState(false);
+    const copyCodeToClipboard = (code) => {
+      navigator.clipboard.writeText(code).then(() => {
+        setIsCopied(true);
+        setTimeout(() => setIsCopied(false), 2000);
+        console.log('Code copied to clipboard');
+      }).catch((err) => {
+        console.error('Failed to copy code: ', err);
+      });
+    };
   const toggleVisible = () => setVisible(!visible) 
     const [isActive, setIsActive] = useState({
       id: 'divOne',
@@ -84,23 +93,52 @@ export default function Layout({html,css,js,layoutId,userId,author,tags,id}) {
                                 Js
                             </button>
                         </div>
+                        
+                        
                         {visible &&  <div className={isActive.id === 'divOne' ? `divOne` : 'divOne  css js'}>
-      
+                        <button  className=' flex  justify-end end
+                            py-2.5 px-4 text-xs font-medium text-center text-white
+                             bg-purple-400 hover:bg-purple-500 rounded-lg'
+                             onClick={() => copyCodeToClipboard(html)}
+ >
+   {isCopied ? <p className="text-white">Copied!</p> :
+   <p className="text-blue">Copy</p>}
+</button>
       <SyntaxHighlighter language="html" 
-      className="scroll border-4 border-purple-300 rounded-lg"  showLineNumbers={true} wrapLines={true} >
+
+      
+      className="scroll border-4 border-purple-300 rounded-lg" 
+       showLineNumbers={true} wrapLines={true} >
+        
 {html}
-     
+
    </SyntaxHighlighter>
   </div>}
      {visible &&  <div className={isActive.id === 'divTwo' ? `divTwo` : 'divTwo d-none js css'}>
-      
+     <button  className=' flex  justify-end end
+                            py-2.5 px-4 text-xs font-medium text-center text-white
+                             bg-purple-400 hover:bg-purple-500 rounded-lg'
+                             onClick={() => copyCodeToClipboard(css)}
+ >
+
+{isCopied ? <p className="text-white">Copied!</p> :
+   <p className="text-blue">Copy</p>}
+</button>
          <SyntaxHighlighter language="css" className="scroll border-4 border-purple-300 rounded-lg"  showLineNumbers={true} wrapLines={true} >
   {css}
         
       </SyntaxHighlighter>
      </div>}
      {visible &&  <div className={isActive.id === 'divThree' ? `divThree` : 'divTwo d-none css html'}>
-       
+     <button  className=' flex  justify-end end
+                            py-2.5 px-4 text-xs font-medium text-center text-white
+                             bg-purple-400 hover:bg-purple-500 rounded-lg'
+                             onClick={() => copyCodeToClipboard(js)}
+ >
+
+{isCopied ? <p className="text-white">Copied!</p> :
+   <p className="text-blue">Copy</p>}
+</button>
          <SyntaxHighlighter language="js" className="scroll border-4 border-purple-300 rounded-lg"  showLineNumbers={true} wrapLines={true} >
   {js}
         

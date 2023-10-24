@@ -21,12 +21,11 @@ export default function Profile() {
     const [category, setcategory] = useState("looking-for-job");
     const [email, setemail] = useState("");
     const [desc, setDesc] = useState("");
-    const [userProfile, setUserProfile] = useState(null);
-    const [profileCreated, setProfileCreated] = useState(false);
     const user = useSelector(selectUser);
+    const [profileCreated, setProfileCreated] = useState(false);
     const dispatch = useDispatch();
     const [visible, setVisible] = useState(false) 
-console.log(user)
+
     const [text, setText] = useState('');
 
   const toggleVisible = () => setVisible(!visible) 
@@ -41,22 +40,56 @@ console.log(user)
         toggleVisible()
         }
    
-    
+      
+    // const handleSubmit = async (e) => {
+    //     e.preventDefault();
+
+    //     try {
+    //         const bodyJSON = {
+    //             linkedin: linkedin,
+    //             github: github,
+    //             birthdate: date, // Use the date state directly
+    //             user: user,
+    //             uuid: user.uid,
+    //             name: user.displayName,
+    //             category: category,
+    //             email: category === 'hiring' ? email : '',
+    //             desc:desc 
+    //         };
+
+    //         const response = await axios.post("http://localhost:80/api/user/profile", bodyJSON);
+
+    //         if (response.status === 200) { // Check the response status
+    //             alert('User created successfully!');
+    //             // Reset the form or perform any other necessary actions
+    //             setlinkedin("");
+    //             setgithub("");
+    //             setdate(null);
+    //             setcategory("looking-for-job");
+    //             setemail("");
+    //             setDesc("")
+    //         } else {
+    //             alert('Failed to create user.');
+    //         }
+    //     } catch (error) {
+    //         console.error('Error creating user:', error);
+    //     }
+    // };
+    const [userProfile, setUserProfile] = useState(null);
   
   
-  
-        useEffect(() => {
-          axios
-              .get(`http://localhost:80/api/user/getuserprofile/${user.uid}`)
-              .then((response) => {
-                  setUserProfile(response.data);
-                  
-              })
-              .catch((error) => {
-                  console.error('Error fetching user profile:', error);
-                  
-              });
-      }, [user.uid]);
+    useEffect(() => {
+      // Fetch user profile by user UID
+      axios
+        .get(`http://localhost:80/api/user/getuserpofile/${user.uid}`)
+        .then((response) => {
+          setUserProfile(response.data);
+          setProfileCreated(true);
+        })
+        .catch((error) => {
+          console.error('Error fetching user profile:', error);
+        });
+    }, [user.uid]); 
     return (
       <>
       <Sidebar/>

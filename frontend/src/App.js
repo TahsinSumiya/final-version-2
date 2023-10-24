@@ -15,7 +15,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { auth } from "./firebase";
 import { useEffect } from 'react';
 import Searchjob from './component/User/SearchJob';
-import {BrowserRouter , Routes , Route, Navigate,Outlet} from 'react-router-dom'
+import {BrowserRouter , Routes , Route, Navigate,Outlet,useNavigate} from 'react-router-dom'
 import AllSpecificUser from './component/User/AllSpecificUser';
 import Search from './component/User/Search';
 import Profile from './component/User/Profile';
@@ -32,53 +32,24 @@ import Editorindex from './component/Editor/Editorindex';
 import BeforeHome from './component/Home/BeforeHome';
 import Footer from './component/Home/Footer';
 import AuthIndex from './component/Auth/AuthIndex';
-// import PrivateWrapper from './PrivateWrapper';
-
+ import PrivateWrapper from './PrivateWrapper';
+import Error from './Error';
 function App() {
   const user = useSelector(selectUser);
   const dispatch = useDispatch();
+const navigate= useNavigate()
 
 
-  useEffect(() => {
-    const storedUser = JSON.parse(localStorage.getItem('user'));
 
-    if (storedUser) {
-      dispatch(login(storedUser));
-    }
-
-    const unsubscribe = auth.onAuthStateChanged((authUser) => {
-      if (authUser) {
-        dispatch(
-          login({
-            uid: authUser.uid,
-            photo: authUser.photoURL,
-            displayName: authUser.displayName,
-            email: authUser.email,
-          })
-        );
-      } else {
-        dispatch(logout());
-      }
-    });
-
-    return () => unsubscribe();
-  }, [dispatch]);
-
-  // If user authentication state is not loaded yet, show a loading spinner or some loading indicator
-  if (user === undefined) {
-    return <div>Loading...</div>;
-  }
-  const PrivateWrapper = () => {
-    return user ? <Outlet /> : <Navigate to="/auth" />;
-  };
-
-  
   return (
     <>
 
 <Routes>
         <Route element={<PrivateWrapper />}>
   {/* <Route path="/" element={<Header />} /> */}
+</Route>
+<Route element={<PrivateWrapper />}>
+  <Route path="/error" element={<Error />} />
 </Route>
 <Route element={<PrivateWrapper />}>
   <Route path="/" element={<AfterHome />} />
@@ -116,21 +87,21 @@ function App() {
 <Route element={<PrivateWrapper />}>
   <Route path="searchjob" element={<Searchjob/>} />
 </Route>
-<Route element={<PrivateWrapper />}>
+
 <Route exact path='/admin' element={<Admin/>} />
-</Route>
-<Route element={<PrivateWrapper />}>
+
+
 <Route exact path='/adminboard' element={<AdminBoard/>} />
-</Route>
-<Route element={<PrivateWrapper />}>
+
+
 <Route exact path='/categoryuploader' element={<CategoryUpload/>} />
-</Route>
-<Route element={<PrivateWrapper />}>
+
+
 <Route exact path='/adminboard/adminlayout' element={<AdminUploader/>} />
-</Route>
-<Route element={<PrivateWrapper />}>
+
+
 <Route exact path='adminboard/notification' element={<Notification/>} />
-</Route>
+
 <Route element={<PrivateWrapper />}>
 <Route exact path='/getcategory' element={<GetAllCategory/>} />
 </Route>
