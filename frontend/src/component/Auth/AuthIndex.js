@@ -4,13 +4,15 @@ import {
   signInWithPopup,
   updateProfile ,
   signInWithRedirect,
-  signInWithCredential
+  signInWithCredential,
+  signInAnonymously
 } from "firebase/auth";
 import React, { useState,useEffect } from "react";
 import { login, logout, selectUser } from "../../features/Slice";
-import { useNavigate } from "react-router-dom";
+import { useNavigate,Outlet } from "react-router-dom";
 import { auth, provider } from "../../firebase";
 import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 // import "./index.css";
 import bg from "../static/Images/360_F_314065916_W0GSc7ucoh5frt233zaSyGUdoWhxKoZg.jpg"
 function AuthIndex() {
@@ -34,22 +36,25 @@ function AuthIndex() {
     } else return true;
   }
 
-  const handleGoogleSignIN = () => {
-    setLoading(true);
-    signInWithRedirect(auth, provider)
-      .then((res) => {
-        setLoading(false);
-        console.log(res);
-        localStorage.setItem('user', JSON.stringify(res.user));
-        navigate("/");
 
-        
-      })
-      .catch((error) => {
-        setLoading(false);
-        console.log(error);
-      });
-  };
+  
+    const handleGoogleSignIN = () => {
+      setLoading(true);
+      signInWithPopup(auth, provider)
+        .then((res) => {
+          setLoading(false);
+          console.log(res);
+          localStorage.setItem('user', JSON.stringify(res.user));
+          navigate("/");
+  
+          
+        })
+        .catch((error) => {
+          setLoading(false);
+          console.log(error);
+        });
+    };
+  
 
   const handleSignIn = () => {
     setError();
@@ -286,7 +291,10 @@ function AuthIndex() {
                 >
                
                 </div>
-        
+                <div className="justify-center align-middle text-center">
+                <Link to="/reset-password" className="text-sm text-violet-700">Forgot Password?</Link>
+                </div>
+                
               </div>
          
             </div>

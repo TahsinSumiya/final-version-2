@@ -9,7 +9,7 @@ import AddQuestion from "./component/Add-Question/Question";
 import ViewQuestion from "./component/ViewQuestion.js/ViewQuestion";
 import { login, logout, selectUser } from "./features/Slice";
 import AfterHome from './component/Home/AfterHome';
-
+import ResetPassword from './component/Auth/ResetPassword';
 import UserPost from './component/User/UserPost';
 import { useDispatch, useSelector } from "react-redux";
 import { auth } from "./firebase";
@@ -115,6 +115,8 @@ const navigate= useNavigate()
 <Route exact path='/editor' element={<Editorindex/>} />
 </Route>
 <Route exact path='/auth' element={<AuthIndex/>} />
+<Route path="/reset-password" element={<ResetPassword/>} />
+
 {/* <Route exact path='/add-question' element={<AddQuestion/>} />
 <Route exact path='/question' element={<ViewQuestion/>} /> */}
 
