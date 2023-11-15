@@ -11,7 +11,7 @@ export default function AllUser() {
     // Fetch all users
     axios.get(`http://localhost:80/api/user/getfirebaseAllUsers`)
       .then((response) => {
-        setUsers(response.data);
+        setUsers(response.data.reverse(0));
       })
       .catch((error) => {
         console.error('Error fetching users:', error);

@@ -10,7 +10,7 @@ export default function GetNotice() {
       try {
         const response = await axios.get('http://localhost:80/api/notice/getnotice');
         setReq(response.data);
-        console.log(response.data);
+        console.log(response.data.reverse(0));
       } catch (error) {
         console.error('Error fetching requests:', error);
       }

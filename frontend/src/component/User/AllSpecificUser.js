@@ -116,7 +116,7 @@ export default function AllSpecificUser() {
       axios
         .get(`http://localhost:80/api/layouts/getlayoutsbyId/${id}`)
         .then((response) => {
-          setLayouts(response.data);
+          setLayouts(response.data.reverse(0));
         })
         .catch((error) => {
           console.error('Error fetching user profile:', error);
@@ -130,7 +130,7 @@ export default function AllSpecificUser() {
         // Fetch posts by user UID
         axios.get(`http://localhost:80/api/user/postbyid/${id}`)
           .then((response) => {
-            setUserPosts(response.data);
+            setUserPosts(response.data.reverse(0));
           })
           .catch((error) => {
             console.error('Error fetching user posts:', error);

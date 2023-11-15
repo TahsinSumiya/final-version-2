@@ -54,7 +54,7 @@ function UserPost() {
           // Fetch posts by user UID
           axios.get(`http://localhost:80/api/user/postbyid/${user.uid}`)
             .then((response) => {
-              setUserPosts(response.data);
+              setUserPosts(response.data.reverse(0));
             })
             .catch((error) => {
               console.error('Error fetching user posts:', error);
@@ -68,7 +68,7 @@ function UserPost() {
         .get(`http://localhost:80/api/layouts/getlayoutsbyId/${user.uid}`)
         .then((response) => {
           const layoutId = response.data._id;
-          setLayouts(response.data);
+          setLayouts(response.data.reverse(0));
         })
         .catch((error) => {
           console.error('Error fetching user profile:', error);

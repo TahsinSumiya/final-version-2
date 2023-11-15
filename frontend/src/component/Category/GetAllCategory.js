@@ -22,7 +22,6 @@ const GetAllCategory = () => {
   const [categoryclick, setcategoryclick] = useState(false) 
   let [visibility, setVisibility] = useState("block"); 
 
-
 const toggleVisible = () => setVisible(!visible) 
   const [isActive, setIsActive] = useState({
     id: 'divOne',
@@ -38,20 +37,21 @@ const toggleVisible = () => setVisible(!visible)
   const fetchProductsByCategory = async (categoryId) => {
     try {
       const response = await axios.get(`http://localhost:80/api/layouts/getlayouts/${categoryId}`);
-      setLayout(response.data);
-
+      setLayout(response.data.reverse(0));
+     
       
     } catch (error) {
       console.error('Failed to fetch products:', error);
     }
   };
+
   useEffect(() => {
     // Fetch user profile by user UID
     axios
       .get('http://localhost:80/api/layouts/getalllayouts')
       .then((response) => {
        setcategoryclick(true)
-        setallLayout(response.data);
+        setallLayout(response.data.reverse(0));
       })
       .catch((error) => {
         console.error('Error fetching user profile:', error);

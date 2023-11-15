@@ -24,7 +24,7 @@ export default function Comment({layoutId}) {
       const handlegetCommentSubmit = async (e) => {
      
         const response = await axios.get(`http://localhost:80/api/comment/getcomments/${layoutId}`)
-     setComments(response.data)
+     setComments(response.data.reverse(0))
 
           console.log(response)
       };

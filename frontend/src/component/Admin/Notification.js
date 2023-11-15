@@ -58,7 +58,7 @@ export default function Notification() {
           .get('http://localhost:80/api/layouts/getalllayouts')
           .then((response) => {
            
-            setLayouts(response.data);
+            setLayouts(response.data.reverse(0));
           })
           .catch((error) => {
             console.error('Error fetching user profile:', error);
