@@ -22,7 +22,7 @@ export default function DeleteLayout({layoutId,email}) {
       
   return (
     <div>
-      <buttpn class="relative my-5 text-purple-600" onClick={handleDelete}><i class="bi bi-trash3"></i></buttpn>
+      <buttpn class="relative my-5 text-red-600 cursor-pointer" onClick={handleDelete}><i class="bi bi-trash3"></i></buttpn>
     </div>
   )
 }

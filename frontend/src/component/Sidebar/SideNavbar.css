@@ -56,7 +56,7 @@ border-radius: 2px;
 #style-1::-webkit-scrollbar
 {
 width: 5px;
-background-color: rgb(153, 69, 153);
+background-color: rgb(148 163 184);
 }
 
 #style-1::-webkit-scrollbar-thumb
@@ -80,7 +80,7 @@ display: table-cell;
 width: 55px;
 height: 36px;
 text-align: center;
-top:12px; 
+top:4px; 
 font-size:20px;
 
 }
@@ -278,7 +278,7 @@ box-shadow:         inset 0px -4px 5px -4px rgba(50, 50, 50, 0.55);
 
 .main-menu li:hover>a,nav.main-menu li.active>a,.dropdown-menu>li>a:hover,.dropdown-menu>li>a:focus,.dropdown-menu>.active>a,.dropdown-menu>.active>a:hover,.dropdown-menu>.active>a:focus,.no-touch .dashboard-page nav.dashboard-menu ul li:hover a,.dashboard-page nav.dashboard-menu ul li.active a {
 color:#fff;
-background-color:plum;
+background-color:rgb(96 165 250);
 text-shadow: 0px 0px 0px; 
 }
 .area {

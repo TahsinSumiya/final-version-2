@@ -36,7 +36,7 @@ useEffect(() => {
 }, [layoutId]);
   return (
     <>
-        <div class="my-4 w-full rounded-lg border border-purple-200 ">
+              <div class="my-4 w-full rounded-lg border border-purple-200 ">
                           <form onSubmit={handleCommentSubmit}>
                             <div class="py-2 px-4 bg-white rounded-t-lg">
                                 <label for="Question" class="sr-only"></label>
@@ -47,8 +47,7 @@ useEffect(() => {
                             <div class="flex justify-end items-center py-2 px-3 border-t dark:border-gray-600">
                                 <button type="submit" class="inline-flex end
                                 items-center py-2.5 px-4 text-xs font-medium 
-                                text-center text-white bg-purple-500 rounded-lg focus:ring-4
-                                 focus:ring-purple-200 hover:bg-purple-600">
+                                text-center text-white hover:text-gray-700 bg-blue-400 hover:bg-slate-300 hover:border-blue-400 hover:border-b-4 border-blue-400 border-b-4 rounded-lg">
                                     Comment
                                 </button>
                             </div>
@@ -71,10 +70,10 @@ useEffect(() => {
                                 <div class="flex justify-end items-center py-2 px-3 
                                 border-t dark:border-gray-600 gap-3">
             
-                                     <Link to={comment.id ? `/specificuser?s=${comment.id}` : ''}  class="inline-flex items-center py-2.5 px-4 text-xs font-medium text-center text-white bg-purple-500 rounded-lg focus:ring-4 focus:ring-purple-200 hover:bg-purple-600">
+                                     <Link to={comment.id ? `/specificuser?s=${comment.id}` : ''}  class="inline-flex items-center py-2.5 px-4 text-xs font-medium text-center text-white hover:text-gray-700 bg-blue-400 hover:bg-slate-300 hover:border-blue-400 hover:border-b-4 border-blue-400 border-b-4 rounded-lg">
                                     {comment.name}
                                     </Link>
-                                    <p class="inline-flex items-center py-2.5 px-4 text-xs font-medium text-center text-white bg-purple-500 rounded-lg focus:ring-4 focus:ring-purple-200 hover:bg-purple-600">
+                                    <p class="inline-flex items-center py-2.5 px-4 text-xs font-medium text-center text-white hover:text-gray-700 bg-blue-400 hover:bg-slate-300 hover:border-blue-400 hover:border-b-4 border-blue-400 border-b-4 rounded-lg">
                                     {new Date(comment.created_at).toLocaleString()}
                                     </p>
             

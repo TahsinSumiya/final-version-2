@@ -27,25 +27,25 @@ export default function Mainindex() {
   return (
     <>
       <Sidebar />
-      <div className='bg-gradient-to-r bg-blue-100 p-12 backdrop-blur-md'>
+      <div className=' p-12 backdrop-blur-md'>
     
-        <div className="relative mx-12">
-          <input
-            onChange={(e) => setSearchInput(e.target.value)}
-            type="text"
-            className="w-full pl-10 pr-4 py-2 border rounded-md focus:ring
-             focus:ring-purple-400 focus:ring-opacity-50 focus:border-transparent focus:outline-none rounded-lg"
-            placeholder="Search questions by title"
-          />
-          <button className="absolute right-3 bottom-3 text-gray-500 hover:text-purple-800 focus:outline-none">
-            <i className="bi bi-search"></i>
-          </button>
-        </div>
-        <p className="mt-3 mx-12 inline-flex items-center py-2.5 px-4 text-xs font-medium text-center text-white bg-purple-400 hover:bg-purple-500 rounded-lg">
-          {filteredQuestions.length} questions
-        </p>
-        <Main questions={filteredQuestions} />
-      </div>
+    <div className="relative mx-12">
+      <input
+        onChange={(e) => setSearchInput(e.target.value)}
+        type="text"
+        className="w-full pl-10 pr-4 py-2 border  focus:ring
+         focus:ring-blue-400 focus:ring-opacity-50 focus:border-transparent focus:outline-none rounded-lg"
+        placeholder="Search questions by title"
+      />
+      <button className="absolute right-3 bottom-3 text-gray-500 hover:text-purple-800 focus:outline-none">
+        <i className="bi bi-search pt-5"></i>
+      </button>
+    </div>
+    <p className="mt-3 mx-12 inline-flex items-center py-2.5 px-4 text-xs font-medium text-center text-white bg-blue-300  rounded-lg">
+      {filteredQuestions.length} questions
+    </p>
+    <Main questions={filteredQuestions} />
+  </div>
     </>
   );
 }

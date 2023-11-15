@@ -9,7 +9,9 @@ const UserSchema = new mongoose.Schema({
   name:String,
   email:String,
   desc:String,
-  category:String
+  category:String,
+  image:String,
+  imageUrl:String,
 
   // email: {
   //   type: String,

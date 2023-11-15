@@ -75,15 +75,15 @@ export default function AdminUploader() {
   return (
     <>
   <AdminSideBar/>
-      <div class="px-4 overflow-y-auto ml-16 ">
-      <div class="bg-gradient-to-r from-purple-100 via-yellow-100 to-blue-200 min-h-screen flex justify-center items-center p-4">
-    <div class="bg-opacity-30 backdrop-blur-lg p-9 rounded-md shadow-md w-full md:w-2/3 lg:w-1/2">
-        <h1 class="text-3xl font-semibold mb-4 text-gray-500">Upload Design</h1>
+  <div class="px-4 overflow-y-auto ml-16 bg-slate-100">
+      <div class="min-h-screen flex justify-center items-center p-4">
+    <div class="bg-white p-9 rounded-lg shadow-2xl w-full md:w-2/3 lg:w-1/2 border-t-[30px] border-blue-400">
+        <h1 class="text-3xl font-semibold mb-6 text-gray-500">Upload Design</h1>
         <form onSubmit={handleSubmit}>
             <div class="mb-4">
-                <label for="dropdown" class="block text-sm font-medium text-gray-700">Select an Option</label>
+                {/* <label for="dropdown" class="block text-sm font-medium text-gray-700 mb-4">Select an Option</label> */}
                 <select value={selectedCategory} onChange={handleCategoryChange}
-                className='w-full px-3 py-2 border rounded-md focus:ring focus:ring-purple-400 focus:ring-opacity-50 focus:border-transparent focus:outline-none rounded-lg'
+                className='w-full px-3 py-2 border focus:ring focus:ring-blue-400 focus:ring-opacity-50 focus:border-transparent focus:outline-none rounded-lg bg-slate-100'
                 >
             <option value="">Select a category</option>
             {categories.map((category) => (
@@ -94,40 +94,39 @@ export default function AdminUploader() {
           </select>
             </div>
             <div class="mb-4">
-                <label for="html" class="block text-sm font-medium text-gray-700">HTML</label>
+                <label for="html" class="block text-sm font-medium text-gray-700 mb-4">HTML</label>
                 <textarea id="html" name="html" 
                 value={product.html}
                 onChange={handleProductChange}
-                rows="4" class="w-full px-3 py-2 border rounded-md focus:ring focus:ring-purple-400 focus:ring-opacity-50 focus:border-transparent focus:outline-none rounded-lg"></textarea>
+                rows="4" class="w-full px-3 py-2 border focus:ring focus:ring-blue-400 focus:ring-opacity-50 focus:border-transparent focus:outline-none rounded-lg bg-slate-100"></textarea>
             </div>
             <div class="mb-4">
-                <label for="css" class="block text-sm font-medium text-gray-700">CSS</label>
+                <label for="css" class="block text-sm font-medium text-gray-700 mb-4">CSS</label>
                 <textarea id="css" name="css"
                 value={product.css} onChange={handleProductChange}
-                rows="4" class="w-full px-3 py-2 border rounded-md focus:ring focus:ring-purple-400 focus:ring-opacity-50 focus:border-transparent focus:outline-none rounded-lg"></textarea>
+                rows="4" class="w-full px-3 py-2 border focus:ring focus:ring-blue-400 focus:ring-opacity-50 focus:border-transparent focus:outline-none rounded-lg bg-slate-100"></textarea>
             </div>
             <div class="mb-4">
-                <label for="js" class="block text-sm font-medium text-gray-700">JS</label>
+                <label for="js" class="block text-sm font-medium text-gray-700 mb-4">JS</label>
                 <textarea id="js" name="js"
                  value={product.js} onChange={handleProductChange} 
-                rows="4" class="w-full px-3 py-2 border rounded-md focus:ring focus:ring-purple-400 focus:ring-opacity-50 focus:border-transparent focus:outline-none rounded-lg"></textarea>
+                rows="4" class="w-full px-3 py-2 border focus:ring focus:ring-blue-400 focus:ring-opacity-50 focus:border-transparent focus:outline-none rounded-lg bg-slate-100"></textarea>
             </div>
             <div className='mb-4'>
             <TagsInput  value={product.tags}
-                            class="w-full bg-slate-500 text-gray-900 p-8 border-0 text-2xl
+                            class="w-full bg-white text-gray-900 p-8 border-0 text-2xl
                             focus:border-transparent focus:outline-none rounded-lg"
                   onChange={handleProductChange}
                   name="fruits"
                  />
                  </div>
-            <button type="submit" class="bg-purple-500
-             hover:bg-purple-600 text-white py-2 px-4 rounded-md transition duration-300">Submit</button>
+            <button type="submit" class="inline-flex items-center py-2.5 px-4 text-xs 
+                             font-medium text-center text-white hover:text-gray-700 bg-blue-400 hover:bg-slate-300 hover:border-blue-400 hover:border-b-4 border-blue-400 border-b-4 rounded-lg">Submit</button>
         </form>
     </div>
 </div>
     
 </div>
-
     </>
   )
 }

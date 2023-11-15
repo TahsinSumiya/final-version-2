@@ -92,132 +92,145 @@ handlegetCommentSubmit ()
   return (
     <>
 <AdminSideBar/>
-            <div class=" px-4 overflow-y-auto ml-16  ">
+<div class=" px-4 overflow-y-auto ml-52  ">
         {Layouts.map((layout) => (
-                      
-                      <div class="px-6 pt-9 pb-9 mt-5 shadow-xl border border-gray-200 
-                           rounded-lg bg-gradient-to-b from-purple-100 via-purple-200 to-purple-300">
-                               
-                              <div class="flex justify-end items-center py-2 px-3 
-                              gap-3  text-gray-900">
+          <div
+            class="px-6 pt-9 pb-9 mt-5 shadow-xl border border-gray-200 
+                           rounded-lg bg-gradient-to-b from-slate-100  to-slate-200"
+          >
+            <div
+              class="flex justify-end items-center py-2 px-3 
+                              gap-3  text-gray-900"
+            >
+              <div></div>
+              
+              <button
+                class="inline-flex items-center 
+                py-2.5 px-4 text-xs font-medium text-center border-blue-400 border-b-4 bg-slate-300 hover:bg-blue-400 text-gray-800 hover:text-white rounded-lg"
+                id="divOne"
+                onClick={(e) => {
+                  hideShowDiv(e);
+                }}
+              >
+                Html
+              </button>
+              <button
+                class="inline-flex items-center 
+                py-2.5 px-4 text-xs font-medium text-center border-blue-400 border-b-4 bg-slate-300 hover:bg-blue-400 text-gray-800 hover:text-white rounded-lg"
+                id="divTwo"
+                onClick={(e) => {
+                  hideShowDiv(e);
+                }}
+              >
+                CSS
+              </button>
+              <button
+                type="submit"
+                class="inline-flex items-center 
+                py-2.5 px-4 text-xs font-medium text-center border-blue-400 border-b-4 bg-slate-300 hover:bg-blue-400 text-gray-800 hover:text-white rounded-lg"
+                id="divThree"
+                onClick={(e) => {
+                  hideShowDiv(e);
+                }}
+                title="output"
+              >
+                Js
+              </button>
+              <DeleteLayout layoutId={layout._id} />
+            </div>
+            {visible && (
+              <div
+                className={
+                  isActive.id === "divOne" ? `divOne` : "divOne  css js"
+                }
+              >
+                <SyntaxHighlighter
+                  language="html"
+                  className="scroll border-4 border-blue-300 rounded-lg"
+                  showLineNumbers={true}
+                  wrapLines={true}
+                >
+                  {/* {html} */}
+                  {layout.html}
+                </SyntaxHighlighter>
+              </div>
+            )}
+            {visible && (
+              <div
+                className={
+                  isActive.id === "divTwo" ? `divTwo` : "divTwo d-none js css"
+                }
+              >
+                <SyntaxHighlighter
+                  language="css"
+                  className="scroll 
+               border-4 border-blue-300 rounded-lg"
+                  showLineNumbers={true}
+                  wrapLines={true}
+                >
+                  {/* {css} */}
+                  {layout.css}
+                </SyntaxHighlighter>
+              </div>
+            )}
+            {visible && (
+              <div
+                className={
+                  isActive.id === "divThree"
+                    ? `divThree`
+                    : "divTwo d-none css html"
+                }
+              >
+                <SyntaxHighlighter
+                  language="js"
+                  className="scroll border-4 border-blue-300 rounded-lg"
+                  showLineNumbers={true}
+                  wrapLines={true}
+                >
+                  {/* {js} */}
+                  {layout.js}
+                </SyntaxHighlighter>
+              </div>
+            )}
 
-<div 
-                                  
-                                    
-                                    >
-                                    
-                                  </div>
-                              <p class="inline-flex items-center py-2.5 px-4 
-                                  text-xs font-medium text-center text-white
-                                   bg-purple-400 hover:bg-purple-500 rounded-lg
-                                    focus:border-transparent focus:outline-none"
-                                  
-                                    
-                                    >
-                                      {layout.author}
-                                  </p>
-                                  <button class="inline-flex items-center py-2.5 px-4 text-xs
-                                   font-medium text-center text-white bg-purple-400
-                                    hover:bg-purple-500 rounded-lg focus:border-transparent
-                                     focus:outline-none"
-                                     id="divOne"
-                                     onClick={(e) => {
-                                     hideShowDiv(e)
-                                     }}
-                                     >
-                                      Html
-                                  </button>
-                                  <button class="inline-flex items-center 
-                                  py-2.5 px-4 text-xs font-medium text-center text-white
-                                   bg-purple-400 hover:bg-purple-500 rounded-lg"
-                                   id="divTwo"
-                        onClick={(e) => {
-                        hideShowDiv(e)
-                        }}
-                                   
-                                   >
-                                      CSS
-                                  </button>
-                                  <button type="submit" class="inline-flex items-center py-2.5 
-                                  px-4 text-xs font-medium text-center text-white bg-purple-400
-                                   hover:bg-purple-500 rounded-lg"
-                                   id="divThree"
-                                   onClick={(e) => {
-                                hideShowDiv(e)
-                                  }}
-                                  title='output'
-                                   >
-                                      Js
-                                  </button>
-                                  <DeleteLayout  layoutId={layout._id}/>
-                              </div>
-                              {visible &&  <div className={isActive.id === 'divOne' ? `divOne` : 'divOne  css js'}>
-            
-            <SyntaxHighlighter language="html" 
-            className="scroll border-4 border-purple-300 rounded-lg"  showLineNumbers={true} wrapLines={true} >
-      {/* {html} */}
-      {layout.html}
-         </SyntaxHighlighter>
-        </div>}
-           {visible &&  <div className={isActive.id === 'divTwo' ? `divTwo` : 'divTwo d-none js css'}>
-            
-               <SyntaxHighlighter language="css" className="scroll 
-               border-4 border-purple-300 rounded-lg"  showLineNumbers={true} wrapLines={true} >
-        {/* {css} */}
-        {layout.css}
-            </SyntaxHighlighter>
-           </div>}
-           {visible &&  <div className={isActive.id === 'divThree' ? `divThree` : 'divTwo d-none css html'}>
-             
-               <SyntaxHighlighter language="js" className="scroll border-4 border-purple-300 rounded-lg"
-                 showLineNumbers={true} wrapLines={true} >
-        {/* {js} */}
-        {layout.js}
-            </SyntaxHighlighter>
-           </div>}
-          
-             
-        
-                           
-                              <div class="py-2 px-4 bg-white rounded-t-lg">
-                                  <label for="codepan" class="sr-only"></label>
-                             
-                                  <div class="relative h-96">
-                                      <iframe id="codepan" class="w-full 
+            <div class="py-2 px-4 bg-white rounded-t-lg">
+              <label for="codepan" class="sr-only"></label>
+
+              <div class="relative h-96">
+                <iframe
+                  id="codepan"
+                  class="w-full 
                                       h-96 bg-white border-0 focus:border-transparent 
-                                      focus:outline-none" 
-                                      srcDoc={`
+                                      focus:outline-none"
+                  srcDoc={`
                 <html>
                   <body>${layout.html}</body>
                   <style>${layout.css}</style>
                   <script>${layout.js}</script>
                 </html>
               `}
-              height="100%"
-              width="100%"
-                                      
-                                      ></iframe>
-                                     
-                                  </div>
-                              </div>
-              
-                                     <div class="flex justify-end items-center py-2 px-3 border-t dark:border-gray-600">
-                                <button type="submit" class="inline-flex end
-                                items-center py-2.5 px-4 text-xs font-medium 
-                                text-center text-white bg-purple-500 rounded-lg focus:ring-4
-                                 focus:ring-purple-200 hover:bg-purple-600"
-                                 onClick={() => setOpen(hide => !hide)}
-                                 >
-                                    Comment
-                                </button>
-                            </div>
+                  height="100%"
+                  width="100%"
+                ></iframe>
+              </div>
+            </div>
 
-                            {open &&    <Admincomment layoutId={layout._id}/>}
-                              <Tags tags={JSON.parse(layout.tags[0])}/>
-                          </div>
-                            ))}
-           
-</div>  
+            <div class="flex justify-end items-center py-2 px-3 border-t dark:border-gray-600">
+              <button
+                type="submit"
+                class="inline-flex items-center py-2.5 px-4 text-xs 
+                             font-medium text-center text-white hover:text-gray-700 bg-blue-400 hover:bg-slate-300 hover:border-blue-400 hover:border-b-4 border-blue-400 border-b-4 rounded-lg"
+                onClick={() => setOpen((hide) => !hide)}
+              >
+                Comment
+              </button>
+            </div>
+
+            {open && <Admincomment layoutId={layout._id} />}
+            <Tags tags={JSON.parse(layout.tags[0])} />
+          </div>
+        ))}
+      </div>
     </>
   )
 }

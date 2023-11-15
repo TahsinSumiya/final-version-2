@@ -107,19 +107,19 @@ const navigate = useNavigate()
     ];
   return (
     <>
-    <div className='bg-gradient-to-r from-purple-100 via-yellow-100 to-gray-100 h-screen overflow-y-auto'>
+    <div className='h-screen overflow-y-auto'>
      <Sidebar/>
-      <div class=" p-24 overflow-y-auto ml-16   ">
+      <div class=" px-24 overflow-y-auto ml-16 h-screen shadow-lg">
    
-      <div class="bg-gradient-to-r from-blue-200 via-blue-300 to-blue-400 h-screen ">
+      
         <div class="relative h-full bg-opacity-60 backdrop-blur-lg">
             
-          <img src={bgimg} alt="Background Image" class="object-cover w-full h-full"/>
-          <div class="absolute inset-0 bg-gray-100 bg-opacity-80">
+          
+          <div class="absolute inset-0">
            
            
-             <form class="px-6 pt-9 mt-5 shadow-xl border border-gray-200 rounded-lg bg-gradient-to-b from-white via-purple-100 to-purple-200">
-                <div class=" items-center py-2 px-3 gap-3 mt-4 text-gray-900">
+             <form class="px-6 pt-9 mt-5 shadow-gray-300 shadow-xl border border-gray-200 rounded-lg bg-slate-200">
+                <div class=" items-center py-2 px-3 gap-3 mt-4 text-gray-900 ">
                     <input  value={title}
                   onChange={(e) => setTitle(e.target.value)}
                      type="text" placeholder="Question Title" class="w-full text-gray-900 p-3 border-0 text-2xl focus:border-transparent focus:outline-none rounded-lg"/>
@@ -149,7 +149,8 @@ const navigate = useNavigate()
                 </div>
                     <div class="flex justify-between items-center py-2 px-3 border-t dark:border-gray-600">
                         <button onClick={handleSubmit}
-                         type="submit" class="inline-flex items-center py-2.5 px-4 text-xs font-medium text-center text-white bg-purple-500 rounded-lg focus:ring-4 focus:ring-purple-200 hover:bg-purple-600">
+                         type="submit" class="inline-flex items-center py-2.5 px-4 text-xs 
+                         font-medium text-center text-white hover:text-gray-700 bg-blue-400 hover:bg-slate-300 hover:border-blue-400 hover:border-b-4 border-blue-400 border-b-4 rounded-lg">
                             Add Question
                         </button>
                     </div>
@@ -159,7 +160,7 @@ const navigate = useNavigate()
          
             </div>
     </div>
-</div>
+
              
 </div>
 

@@ -14,7 +14,7 @@ import { auth, provider } from "../../firebase";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 // import "./index.css";
-import bg from "../static/Images/360_F_314065916_W0GSc7ucoh5frt233zaSyGUdoWhxKoZg.jpg"
+import bg from "../static/Images/beforelogin.jpg"
 function AuthIndex() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -128,7 +128,7 @@ function AuthIndex() {
   
   
   return (
-<div class="lg:flex bg-purple-100 w-screen h-screen" >
+<div class="lg:flex  w-screen h-screen" >
     <div
       class="min-h-screen py-6 flex flex-col justify-center sm:py-12 lg:w-1/2 xl:max-w-screen-sm"
     >
@@ -136,31 +136,18 @@ function AuthIndex() {
 
       <div class="relative right-8 py-4  sm:max-w-xl ml-20">
         <div
-          class="absolute inset-0 bg-gradient-to-r from-purple-300 to-purple-600 shadow-lg transform-skew-y-6 sm:skew-y-0 sm:-rotate-6 sm:rounded-3xl"
+          class="absolute inset-0 bg-gradient-to-r from-slate-200 to-slate-400 shadow-lg transform-skew-y-6 sm:skew-y-0 sm:-rotate-6 sm:rounded-3xl"
         ></div>
 
         <div
-          class="relative px-4 py-10 bg-white shadow-lg sm:rounded-3xl sm:p-20"
+          class="relative px-12 p-10  bg-white shadow-lg sm:rounded-3xl "
         >
           <div class="relative">
          
-          <div className="sign-option flex justify-center ">
           
-            <button onClick={handleGoogleSignIN} className="single-option align-middle justify-center
-            auth-container  mx-1 my-3 inline-flex items-center  px-2 text-xs
-            font-medium text-center text-white bg-purple-400
-             hover:bg-purple-500 rounded-lg focus:border-transparent
-              focus:outline-none
-            ">
-        
-        <p><i class="bi bi-google text-white text-xs"></i> </p>
-              Login with Google
-            </button>
-           
-          </div>
             <div class="relative">
               <h6
-                class="text-center text-sm text-purple-900 font-display font-semibold lg:text-left xl:text-4xl xl:text-bold"
+                class="text-center text-sm text-gray-900 font-display font-semibold lg:text-left xl:text-4xl xl:text-bold"
               >
                 {register ? "Register" : "Login"} 
               </h6>
@@ -220,7 +207,7 @@ function AuthIndex() {
 
                 <div class="mt-10">
                   <button onClick={handleRegister}
-                    class="bg-purple-500 text-gray-100 p-4 w-full rounded-full tracking-wide font-semibold font-display focus:outline-none focus:shadow-outline hover:bg-purple-600 shadow-lg"
+                    class="bg-blue-400 text-gray-100 p-4 w-full rounded-full tracking-wide font-semibold font-display focus:outline-none focus:shadow-outline hover:bg-blue-500 shadow-lg"
                   >
                     Sign up
                   </button>
@@ -280,7 +267,7 @@ function AuthIndex() {
 
                 <div class="mt-10">
                   <button     onClick={handleSignIn}
-                    class="bg-purple-500 text-gray-100 p-4 w-full rounded-full tracking-wide font-semibold font-display focus:outline-none focus:shadow-outline hover:bg-purple-600 shadow-lg"
+                    class="bg-blue-400 text-gray-100 p-4 w-full rounded-full tracking-wide font-semibold font-display focus:outline-none focus:shadow-outline hover:bg-blue-500 shadow-lg"
                   >
                     Sign in
                   </button>
@@ -291,10 +278,7 @@ function AuthIndex() {
                 >
                
                 </div>
-                <div className="justify-center align-middle text-center">
-                <Link to="/reset-password" className="text-sm text-violet-700">Forgot Password?</Link>
-                </div>
-                
+        
               </div>
          
             </div>
@@ -323,6 +307,28 @@ function AuthIndex() {
         {error}
       </p>
     )}
+    <div className="grid grid-cols-3 mx-w-xs my-5 mx-auto items-center">
+      <hr className="border-2"/>
+      <p className=" text-center">
+        or
+      </p>
+      <hr className="border-2"/>
+    </div>
+    <div className="sign-option flex justify-center  ">
+          
+          <button onClick={handleGoogleSignIN} className="
+          " style={{
+            textAlign: "center",
+            color: "#0095ff",
+            textDecoration: "underline",
+            cursor: "pointer",
+          }}>
+      
+      <p><i class="bi bi-google text-white text-xs"></i> </p>
+            Login with Google
+          </button>
+         
+        </div>
       </div>
     </div>
 

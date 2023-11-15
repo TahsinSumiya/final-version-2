@@ -42,10 +42,8 @@ useEffect(() => {
                             </div>
         
                             <div class="flex justify-end items-center py-2 px-3 border-t dark:border-gray-600">
-                                <button type="submit" class="inline-flex end
-                                items-center py-2.5 px-4 text-xs font-medium 
-                                text-center text-white bg-purple-500 rounded-lg focus:ring-4
-                                 focus:ring-purple-200 hover:bg-purple-600">
+                                <button type="submit" class="inline-flex items-center py-2.5 px-4 text-xs 
+                             font-medium text-center text-white hover:text-gray-700 bg-blue-400 hover:bg-slate-300 hover:border-blue-400 hover:border-b-4 border-blue-400 border-b-4 rounded-lg">
                                     Comment
                                 </button>
                             </div>
@@ -64,10 +62,10 @@ useEffect(() => {
                                 <div class="flex justify-end items-center py-2 px-3 
                                 border-t dark:border-gray-600 gap-3">
             
-                                     <Link to={comment.id ? `/specificuser?s=${comment.id}` : '/'} type="submit" class="inline-flex items-center py-2.5 px-4 text-xs font-medium text-center text-white bg-purple-500 rounded-lg focus:ring-4 focus:ring-purple-200 hover:bg-purple-600">
+                                     <Link to={comment.id ? `/specificuser?s=${comment.id}` : '/'} type="submit" class="inline-flex gap-5 items-center py-1 px-4 my-2 text-xs font-bold text-center text-gray-700 uppercase border-gray-700 border-b-2 rounded-md bg-slate-300 hover:bg-purple-600">
                                     {comment.name}
                                     </Link>
-                                    <p class="inline-flex items-center py-2.5 px-4 text-xs font-medium text-center text-white bg-purple-500 rounded-lg focus:ring-4 focus:ring-purple-200 hover:bg-purple-600">
+                                    <p class="inline-flex gap-5 items-center py-1 px-4 my-2 text-xs font-bold text-center text-gray-700 uppercase border-gray-700 border-b-2 rounded-md bg-slate-300 hover:bg-purple-600">
                                         23/07/2023
                                     </p>
             

@@ -1,60 +1,93 @@
 const mongoose = require("mongoose");
 const express = require("express");
 const router = express.Router();
+const multer = require('multer');
 var admin = require("firebase-admin");
 const QuestionDB = require("../models/Question");
 var serviceAccount = require("../ServiceAccountKey.json");
 const UserDb = require("../models/UserProfile")
-
+const path = require('path');
+const fs = require('fs');
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount),
   databaseURL: "https://final-c4f40-default-rtdb.firebaseio.com"
 });
+const storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, path.join(__dirname, '../images'));
+  },
+  filename: function (req, file, cb) {
+    cb(null, file.fieldname + '-' + Date.now() + path.extname(file.originalname));
+  }
 
-router.post("/profile", async (req, res) => {
+})
+
+
+const fileFilter = (req, file, cb) => {
+  const allowedFileTypes = ['image/jpeg', 'image/jpg', 'image/png'];
+  if(allowedFileTypes.includes(file.mimetype)) {
+      cb(null, true);
+  } else {
+      cb(null, false);
+  }
+}
+const upload = multer({ storage: storage, fileFilter: fileFilter })
+
+router.post("/profile", upload.single('image'), async (req, res) => {
+  try {
+    const { linkedin, github, uuid, name, user, category, email, desc } = req.body;
+    const image = req.file.filename;
+
+
+    // Create a new user data instance with image details
     const userData = new UserDb({
-        linkedin: req.body.linkedin,
-        github: req.body.github,
-        birthdate: new Date(req.body.birthdate).toISOString().split('T')[0],
-        uuid: req.body.uuid,
-        name: req.body.name,
-      user: req.body.user,
-      category:req.body.category,
-      email:req.body.email,
-      desc:req.body.desc
-    });
-  
-    await userData
-      .save()
-      .then((doc) => {
-        res.status(201).send(doc);
-      })
-      .catch((err) => {
-        res.status(400).send({
-          message: "Question not added successfully",
-        });
-      });
+      linkedin,
+      github,
+      uuid,
+      name,
+      user,
+      category,
+      email,
+      desc,
+      image,
 
-   
-  });
+    });
+
+ 
+    const savedUser = await userData.save();
+
+
+    res.status(201).send(savedUser);
+  } catch (error) {
+    console.error('Error creating user:', error);
+    res.status(400).send({
+      message: "User not added successfully",
+    });
+  }
+});
+
   // Define an update profile route
-router.put("/profile/:uuid", async (req, res) => {
+  router.put("/profile/:uuid", upload.single('image'), async (req, res) => {
     try {
-      const { uuid } = req.params;
-      const updatedData = {
-        linkedin: req.body.linkedin,
-        github: req.body.github,
-        category:req.body.category,
-        email:req.body.email,
-        desc:req.body.desc
-        // Add more fields to update as needed
-      };
+      const { linkedin, github, uuid, name, user, category, email, desc } = req.body;
+      const image = req.file.filename;
   
-      // Find the user by UUID and update their profile data
+      // Update the user profile directly without creating a new instance
       const updatedUser = await UserDb.findOneAndUpdate(
         { uuid },
-        updatedData,
-        { new: true }
+        {
+          $set: {
+            linkedin,
+            github,
+            name,
+            user,
+            category,
+            email,
+            desc,
+            image,
+          },
+        },
+        { new: true, upsert: true }
       );
   
       if (!updatedUser) {
@@ -63,10 +96,11 @@ router.put("/profile/:uuid", async (req, res) => {
   
       res.status(200).json(updatedUser);
     } catch (error) {
-      console.error("Error updating user profile:", error);
-      res.status(500).json({ error: "Unable to update user profile" });
+      console.error('Error updating/creating user profile:', error);
+      res.status(500).json({ error: "Unable to update/create user profile" });
     }
   });
+  
   
   router.get("/getuserpofile/:uuid", async (req, res) => {
     try {

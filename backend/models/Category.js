@@ -7,9 +7,6 @@ const categorySchema = new Schema({
     unique: true, // Ensure unique category names
     
   },
- image:{
-  type: String,
- }
 
   }
  );

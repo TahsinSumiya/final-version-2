@@ -129,7 +129,7 @@ if(response.ok){
 
 
           
-      <div class="lg:flex bg-purple-100 w-screen justify-center" >
+<div class="lg:flex w-screen justify-center" >
       <div
         class="min-h-screen py-6 flex flex-col justify-center sm:py-12 lg:w-1/2 xl:max-w-screen-sm"
       >
@@ -137,7 +137,7 @@ if(response.ok){
 
         <div class="relative right-8 py-4  sm:max-w-xl ml-20">
           <div
-            class="absolute inset-0 bg-gradient-to-r from-purple-300 to-purple-600 shadow-lg transform-skew-y-6 sm:skew-y-0 sm:-rotate-6 sm:rounded-3xl"
+            class="absolute inset-0 bg-gradient-to-r from-slate-100 to-slate-300 shadow-lg transform-skew-y-6 sm:skew-y-0 sm:-rotate-6 sm:rounded-3xl"
           ></div>
 
           <div
@@ -147,7 +147,7 @@ if(response.ok){
           
               <div class="relative">
                 <h3
-                  class="text-center text-2xl text-purple-900 font-display font-semibold lg:text-left xl:text-4xl xl:text-bold"
+                  class="text-center text-2xl text-slate-900 font-display font-semibold lg:text-left xl:text-4xl xl:text-bold"
                 >
                   Admin Login
                 </h3>
@@ -157,7 +157,7 @@ if(response.ok){
               <div>
                   <div class="flex justify-between items-center mt-8"></div>
                   <input
-                    class="w-full text-lg py-2 border-b border-gray-300 focus:outline-none focus:border-purple-500"
+                    class="w-full text-lg py-2 border-b border-gray-300 focus:outline-none focus:border-slate-500"
                     type="text" name='id' id='id'
                     placeholder="Enter your email address"
                     onChange={(e)=>setId(e.target.value)} value={id}
@@ -195,7 +195,7 @@ if(response.ok){
 
                   <div class="mt-10 justify-center">
                   <button
-                      class="bg-purple-500 text-gray-100 p-4 w-full rounded-full tracking-wide font-semibold font-display focus:outline-none focus:shadow-outline hover:bg-purple-600 shadow-lg"
+                      class="bg-blue-500 text-gray-100 p-4 w-full rounded-full tracking-wide font-semibold font-display focus:outline-none focus:shadow-outline hover:bg-blue-600 shadow-lg"
                     >
                       Log In
                     </button>

@@ -117,31 +117,32 @@ console.log(user)
 
   return (
     <>
-    <div className="bg-purple-200 h-screen overflow-y-auto">
+    <div className=" h-screen overflow-y-auto">
     <Sidebar/>
       <div class=" p-32  ml-16 ">
-      <div class="bg-gradient-to-r from-blue-200 via-blue-300 to-blue-400 h-screen">
-        <div class="relative h-full bg-opacity-60 backdrop-blur-lg">
-            <img 
-            src={bgimg}
-                alt="Background Image" class="object-cover w-full h-full"/>
-            <div class="absolute inset-0 bg-gray-100 bg-opacity-80">
+      <div class=" h-screen">
+        <div class="relative h-full  backdrop-blur-lg">
+           
+            <div class="absolute inset-0  ">
              
  
-                <div class="bg-gradient-to-r from-purple-100 via-yellow-100 to-gray-100 p-4 rounded-lg shadow-md hover:shadow-xl transition duration-300 cursor-pointer mt-4">
+                <div class=" p-4 rounded-lg shadow-md hover:shadow-xl transition duration-300 cursor-pointer mt-4 bg-slate-100">
                     <div class="flex justify-end items-center py-2 px-3 gap-3 mt-4 text-gray-900">
 
-                        <button type="submit"
-                            class="inline-flex items-center py-2.5 px-4 text-xs font-medium text-center text-white bg-purple-400 hover:bg-purple-500 rounded-lg">
-                            <i class="bi bi-calendar-date-fill mr-2"></i>
-                            {new Date(questionData?.created_at).toLocaleString()}
-                        </button>
+                        <div
+                            class="flex items-center justify-center px-2 text-xs font-medium text-center text-white bg-blue-400  rounded-lg ">
+                            <i class="bi bi-calendar-date-fill pt-1"></i>
+                            <span className="pr-3">                            {new Date(questionData?.created_at).toLocaleString()}
+</span>
+                        </div>
                         <Link to={`/specificuser?s=${questionData?.user.uid}`}
-                            class="inline-flex items-center py-2.5 px-4 text-xs font-medium text-center text-white bg-purple-400 hover:bg-purple-500 rounded-lg">
-                            <i class="bi bi-person-lines-fill mr-2"></i>
-                            {questionData?.user?.displayName
+                            class="flex items-center px-2 text-xs font-medium text-center text-white hover:text-gray-700 bg-blue-400 hover:bg-slate-300 hover:border-blue-400 hover:border-b-4 border-blue-400 border-b-4 rounded-lg">
+                            <i class="bi bi-person-lines-fill  pt-1"></i>
+                           <span className="pr-3 uppercase">
+                           {questionData?.user?.displayName
                       ? questionData?.user?.displayName
                       : "coco"}
+                           </span>
                         </Link>
                     </div>
 
@@ -156,7 +157,7 @@ console.log(user)
 
 
                 <div class="my-3">
-                    <p class="inline-flex items-center py-2.5 px-4 text-xs font-medium text-center text-white bg-purple-400 hover:bg-purple-500 rounded-lg focus:border-transparent focus:outline-none">
+                    <p class="inline-flex gap-5 items-center py-1 px-4 my-2 text-xs font-bold text-center text-gray-700 uppercase border-gray-700 border-b-2 rounded-md bg-slate-300">
                     {questionData && questionData?.answerDetails.length} ans
                     </p>
                 </div>
@@ -172,12 +173,12 @@ console.log(user)
 
                     <div class="flex justify-end items-center py-2 px-3 border-t dark:border-gray-600 gap-3">
 
-                         <Link to={`/specificuser?s=${_q.user.uid}`} type="submit" class="inline-flex items-center py-2.5 px-4 text-xs font-medium text-center text-white bg-purple-500 rounded-lg focus:ring-4 focus:ring-purple-200 hover:bg-purple-600">
+                         <Link to={`/specificuser?s=${_q.user.uid}`} type="submit" class="inline-flex items-center py-2.5 px-4 text-xs font-medium text-center text-white hover:text-gray-700 uppercase bg-blue-400 hover:bg-slate-300 hover:border-blue-400 hover:border-b-4 border-blue-400 border-b-4 rounded-lg">
                          {_q?.user?.displayName
                           ? _q?.user?.displayName
                           : "Natalia lee"}
                         </Link>
-                        <p class="inline-flex items-center py-2.5 px-4 text-xs font-medium text-center text-white bg-purple-500 rounded-lg focus:ring-4 focus:ring-purple-200 hover:bg-purple-600">
+                        <p class="inline-flex items-center py-2.5 px-4 text-xs font-medium text-center text-white bg-blue-400  rounded-lg">
                         {new Date(_q.created_at).toLocaleString()}
                         </p>
 
@@ -191,13 +192,13 @@ console.log(user)
                
                 <form
 class="px-6 pt-9 mt-5 shadow-xl border border-gray-200 rounded-lg bg-gradient-to-b
- from-white via-purple-100 to-purple-200"/>
+ from-white via-blue-100 to-blue-200"/>
                     {/* <div class=" items-center py-2 px-3 gap-3 mt-4 text-gray-900">
                         <input type="text" placeholder="Question Title"
                             class="w-full text-gray-900 p-3 border-0 text-xl 
                             focus:border-transparent focus:outline-none rounded-lg"/>
                     </div> */}
-                    <div class="mb-4 w-full rounded-lg border border-purple-200 ">
+                    <div class="mb-4 w-full rounded-lg border border-blue-200 ">
                         <div class="py-2 px-4 bg-white rounded-t-lg h-96 ">
                             <label for="Question" class="sr-only"></label>
                             <ReactQuill theme='snow'modules={Editor.modules}   value={answer}
@@ -208,7 +209,7 @@ class="px-6 pt-9 mt-5 shadow-xl border border-gray-200 rounded-lg bg-gradient-to
                         </div>
                         <div class="flex justify-between items-center py-2 px-3 border-t dark:border-gray-600">
                             <button type="submit" onClick={handleSubmit}
-                                class="inline-flex items-center py-2.5 px-4 text-xs font-medium text-center text-white bg-purple-500 rounded-lg focus:ring-4 focus:ring-purple-200 hover:bg-purple-600">
+                                class="inline-flex items-center py-2.5 px-4 text-xs font-medium text-center text-white hover:text-gray-700 bg-blue-400 hover:bg-slate-300 hover:border-blue-400 hover:border-b-4 border-blue-400 border-b-4 rounded-lg">
                                 Add answer
                             </button>
                         </div>

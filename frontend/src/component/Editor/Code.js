@@ -36,16 +36,15 @@ export default function Code() {
   return (
     <>
       
-  <div class=" p-4 overflow-y-auto ml-16 ">
+      <div class=" p-4 overflow-y-auto ml-16 ">
   <div class="px-6 pt-9 pb-9 mt-5 shadow-xl border border-gray-200 
-                     rounded-lg bg-gradient-to-b from-purple-100 via-purple-200 to-purple-300">
+                     rounded-lg bg-gradient-to-b from-slate-100  to-slate-200">
                         
                         <div class="flex justify-center gap-20 items-center py-2 px-3 gap-3 mt-4 text-gray-900">
                       
               
-                            <button class="inline-flex items-center py-2.5 px-10 text-xs
-                             font-medium text-center text-white bg-purple-400
-                              hover:bg-purple-500 rounded-lg focus:border-transparent
+                            <button class="inline-flex items-center py-2.5 px-4 text-xs
+                             font-medium text-center border-blue-400 border-b-4 bg-slate-300 hover:bg-blue-400 text-gray-800 hover:text-white rounded-lg focus:border-transparent
                                focus:outline-none"
                                id="divOne"
                                onClick={(e) => {
@@ -54,9 +53,9 @@ export default function Code() {
                                >
                                 Html
                             </button>
-                            <button class="inline-flex items-center 
-                            py-2.5 px-10 text-xs font-medium text-center text-white
-                             bg-purple-400 hover:bg-purple-500 rounded-lg"
+                            <button class="inline-flex items-center py-2.5 px-4 text-xs
+                             font-medium text-center border-blue-400 border-b-4 bg-slate-300 hover:bg-blue-400 text-gray-800 hover:text-white rounded-lg focus:border-transparent
+                               focus:outline-none"
                              id="divTwo"
                   onClick={(e) => {
                   hideShowDiv(e)
@@ -65,9 +64,9 @@ export default function Code() {
                              >
                                 CSS
                             </button>
-                            <button type="submit" class="inline-flex items-center py-2.5 
-                            px-10 text-xs font-medium text-center text-white bg-purple-400
-                             hover:bg-purple-500 rounded-lg"
+                            <button type="submit" class="inline-flex items-center py-2.5 px-4 text-xs
+                             font-medium text-center border-blue-400 border-b-4 bg-slate-300 hover:bg-blue-400 text-gray-800 hover:text-white rounded-lg focus:border-transparent
+                               focus:outline-none"
                              id="divThree"
                              onClick={(e) => {
                           hideShowDiv(e)
@@ -78,12 +77,10 @@ export default function Code() {
                             </button>
                         </div>
                        <div className={isActive.id === 'divOne' ? `divOne` : 'divOne  css js'}>
-      <label class="my-2 inline-flex items-center py-2.5 px-10 text-xs
-                             font-medium text-center text-white bg-purple-400
-                              hover:bg-purple-500 rounded-lg focus:border-transparent
-                               focus:outline-none">html</label>
+      <label class="my-2 inline-flex items-center py-2.5 px-4 text-xs 
+                             font-medium text-center text-white hover:text-gray-700 bg-blue-400 hover:bg-slate-300 hover:border-blue-400 hover:border-b-4 border-blue-400 border-b-4 rounded-lg">html</label>
       <Editor 
-      className="scroll border-4 border-purple-300 rounded-lg my-5 py-2 px-10 bg-white rounded-t-lg"  
+      className="scroll border-4  rounded-lg my-5 py-2 px-10 bg-white rounded-t-lg"  
       language="xml"
       displayName="HTML"
       value={html}
@@ -94,11 +91,9 @@ export default function Code() {
    </Editor>
   </div>
 <div className={isActive.id === 'divTwo' ? `divTwo` : 'divTwo d-none js css'}>
-     <label class="my-2 inline-flex items-center py-2.5 px-10 text-xs
-                             font-medium text-center text-white bg-purple-400
-                              hover:bg-purple-500 rounded-lg focus:border-transparent
-                               focus:outline-none">css</label>
-         <Editor  className="scroll border-4 border-purple-300 rounded-lg
+     <label class="my-2 inline-flex items-center py-2.5 px-4 text-xs 
+                             font-medium text-center text-white hover:text-gray-700 bg-blue-400 hover:bg-slate-300 hover:border-blue-400 hover:border-b-4 border-blue-400 border-b-4 rounded-lg">css</label>
+         <Editor  className="scroll border-4  rounded-lg
          my-5 py-2 px-4 bg-white rounded-t-lg
          "  
             language="css"
@@ -111,11 +106,9 @@ export default function Code() {
       </Editor>
      </div>
      <div className={isActive.id === 'divThree' ? `divThree` : 'divTwo d-none css html'}>
-     <label class=" my-2 inline-flex items-center py-2.5 px-10 text-xs
-                             font-medium text-center text-white bg-purple-400
-                              hover:bg-purple-500 rounded-lg focus:border-transparent
-                               focus:outline-none">js</label>
-         <Editor className="scroll border-4 border-purple-300 rounded-lg
+     <label class=" my-2 inline-flex items-center py-2.5 px-4 text-xs 
+                             font-medium text-center text-white hover:text-gray-700 bg-blue-400 hover:bg-slate-300 hover:border-blue-400 hover:border-b-4 border-blue-400 border-b-4 rounded-lg">js</label>
+         <Editor className="scroll border-4 00 rounded-lg
          my-5 py-2 px-4 bg-white rounded-t-lg
          " 
          

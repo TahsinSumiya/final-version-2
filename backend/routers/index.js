@@ -8,7 +8,9 @@ const UserRouter = require('./UserProfile')
 const AdminRouter = require('./Admin')
 const CategoryRouter = require('./Category')
 const LayoutRouter = require('./Layouts')
+const RequestRouter = require('./request')
 const email = require('./Autoemail')
+const NoticeRouter = require('./notice')
 router.get("/", (req, res) => {
     res.send("Welcome to our page");
   });
@@ -20,5 +22,7 @@ router.get("/", (req, res) => {
   router.use('/user', UserRouter)
   router.use('/category', CategoryRouter)
   router.use('/layouts', LayoutRouter)
+  router.use('/request', RequestRouter)
+  router.use('/notice',NoticeRouter)
   router.use('/autoemail', email)
   module.exports = router;

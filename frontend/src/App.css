@@ -1,7 +1,7 @@
 ::-webkit-scrollbar{
-    width: 5px;
+    width: 1px;
 }
 ::-webkit-scrollbar-thumb{
-    background: linear-gradient(rgb(178, 11, 239),rgb(240, 188, 240));
+    background: linear-gradient(rgb(232, 224, 235),rgb(75, 73, 75));
     border-radius: 6px;
 }

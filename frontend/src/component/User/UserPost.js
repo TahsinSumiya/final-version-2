@@ -114,7 +114,7 @@ const handleDelete = (layoutId) => {
     <>
     <Sidebar/>
      <div class=" p-4 overflow-y-auto ml-16 ">
-     <div class="bg-gradient-to-r from-purple-100 via-yellow-100 to-gray-100 p-4 h-screen">
+     <div class="bg-gradient-to-r from-slate-100  to-slate-200 p-4 h-screen">
 
 <div class="flex flex-col items-center justify-center">
   <div class="max-w-screen-lg w-full p-4">
@@ -123,7 +123,7 @@ const handleDelete = (layoutId) => {
             onClick={(e) => {
             hideShow(e)
             }}
-       class="bg-yellow-100 text-2xl text-center shadow-lg rounded-lg p-4 hover:shadow-xl transition duration-300 transform hover:-translate-y-1 hover:scale-105">
+       class="bg-blue-200 text-2xl text-center shadow-lg rounded-lg p-4 hover:shadow-xl transition duration-300 transform hover:-translate-y-1 hover:scale-105">
      
        Questions
       </button>
@@ -131,7 +131,7 @@ const handleDelete = (layoutId) => {
             onClick={(e) => {
             hideShow(e)
             }}
-       class="bg-yellow-100 text-2xl text-center shadow-lg rounded-lg p-4 hover:shadow-xl transition duration-300 transform hover:-translate-y-1 hover:scale-105">
+       class="bg-blue-200 text-2xl text-center shadow-lg rounded-lg p-4 hover:shadow-xl transition duration-300 transform hover:-translate-y-1 hover:scale-105">
        
         Layouts
       </button>
@@ -147,7 +147,7 @@ const handleDelete = (layoutId) => {
       {userPosts.map((post) => (
   <div class="px-9 pt-9 ">
   
-      <div class="flex justify-between items-center py-2 px-3 gap-3  mt-4 text-gray-900">
+      <div class="flex justify-between items-center py-2  gap-3  mt-4 text-gray-900">
           
           <span class="relative inline-block w-full text-gray-900 text-xl rounded-lg">
               
@@ -155,14 +155,9 @@ const handleDelete = (layoutId) => {
               {post.title}
               </Link>
             </span>
-            <Link to={`/specificuser?s=${post.user.uid}`}  type="submit" class="inline-flex items-center py-2.5 px-4 text-xs font-medium text-center text-white bg-purple-400 hover:bg-purple-500 rounded-lg">
-              {/* <i class="bi bi-person-lines-fill mr-2"></i>  */}
-              {post?.user?.displayName ? post?.user?.displayName :
-         String(post?.user?.email).split('@')[0]}              
-          </Link>
         
       </div>
-      <div class="mb-4 w-full bg-purple-200 rounded-lg border border-purple-200">
+      <div class="mb-4 w-full ">
           <div class="py-2 px-4 bg-white rounded-t-lg">
               <label for="answers" class="sr-only"></label>
               <p class="w-full text-lg text-gray-900 bg-white border-0 border-b border-dashed focus:border-transparent focus:outline-none py-1">
@@ -175,13 +170,13 @@ const handleDelete = (layoutId) => {
           <div class="flex justify-between items-center py-2
            px-3 border-t dark:border-gray-600">
             {/* <div className='flex justify-around gap-3'>
-            <button type="submit" class="inline-flex items-center py-2.5 px-4 text-xs font-medium text-center text-white bg-purple-500 rounded-lg focus:ring-4 focus:ring-purple-200">
+            <button type="submit" class="inline-flex gap-5 items-center py-1 px-4 my-2 text-xs font-bold text-center text-gray-700 uppercase border-gray-700 border-b-2 rounded-md bg-slate-300">
               {JSON.parse(post.tags[0])}<span className='mx-2'></span>
               </button>
-            <button type="submit" class="inline-flex items-center py-2.5 px-4 text-xs font-medium text-center text-white bg-purple-500 rounded-lg focus:ring-4 focus:ring-purple-200">
+            <button type="submit" class="inline-flex gap-5 items-center py-1 px-4 my-2 text-xs font-bold text-center text-gray-700 uppercase border-gray-700 border-b-2 rounded-md bg-slate-300">
               {post?.answerDetails?.length}<span className='mx-2'>ans</span>
               </button>
-              <button type="submit" class="inline-flex items-center py-2.5 px-4 text-xs font-medium text-center text-white bg-purple-500 rounded-lg focus:ring-4 focus:ring-purple-200">
+              <button type="submit" class="inline-flex gap-5 items-center py-1 px-4 my-2 text-xs font-bold text-center text-gray-700 uppercase border-gray-700 border-b-2 rounded-md bg-slate-300">
               {new Date(post?.created_at).toLocaleString()}
               </button>
 
@@ -195,10 +190,10 @@ const handleDelete = (layoutId) => {
                    
                   <div class="flex justify-around gap-3">
                  
-                    <button type="submit" class="inline-flex items-center py-2.5 px-4 text-xs font-medium text-center text-white bg-purple-500 rounded-lg focus:ring-4 focus:ring-purple-200">
+                    <button type="submit" class="inline-flex gap-5 items-center py-1 px-4 my-2 text-xs font-bold text-center text-gray-700 uppercase border-gray-700 border-b-2 rounded-md bg-slate-300">
                     {post?.answerDetails?.length}<span className='mx-2'>ans</span>
                     </button>
-                    <button type="submit" class="inline-flex items-center py-2.5 px-4 text-xs font-medium text-center text-white bg-purple-500 rounded-lg focus:ring-4 focus:ring-purple-200">
+                    <button type="submit" class="inline-flex gap-5 items-center py-1 px-4 my-2 text-xs font-bold text-center text-gray-700 uppercase border-gray-700 border-b-2 rounded-md bg-slate-300">
                     {new Date(post?.created_at).toLocaleString()}
                     </button>
                     
@@ -216,10 +211,10 @@ const handleDelete = (layoutId) => {
              
             {/* <div class="flex justify-around gap-3">
            
-              <button type="submit" class="inline-flex items-center py-2.5 px-4 text-xs font-medium text-center text-white bg-purple-500 rounded-lg focus:ring-4 focus:ring-purple-200">
+              <button type="submit" class="inline-flex gap-5 items-center py-1 px-4 my-2 text-xs font-bold text-center text-gray-700 uppercase border-gray-700 border-b-2 rounded-md bg-slate-300">
               {post?.answerDetails?.length}<span className='mx-2'>ans</span>
               </button>
-              <button type="submit" class="inline-flex items-center py-2.5 px-4 text-xs font-medium text-center text-white bg-purple-500 rounded-lg focus:ring-4 focus:ring-purple-200">
+              <button type="submit" class="inline-flex gap-5 items-center py-1 px-4 my-2 text-xs font-bold text-center text-gray-700 uppercase border-gray-700 border-b-2 rounded-md bg-slate-300">
               {new Date(post?.created_at).toLocaleString()}
               </button>
               
@@ -243,12 +238,12 @@ const handleDelete = (layoutId) => {
               {Layouts.map((layout) => (
                 
           <div class="px-6 pt-9 pb-9 mt-5 shadow-xl border border-gray-200 
-               rounded-lg bg-gradient-to-b from-purple-100 via-purple-200 to-purple-300">
+               rounded-lg bg-gradient-to-b from-slate-100  to-slate-200">
                    
                   <div class="flex justify-end items-center py-2 px-3 gap-3 mt-4
                    text-gray-900">
                     
-                  <Link to={`/specificuser?s=${layout.id}`}  class="inline-flex items-center py-2.5 px-4 
+                  {/* <Link to={`/specificuser?s=${layout.id}`}  class="inline-flex items-center py-2.5 px-4 
                       text-xs font-medium text-center text-white
                        bg-purple-400 hover:bg-purple-500 rounded-lg
                         focus:border-transparent focus:outline-none"
@@ -256,11 +251,10 @@ const handleDelete = (layoutId) => {
                         
                         >
                           {layout.author}
-                      </Link>
+                      </Link> */}
                       <button class="inline-flex items-center py-2.5 px-4 text-xs
-                       font-medium text-center text-white bg-purple-400
-                        hover:bg-purple-500 rounded-lg focus:border-transparent
-                         focus:outline-none"
+                          font-medium text-center border-blue-400 border-b-4 bg-slate-300 hover:bg-blue-400 text-gray-800 hover:text-white rounded-lg focus:border-transparent
+                            focus:outline-none"
                          id="divOne"
                          onClick={(e) => {
                          hideShowDiv(e)
@@ -268,9 +262,9 @@ const handleDelete = (layoutId) => {
                          >
                           Html
                       </button>
-                      <button class="inline-flex items-center 
-                      py-2.5 px-4 text-xs font-medium text-center text-white
-                       bg-purple-400 hover:bg-purple-500 rounded-lg"
+                      <button class="inline-flex items-center py-2.5 px-4 text-xs
+                          font-medium text-center border-blue-400 border-b-4 bg-slate-300 hover:bg-blue-400 text-gray-800 hover:text-white rounded-lg focus:border-transparent
+                            focus:outline-none"
                        id="divTwo"
             onClick={(e) => {
             hideShowDiv(e)
@@ -279,9 +273,9 @@ const handleDelete = (layoutId) => {
                        >
                           CSS
                       </button>
-                      <button type="submit" class="inline-flex items-center py-2.5 
-                      px-4 text-xs font-medium text-center text-white bg-purple-400
-                       hover:bg-purple-500 rounded-lg"
+                      <button type="submit" class="inline-flex items-center py-2.5 px-4 text-xs
+                          font-medium text-center border-blue-400 border-b-4 bg-slate-300 hover:bg-blue-400 text-gray-800 hover:text-white rounded-lg focus:border-transparent
+                            focus:outline-none"
                        id="divThree"
                        onClick={(e) => {
                     hideShowDiv(e)
@@ -295,7 +289,7 @@ const handleDelete = (layoutId) => {
                   {visible &&  <div className={isActive.id === 'divOne' ? `divOne` : 'divOne  css js'}>
 
 <SyntaxHighlighter language="html" 
-className="scroll border-4 border-purple-300 rounded-lg"  showLineNumbers={true} wrapLines={true} >
+className="scroll border-4 border-blue-300 rounded-lg"  showLineNumbers={true} wrapLines={true} >
 {/* {html} */}
 {layout.html}
 </SyntaxHighlighter>
@@ -303,14 +297,14 @@ className="scroll border-4 border-purple-300 rounded-lg"  showLineNumbers={true}
 {visible &&  <div className={isActive.id === 'divTwo' ? `divTwo` : 'divTwo d-none js css'}>
 
    <SyntaxHighlighter language="css" className="scroll 
-   border-4 border-purple-300 rounded-lg"  showLineNumbers={true} wrapLines={true} >
+   border-4 border-blue-300 rounded-lg"  showLineNumbers={true} wrapLines={true} >
 {/* {css} */}
 {layout.css}
 </SyntaxHighlighter>
 </div>}
 {visible &&  <div className={isActive.id === 'divThree' ? `divThree` : 'divTwo d-none css html'}>
  
-   <SyntaxHighlighter language="js" className="scroll border-4 border-purple-300 rounded-lg"
+   <SyntaxHighlighter language="js" className="scroll border-4 border-blue-300 rounded-lg"
      showLineNumbers={true} wrapLines={true} >
 {/* {js} */}
 {layout.js}
@@ -356,10 +350,8 @@ className="scroll border-4 border-purple-300 rounded-lg"  showLineNumbers={true}
                   {/* <Tags tags={JSON.parse(layout.tags[0])}/> */}
                     
                     <div class="flex justify-end items-center py-2 px-3 border-t dark:border-gray-600">
-                        <button type="submit" class="inline-flex end
-                        items-center py-2.5 px-4 text-xs font-medium 
-                        text-center text-white bg-purple-500 rounded-lg focus:ring-4
-                         focus:ring-purple-200 hover:bg-purple-600"
+                        <button type="submit" class="inline-flex items-center py-2.5 px-4 text-xs 
+                             font-medium text-center text-white hover:text-gray-700 bg-blue-400 hover:bg-slate-300 hover:border-blue-400 hover:border-b-4 border-blue-400 border-b-4 rounded-lg"
                          onClick={() => setOpen(hide => !hide)}
                          >
                             Comment

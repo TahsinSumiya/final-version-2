@@ -18,6 +18,7 @@ export default function UpdateUser() {
   const [email, setemail] = useState("");
   const [desc, setDesc] = useState("");
   const user = useSelector(selectUser);
+  const [selectedFile, setSelectedFile] = useState(null);
   const dispatch = useDispatch();
   useEffect(() => {
     const fetchData = async () => {
@@ -39,67 +40,72 @@ export default function UpdateUser() {
     fetchData(); // Call the fetch function when the component mounts
   }, [user.uid]);
   const handleSubmit = async (e) => {
-      e.preventDefault();
+    e.preventDefault();
+  
+    try {
+      const formData = new FormData();
+      formData.append('image', selectedFile, selectedFile.name);
+    
+      formData.append('linkedin', linkedin);
+      formData.append('github', github);
+      formData.append('user', user);
+      formData.append('uuid', user.uid);
+      formData.append('name', user.displayName);
+      formData.append('category', category);
+      formData.append('email', category === 'hiring' ? email : '');
+      formData.append('desc', desc);
+     
 
-      try {
-          const bodyJSON = {
-              linkedin: linkedin,
-              github: github,
-             
-              user: user,
-              uuid: user.uid,
-              name: user.displayName,
-              category: category,
-              email: email,
-              desc:desc  
-          };
+      const response = await axios.put(`http://localhost:80/api/user/profile/${user.uid}`,formData);
 
-          const response = await axios.put(`http://localhost:80/api/user/profile/${user.uid}`, bodyJSON);
 
-          if (response.status === 200) { // Check the response status
-              
-              // Reset the form or perform any other necessary actions
-              setlinkedin("");
-              setgithub("");
-              
-              setcategory("looking-for-job");
-              setemail("");
-              setDesc("")
-              alert('updated sucessfully')
-          } else {
-              alert('Failed to create user.');
-          }
-      } catch (error) {
-          console.error('Error creating user:', error);
-      }
+      // Reset form fields after successful submission
+      setSelectedFile(null);
+      setlinkedin("");
+      setgithub("");
+      setcategory("looking-for-job");
+      setemail("");
+      setDesc("");
+      alert('User updated successfully!');
+    } catch (error) {
+      console.error('Error creating user:', error);
+    }
   };
 
   return (
     <>
 
-    <div className='px-24'>
-    <div class="px-12 bg-gradient-to-r from-purple-100 via-yellow-100 to-gray-100 p-4 rounded-lg shadow-md hover:shadow-xl transition duration-300 cursor-pointer mt-8">
+<div className='px-24'>
+    <div class="px-12 bg-gradient-to-r from-slate-100  to-slate-200 p-4 rounded-lg shadow-md hover:shadow-xl transition duration-300 cursor-pointer mt-8">
          
   
 
  
 
          <div class="mb-4">
+         <label for="textarea1" class="my-3 block text-sm font-medium text-gray-700">Image</label>
+                <input
+                  type="file"
+                  className="w-full pl-10 pr-4 py-2 border bg-white 
+                  focus:ring focus:ring-blue-300 focus:ring-opacity-50 
+                  focus:border-transparent focus:outline-none rounded-lg"
+                  onChange={(e) => setSelectedFile(e.target.files[0])}  
+                />
              <div class="relative">
              <label for="textarea1" class="my-3 block text-sm font-medium text-gray-700">Github</label>
                  <input type="text" value={github} onChange={(e) => setgithub(e.target.value)}
                   class="w-full pl-10 pr-4 py-2 border 
-                   focus:ring focus:ring-purple-400 focus:ring-opacity-50 
+                   focus:ring focus:blue-blue-400 focus:ring-opacity-50 
                    focus:border-transparent focus:outline-none rounded-lg" placeholder="Github link"/>
                 <label for="textarea1" class="my-3 block text-sm font-medium text-gray-700">LinkedIn</label>
                  <input type="text" value={linkedin} onChange={(e) => setlinkedin(e.target.value)}
                   class="w-full pl-10 pr-4 py-2 border 
-                   focus:ring focus:ring-purple-400 focus:ring-opacity-50 
+                   focus:ring focus:blue-purple-400 focus:ring-opacity-50 
                    focus:border-transparent focus:outline-none rounded-lg" placeholder="LinkedIn"/>
                     <label for="textarea1" class="my-3 block text-sm font-medium text-gray-700">Description</label>
                  <textarea type="text"
                   class="w-full pl-10 pr-4 py-2 border 
-                   focus:ring focus:ring-purple-400 focus:ring-opacity-50 
+                   focus:ring focus:ring-blue-400 focus:ring-opacity-50 
                    focus:border-transparent focus:outline-none rounded-lg"
                    value={desc}
                            onChange={(e) => setDesc(e.target.value)}
@@ -107,7 +113,7 @@ export default function UpdateUser() {
                     <label for="textarea1" class="my-3 block text-sm font-medium text-gray-700">email</label>
                      <input type="email"
                   class="w-full pl-10 pr-4 py-2 border 
-                   focus:ring focus:ring-purple-400 focus:ring-opacity-50 
+                   focus:ring focus:ring-blue-400 focus:ring-opacity-50 
                    focus:border-transparent focus:outline-none rounded-lg"
                    value={email}
                            onChange={(e) => setemail(e.target.value)}
@@ -116,7 +122,7 @@ export default function UpdateUser() {
              </div>
              <label for="textarea1" class="my-3 block text-sm font-medium text-gray-700">Category</label>
              <select onChange={(e) => setcategory(e.target.value)}
-              class="mt-2 w-full px-3 py-2 border rounded-md focus:ring focus:ring-purple-400 focus:ring-opacity-50 focus:border-transparent focus:outline-none rounded-lg">
+              class="mt-2 w-full px-3 py-2 border rounded-md focus:ring focus:ring-blue-400 focus:ring-opacity-50 focus:border-transparent focus:outline-none">
                 
                 <option value="">Select a category</option>
                  <option value="looking for Job">Looking for Job</option>
@@ -127,8 +133,8 @@ export default function UpdateUser() {
          </div>
  
          <div class="flex justify-around">
-             <button type="submit" class="bg-purple-500 hover:bg-purple-600
-              text-white py-2 px-4 rounded-md transition duration-300"
+             <button type="submit" class="inline-flex items-center py-2.5 px-4 text-xs 
+                             font-medium text-center text-white hover:text-gray-700 bg-blue-400 hover:bg-slate-300 hover:border-blue-400 hover:border-b-4 border-blue-400 border-b-4 rounded-lg"
               onClick={handleSubmit}
               >Submit</button>
           

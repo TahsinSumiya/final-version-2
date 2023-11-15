@@ -29,10 +29,19 @@ export default function Sidebar() {
 <div class="scrollbar" id="style-1">
 
     <ul>
+        <li>
+            
+            <Link to="/profile">
+            <div className=''><i class="bi bi-person-bounding-box"></i> </div>
+            <span class="nav-text">User profile</span>
+            </Link>
+            
+            
+        </li>
 
         <li>
-            <Link to="/">
-                <i class="bi bi-house"></i>
+            <Link to="/" className=''>
+                <div className=''><i class="bi bi-house"></i></div>
                <span class="nav-text">Home</span>
             </Link>
         </li>
@@ -45,12 +54,12 @@ export default function Sidebar() {
         </li>
 
 
-        <li>
+        {/* <li>
             <Link to="/profile">
                 <i class="bi bi-person-bounding-box"></i>                        
                 <span class="nav-text">User profile</span>
             </Link>
-        </li>
+        </li> */}
 
         <li class="darkerlishadow">
             <Link to="/getcategory">
@@ -91,12 +100,7 @@ export default function Sidebar() {
 
     </ul>
 
-    {/* <li>
-        <Link to="/admin">
-            <i class="bi bi-person-fill"></i>
-            <span class="nav-text">Admin</span>
-        </Link>
-    </li> */}
+ 
 
     <li>
         <Link to="/userpost">
@@ -110,7 +114,18 @@ export default function Sidebar() {
             <span class="nav-text">Editor</span>
         </Link>
     </li>
-
+    <li>
+        <Link to="/viewnotice" >
+        <i class="bi bi-bell-fill"></i>
+            <span class="nav-text">Notices</span>
+        </Link>
+    </li>
+    <li>
+        <Link to="/request">
+        <div className=''><i class="bi bi-send"></i></div>
+            <span class="nav-text">Request</span>
+        </Link>
+    </li>
     <ul class="logout">
         <li>
             <Link to="/auth" onClick={handleClick} >
@@ -127,7 +142,6 @@ export default function Sidebar() {
 </div>
 </nav>
 </div>
-
  
 
   )

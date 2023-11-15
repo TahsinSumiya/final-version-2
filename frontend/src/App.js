@@ -4,7 +4,7 @@ import './App.css';
 import Header from './component/Header/Header'
 import UpdateUser from './component/User/UpdateUser'
 import MainIndex from "./component/StackOverFlow/Mainindex";
-import AllUser from './component/User/AllUser';
+import AllUser from './component/Admin/AllUser';
 import AddQuestion from "./component/Add-Question/Question";
 import ViewQuestion from "./component/ViewQuestion.js/ViewQuestion";
 import { login, logout, selectUser } from "./features/Slice";
@@ -34,6 +34,11 @@ import Footer from './component/Home/Footer';
 import AuthIndex from './component/Auth/AuthIndex';
  import PrivateWrapper from './PrivateWrapper';
 import Error from './Error';
+import Request from './component/request/Request';
+import GetRequest from './component/Admin/GetRequest';
+import PostNotice from './component/Admin/PostNotice';
+import ViewNotice from './component/Admin/ViewNotice';
+import GetNotice from './component/Admin/GetNotice';
 function App() {
   const user = useSelector(selectUser);
   const dispatch = useDispatch();
@@ -113,6 +118,21 @@ const navigate= useNavigate()
 </Route>
 <Route element={<PrivateWrapper />}>
 <Route exact path='/editor' element={<Editorindex/>} />
+</Route>
+<Route element={<PrivateWrapper />}>
+<Route exact path='/request' element={<Request/>} />
+</Route>
+<Route element={<PrivateWrapper />}>
+<Route exact path='/getrequest' element={<GetRequest/>} />
+</Route>
+<Route element={<PrivateWrapper />}>
+<Route exact path='/postnotice' element={<PostNotice/>} />
+</Route>
+<Route element={<PrivateWrapper />}>
+<Route exact path='/viewnotice' element={<ViewNotice/>} />
+</Route>
+<Route element={<PrivateWrapper />}>
+<Route exact path='/getnotice' element={<GetNotice/>} />
 </Route>
 <Route exact path='/auth' element={<AuthIndex/>} />
 <Route path="/reset-password" element={<ResetPassword/>} />
