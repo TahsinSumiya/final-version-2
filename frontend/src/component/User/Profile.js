@@ -138,7 +138,7 @@ export default function Profile() {
                 </div>
               </div>
             ) : (
-              <p className="pl-4">Loading user profile...</p>
+              <p className="pl-4">Create a public profile Show your Information </p>
             )}
           </div>
 

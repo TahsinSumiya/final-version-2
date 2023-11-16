@@ -95,18 +95,18 @@ const navigate= useNavigate()
 
 <Route exact path='/admin' element={<Admin/>} />
 
-
+<Route element={<PrivateWrapper />}>
 <Route exact path='/adminboard' element={<AdminBoard/>} />
-
-
+</Route>
+<Route element={<PrivateWrapper />}>
 <Route exact path='/categoryuploader' element={<CategoryUpload/>} />
-
-
+</Route>
+<Route element={<PrivateWrapper />}>
 <Route exact path='/adminboard/adminlayout' element={<AdminUploader/>} />
-
-
+</Route>
+<Route element={<PrivateWrapper />}>
 <Route exact path='adminboard/notification' element={<Notification/>} />
-
+</Route>
 <Route element={<PrivateWrapper />}>
 <Route exact path='/getcategory' element={<GetAllCategory/>} />
 </Route>

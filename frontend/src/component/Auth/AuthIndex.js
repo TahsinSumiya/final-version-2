@@ -271,6 +271,22 @@ function AuthIndex() {
                   >
                     Sign in
                   </button>
+                  <div className="sign-option flex justify-center  ">
+          
+          
+          <Link to='/reset-password' className="
+          " style={{
+            textAlign: "center",
+            color: "#0095ff",
+            textDecoration: "underline",
+            cursor: "pointer",
+          }}>
+      
+      <p><i class="bi bi-google text-white text-xs"></i> </p>
+            Forget password?
+          </Link>
+         
+        </div>
                 </div>
                
                 <div
@@ -316,6 +332,7 @@ function AuthIndex() {
     </div>
     <div className="sign-option flex justify-center  ">
           
+          
           <button onClick={handleGoogleSignIN} className="
           " style={{
             textAlign: "center",
@@ -329,6 +346,7 @@ function AuthIndex() {
           </button>
          
         </div>
+     
       </div>
     </div>
 

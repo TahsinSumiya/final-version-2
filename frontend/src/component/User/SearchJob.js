@@ -10,7 +10,7 @@ function SearchJob() {
   useEffect(() => {
       axios.get('http://localhost:80/api/user/getuser')
           .then((response) => {
-              setAPIData(response.data);
+              setAPIData(response.data.reverse(0));
           })
   }, [])
 
@@ -31,15 +31,15 @@ function SearchJob() {
     <>
     <Sidebar/>
     <div class="fixed top-0 w-full   p-9 rounded-md bg-white right-0 left-0">
-      <div class="flex justify-end pr-20">
+      <div class="flex justify-center pr-20">
        
     <div className="relative ">
-        <div className=" absolute left-2 top-1">
+        <div className=" absolute left-2 top-0">
         <i class="bi bi-search"></i>
         </div>
     <input
             type="text"
-            placeholder="Search by name or job"
+            placeholder="Search job Category weather your are 'hiring' or l'ooking-for-job'"
             onChange={(e) => searchItems(e.target.value)}
             class="w-[700px] p-2 rounded-md border border-gray-300 focus:outline-none focus:border-purple-400 pl-16"
           />
@@ -59,17 +59,18 @@ function SearchJob() {
 )}
                             </div>
                     <div class=" col-span-4">
-                      <h1 class="text-2xl font-semibold mb-4 text-gray-500">
+                      <Link   to={`/specificuser?s=${item.uuid}`} class="text-2xl font-semibold 
+                      mb-4 text-gray-500 hover:underline hover:text-purple-700">
                         {item.name}
-                      </h1>
+                      </Link>
 
                       <p class="text-gray-500 mb-4 w-full">{item.desc}</p>
-                      <Link
-                        to={`/specificuser?s=${item.uuid}`}
+                      <p
+                        
                         class="text-purple-900 text-sm font-medium hover:underline"
                       >
-                        Click to see more
-                      </Link>
+                        {item.category}
+                      </p>
                   </div>
                 </div>
               );
@@ -92,17 +93,18 @@ function SearchJob() {
 
                             </div>
                         <div className=" col-span-4">
-                        <h1 class="text-2xl font-semibold mb-4 text-gray-500">
+                        <Link   to={`/specificuser?s=${item.uuid}`} class="text-2xl
+                         font-semibold mb-4 text-gray-500 hover:underline hover:text-purple-700">
                       {item.name}
-                      </h1>
+                      </Link>
                        
                       <p class="text-gray-500 mb-4 w-full ">{item.desc}</p>
-                      <Link
-                        to={`/specificuser?s=${item.uuid}`}
+                      <p
+                       
                         class="text-purple-900 text-sm font-medium hover:underline"
                       >
-                        Click to see more
-                      </Link>
+                        {item.category}
+                      </p>
                             </div>
                     </div>
               );

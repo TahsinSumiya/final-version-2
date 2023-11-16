@@ -116,7 +116,7 @@ export default function Sidebar() {
     </li>
     <li>
         <Link to="/viewnotice" >
-        <i class="bi bi-bell-fill"></i>
+        <i class="bi bi-card-checklist"></i>
             <span class="nav-text">Notices</span>
         </Link>
     </li>

@@ -109,14 +109,18 @@ console.log(user)
                   <p className="text-blue">Copy</p>
                 )}
               </button>
-              <SyntaxHighlighter
-                language="html"
-                className="scroll border-4 border-purple-300 rounded-lg"
-                showLineNumbers={true}
-                wrapLines={true}
-              >
-                {html}
-              </SyntaxHighlighter>
+              {html ? (
+  <SyntaxHighlighter
+    language="html"
+    className="scroll border-4 border-purple-300 rounded-lg"
+    showLineNumbers={true}
+    wrapLines={true}
+  >
+    {html}
+  </SyntaxHighlighter>
+) : (
+  <p>No code avaiable for this section</p>
+)}
             </div>
           )}
           {visible && (
@@ -138,14 +142,18 @@ console.log(user)
                   <p className="text-blue">Copy</p>
                 )}
               </button>
-              <SyntaxHighlighter
-                language="css"
-                className="scroll border-4 border-purple-300 rounded-lg"
-                showLineNumbers={true}
-                wrapLines={true}
-              >
-                {css}
-              </SyntaxHighlighter>
+              {css ? (
+  <SyntaxHighlighter
+    language="html"
+    className="scroll border-4 border-purple-300 rounded-lg"
+    showLineNumbers={true}
+    wrapLines={true}
+  >
+    {css}
+  </SyntaxHighlighter>
+) : (
+  <p>No code avaiable for this section</p>
+)}
             </div>
           )}
           {visible && (
@@ -169,14 +177,18 @@ console.log(user)
                   <p className="text-blue">Copy</p>
                 )}
               </button>
-              <SyntaxHighlighter
-                language="js"
-                className="scroll border-4 border-purple-300 rounded-lg"
-                showLineNumbers={true}
-                wrapLines={true}
-              >
-                {js}
-              </SyntaxHighlighter>
+              {js ? (
+  <SyntaxHighlighter
+    language="html"
+    className="scroll border-4 border-purple-300 rounded-lg"
+    showLineNumbers={true}
+    wrapLines={true}
+  >
+    {js}
+  </SyntaxHighlighter>
+) : (
+  <p>No code avaiable for this section</p>
+)}
             </div>
           )}
 

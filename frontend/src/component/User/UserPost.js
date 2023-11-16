@@ -288,27 +288,48 @@ const handleDelete = (layoutId) => {
                   </div>
                   {visible &&  <div className={isActive.id === 'divOne' ? `divOne` : 'divOne  css js'}>
 
-<SyntaxHighlighter language="html" 
-className="scroll border-4 border-blue-300 rounded-lg"  showLineNumbers={true} wrapLines={true} >
-{/* {html} */}
-{layout.html}
-</SyntaxHighlighter>
+                  {layout.html ? (
+  <SyntaxHighlighter
+    language="html"
+    className="scroll border-4 border-purple-300 rounded-lg"
+    showLineNumbers={true}
+    wrapLines={true}
+  >
+    {layout.html}
+  </SyntaxHighlighter>
+) : (
+  <p>No code avaiable for this section</p>
+)}
 </div>}
 {visible &&  <div className={isActive.id === 'divTwo' ? `divTwo` : 'divTwo d-none js css'}>
 
-   <SyntaxHighlighter language="css" className="scroll 
-   border-4 border-blue-300 rounded-lg"  showLineNumbers={true} wrapLines={true} >
-{/* {css} */}
-{layout.css}
-</SyntaxHighlighter>
+{layout.css ? (
+  <SyntaxHighlighter
+    language="css"
+    className="scroll border-4 border-purple-300 rounded-lg"
+    showLineNumbers={true}
+    wrapLines={true}
+  >
+    {layout.css}
+  </SyntaxHighlighter>
+) : (
+  <p>No code avaiable for this section</p>
+)}
 </div>}
 {visible &&  <div className={isActive.id === 'divThree' ? `divThree` : 'divTwo d-none css html'}>
  
-   <SyntaxHighlighter language="js" className="scroll border-4 border-blue-300 rounded-lg"
-     showLineNumbers={true} wrapLines={true} >
-{/* {js} */}
-{layout.js}
-</SyntaxHighlighter>
+{layout.js ? (
+  <SyntaxHighlighter
+    language="html"
+    className="scroll border-4 border-purple-300 rounded-lg"
+    showLineNumbers={true}
+    wrapLines={true}
+  >
+    {layout.js}
+  </SyntaxHighlighter>
+) : (
+  <p>No code avaiable for this section</p>
+)}
 </div>}
 
  

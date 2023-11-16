@@ -17,7 +17,7 @@ const ResetPassword = () => {
   };
 
   return (
-<div class="lg:flex bg-purple-100 w-screen justify-center" >
+<div class="lg:flex bg-white w-screen justify-center" >
       <div
         class="min-h-screen py-6 flex flex-col justify-center sm:py-12 lg:w-1/2 xl:max-w-screen-sm"
       >
@@ -25,7 +25,7 @@ const ResetPassword = () => {
 
         <div class="relative right-8 py-4  sm:max-w-xl ml-20">
           <div
-            class="absolute inset-0 bg-gradient-to-r from-purple-300 to-purple-600 shadow-lg transform-skew-y-6 sm:skew-y-0 sm:-rotate-6 sm:rounded-3xl"
+            class="absolute inset-0 bg-gradient-to-r bg-gray-400 shadow-lg transform-skew-y-6 sm:skew-y-0 sm:-rotate-6 sm:rounded-3xl"
           ></div>
 
           <div
@@ -61,7 +61,7 @@ const ResetPassword = () => {
 
                   <div class="mt-10">
                     <button onClick={handleResetPassword}
-                      class="bg-purple-500 text-gray-100 p-2 w-full rounded-full tracking-wide font-semibold font-display focus:outline-none focus:shadow-outline hover:bg-purple-600 shadow-lg"
+                      class="bg-gray-400 text-gray-100 p-2 w-full rounded-full tracking-wide font-semibold font-display focus:outline-none focus:shadow-outline hover:bg-purple-600 shadow-lg"
                     >
                       Send
                     </button>
