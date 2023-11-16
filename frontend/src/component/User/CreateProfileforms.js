@@ -72,12 +72,12 @@ export default function     CreateProfileforms() {
               
               <div class="relative">
               <label for="textarea1" class="my-3 block text-sm font-medium text-gray-700">Github</label>
-                  <input type="text" value={github} onChange={(e) => setgithub(e.target.value)}
+                  <input type="text" value={github} onChange={(e) => setgithub(e.target.value)} 
                    class="w-full pl-10 pr-4 py-2 border 
                     focus:ring focus:ring-blue-300 focus:ring-opacity-50 
                     focus:border-transparent focus:outline-none rounded-lg" placeholder="Github link"/>
                  <label for="textarea1" class="my-3 block text-sm font-medium text-gray-700">LinkedIn</label>
-                  <input type="text" value={linkedin} onChange={(e) => setlinkedin(e.target.value)}
+                  <input type="text" value={linkedin}  onChange={(e) => setlinkedin(e.target.value)}
                    class="w-full pl-10 pr-4 py-2 border 
                     focus:ring focus:ring-blue-300 focus:ring-opacity-50 
                     focus:border-transparent focus:outline-none rounded-lg" placeholder="LinkedIn"/>
@@ -105,14 +105,14 @@ export default function     CreateProfileforms() {
                   <option value="looking for Job">Looking for Job</option>
                   <option value="hiring">Hiring</option>
               </select>
-            <div className='flex my-5 end justify-end'>
+            {/* <div className='flex my-5 end justify-end'>
             <label for="textarea1" class="block text-sm font-medium text-gray-700">date of Birth</label>
               <DatePicker className='mx-5  '
              placeholderText='10/12/3122'
                     selected={date}
                     onChange={date => setdate(date)}
                 />
-            </div>
+            </div> */}
             <div class="flex justify-around">
               <button type="submit" class="text-white hover:text-gray-700 bg-blue-400 hover:bg-slate-300 hover:border-blue-400 hover:border-b-4 border-blue-400 border-b-4 rounded-lg 
                                 py-2 px-8  transition duration-300"

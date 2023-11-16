@@ -117,8 +117,7 @@ export default function Profile() {
                   <h2 class="text-slate-400 mr-4">
                     {userProfile.name}
                   </h2>
-                  <p class="text-gray-500 mb-4">{userProfile.desc}</p>
-
+                  
                   <Link
                     to={userProfile.linkedin}
                     target="_blank"
@@ -133,8 +132,11 @@ export default function Profile() {
                   >
                     GitHub
                   </Link>
+                  <p class="text-gray-500 mb-4">{userProfile.desc}</p>
 
+               
                   <p class="text-gray-500 mb-4">Email: {userProfile.email}</p>
+                  <p class="text-gray-800 font-semibold mb-4"> {userProfile.category}</p>
                 </div>
               </div>
             ) : (
