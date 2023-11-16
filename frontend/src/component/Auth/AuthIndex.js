@@ -201,7 +201,7 @@ function AuthIndex() {
                   >
             <button   ><FaEye className='absolute inset-y-0 right-0 w-16'/> </button> 
                   </div> */}
-                       <i onClick={togglePassword} className='absolute  h-5 top-4 inset-y-0 right-0 w-16'/> 
+                       <i onClick={togglePassword} className='absolute bi bi-eye-fill h-5 top-4 inset-y-0 right-0 w-16'/> 
 
                 </div>
 
@@ -261,7 +261,8 @@ function AuthIndex() {
                   >
             <button   ><FaEye className='absolute inset-y-0 right-0 w-16'/> </button> 
                   </div> */}
-                       <i onClick={togglePassword} className='absolute  h-5 top-4 inset-y-0 right-0 w-16'/> 
+                       <i onClick={togglePassword} className='bi bi-eye-fill absolute 
+                        h-5 top-4 inset-y-0 right-0 w-16'></i> 
 
                 </div>
 
