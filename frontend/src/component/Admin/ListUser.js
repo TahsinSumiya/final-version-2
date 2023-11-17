@@ -142,7 +142,7 @@ export default function ListUser() {
 
   return (
     <>
-        <div class=" p-4 overflow-y-auto ml-16 ">
+        <div class="  overflow-y-auto ">
         <div class=" p-4">
           <div class="bg-gradient-to-r from-slate-100  to-slate-200 p-4 rounded-lg shadow-md hover:shadow-xl transition duration-300 cursor-pointer">
             {userProfile ? (
