@@ -39,6 +39,7 @@ import GetRequest from './component/Admin/GetRequest';
 import PostNotice from './component/Admin/PostNotice';
 import ViewNotice from './component/Admin/ViewNotice';
 import GetNotice from './component/Admin/GetNotice';
+import ListUser from './component/Admin/ListUser';
 function App() {
   const user = useSelector(selectUser);
   const dispatch = useDispatch();
@@ -76,6 +77,9 @@ const navigate= useNavigate()
 </Route>
 <Route element={<PrivateWrapper />}>
   <Route path="/specificuser" element={<AllSpecificUser />} />
+</Route>
+<Route element={<PrivateWrapper />}>
+  <Route path="/userlist" element={<ListUser />} />
 </Route>
 <Route element={<PrivateWrapper />}>
   <Route path="/search" element={<Search />} />

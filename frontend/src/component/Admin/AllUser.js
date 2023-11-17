@@ -34,7 +34,7 @@ export default function AllUser() {
           <div key={u.uid} className="grid grid-cols-3 gap-6 w-[400px] mx-auto p-9 px-16 mt-4
            text-gray-900 bg-gradient-to-r from-slate-100 to-slate-300 rounded-md text-center">
             <div className="col-span-4">
-              <Link to={`/specificuser?s=${u.uid}`} className="text-2xl 
+              <Link to={`/userlist?s=${u.uid}`} className="text-2xl 
               font-semibold mb-4 text-gray-500 text-justify">
                 {u.displayName}
               </Link>
