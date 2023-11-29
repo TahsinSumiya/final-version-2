@@ -1,12 +1,16 @@
 import React from 'react'
-import { NavLink, redirect, useNavigate ,Link} from "react-router-dom";
+import { NavLink,Navigate ,redirect, useNavigate ,Link} from "react-router-dom";
+
 import { login, logout, selectUser } from "../../features/Slice";
 import Sidebar from '../Sidebar/Sidebar';
 export default function AdminBoard() {
-    const handleClick = () => {
-        logout()
-           localStorage.removeItem('user');
-         };
+  const navigate = useNavigate()
+  const handlelogout = () => {
+
+   
+    localStorage.removeItem('admin');
+    navigate('/admin')
+  };
   return (
     <>
 
@@ -92,7 +96,7 @@ export default function AdminBoard() {
           </div>
           <div className="flex justify-center mt-10">
             <Link
-              to="/auth"
+               onClick={handlelogout}
               class="inline-flex items-center py-3 px-6 text-lg font-medium text-center text-blue-400 shadow-md hover:shadow-lg"
             >
               <i class="bi bi-house-fill text-2xl mr-2"></i>

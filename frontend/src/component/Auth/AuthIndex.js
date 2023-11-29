@@ -38,21 +38,19 @@ function AuthIndex() {
 
 
   
-    const handleGoogleSignIN = () => {
+    const handleGoogleSignIN = async  () => {
       setLoading(true);
-      signInWithPopup(auth, provider)
-        .then((res) => {
-          setLoading(false);
-          console.log(res);
-          localStorage.setItem('user', JSON.stringify(res.user));
-          navigate("/");
-  
-          
-        })
-        .catch((error) => {
-          setLoading(false);
-          console.log(error);
-        });
+      try {
+        const res = await signInWithPopup(auth, provider);
+        setLoading(false);
+        console.log(res);
+        dispatch(login(res.user)); // Update the Redux store
+        localStorage.setItem('user', JSON.stringify(res.user));
+        navigate("/");
+      } catch (error) {
+        setLoading(false);
+        console.error(error);
+      }
     };
   
 

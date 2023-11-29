@@ -3,28 +3,30 @@ const AdminDb = require("../models/Adminauth")
 const express = require("express");
 const router = express.Router();
 require("dotenv").config();
-require 
+const jwt = require('jsonwebtoken');
+
 router.post("/login", async (req, res) => {
-    try {
-        const { id, password } = req.body;
-    
-      // Manually check if username and password match in the database or any other authentication logic
-      const validCredentials = checkCredentials(id, password);
-               
-      if (validCredentials) {
+  try {
+    const { id, password } = req.body;
 
-        // res.status(200).json({id, password})
-        res.status(200).json({status:201,id,password})
-        // res.sendStatus(200);
-      } else {
+    // Manually check if username and password match in the database or any other authentication logic
+    const validCredentials = checkCredentials(id, password);
 
-        res.status(401).json({status:401,message:"error"})
-    
-      }
-      } catch (error) {
-        console.error(error);
-      }
-        })
+    if (validCredentials) {
+      // Generate a JWT token
+      const token = jwt.sign({ id, username: id }, process.env.JWT_SECRET, { expiresIn: '1h' });
+
+      // Send the token in the response
+      res.status(200).json({ status: 201, token });
+    } else {
+      res.status(401).json({ status: 401, message: "Invalid credentials" });
+    }
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ status: 500, message: 'Internal server error' });
+  }
+});
+
         router.get("/", async (req, res) => {
           try {
            

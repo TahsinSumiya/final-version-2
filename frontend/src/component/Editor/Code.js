@@ -19,6 +19,40 @@ export default function Code() {
         })
         toggleVisible()
         }
+        const downloadFile = (fileName, content) => {
+          const blob = new Blob([content], { type: 'text/plain' });
+          const link = document.createElement('a');
+          link.href = URL.createObjectURL(blob);
+          link.download = fileName;
+          link.click();
+        };
+      
+        const handleDownload = (language) => {
+          let content = '';
+        
+          switch (language) {
+            case 'html':
+              content = html;
+              break;
+            case 'css':
+              content = css;
+              break;
+            case 'js':
+              content = js;
+              break;
+            default:
+              break;
+          }
+        
+          if (content) {
+            const fileName = `code.${language}`;
+            const blob = new Blob([content], { type: `text/${language === 'js' ? 'javascript' : language}` });
+            const link = document.createElement('a');
+            link.href = URL.createObjectURL(blob);
+            link.download = fileName;
+            link.click();
+          }
+        };
         useEffect(() => {
             const timeout = setTimeout(() => {
               setSrcDoc(`
@@ -76,9 +110,20 @@ export default function Code() {
                                 Js
                             </button>
                         </div>
+                        <div className="flex justify-center gap-20 items-center py-2 px-3 gap-3 mt-4 text-gray-900">
+   
+      
+    
+      </div>
                        <div className={isActive.id === 'divOne' ? `divOne` : 'divOne  css js'}>
       <label class="my-2 inline-flex items-center py-2.5 px-4 text-xs 
                              font-medium text-center text-white hover:text-gray-700 bg-blue-400 hover:bg-slate-300 hover:border-blue-400 hover:border-b-4 border-blue-400 border-b-4 rounded-lg">html</label>
+         <button
+          className="inline-flex  mx-2 items-center py-2.5 px-4 text-xs font-medium text-center border-blue-400 border-b-4 bg-slate-300 hover:bg-blue-400 text-gray-800 hover:text-white rounded-lg focus:border-transparent focus:outline-none"
+          onClick={() => handleDownload('html')}
+        >
+          Download HTML
+        </button>
       <Editor 
       className="scroll border-4  rounded-lg my-5 py-2 px-10 bg-white rounded-t-lg"  
       language="xml"
@@ -93,6 +138,13 @@ export default function Code() {
 <div className={isActive.id === 'divTwo' ? `divTwo` : 'divTwo d-none js css'}>
      <label class="my-2 inline-flex items-center py-2.5 px-4 text-xs 
                              font-medium text-center text-white hover:text-gray-700 bg-blue-400 hover:bg-slate-300 hover:border-blue-400 hover:border-b-4 border-blue-400 border-b-4 rounded-lg">css</label>
+          <button
+          className="inline-flex mx-2 items-center py-2.5 px-4 text-xs font-medium text-center border-blue-400 border-b-4 bg-slate-300 hover:bg-blue-400 text-gray-800 hover:text-white rounded-lg focus:border-transparent focus:outline-none"
+          onClick={() => handleDownload('css')}
+        >
+          Download CSS
+        </button>
+        
          <Editor  className="scroll border-4  rounded-lg
          my-5 py-2 px-4 bg-white rounded-t-lg
          "  
@@ -108,6 +160,13 @@ export default function Code() {
      <div className={isActive.id === 'divThree' ? `divThree` : 'divTwo d-none css html'}>
      <label class=" my-2 inline-flex items-center py-2.5 px-4 text-xs 
                              font-medium text-center text-white hover:text-gray-700 bg-blue-400 hover:bg-slate-300 hover:border-blue-400 hover:border-b-4 border-blue-400 border-b-4 rounded-lg">js</label>
+             <button
+          className="inline-flex mx-2 items-center py-2.5 px-4 text-xs font-medium text-center border-blue-400 border-b-4 bg-slate-300 hover:bg-blue-400 text-gray-800 hover:text-white rounded-lg focus:border-transparent focus:outline-none"
+          onClick={() => handleDownload('js')}
+        >
+          Download JS
+        </button>
+         
          <Editor className="scroll border-4 00 rounded-lg
          my-5 py-2 px-4 bg-white rounded-t-lg
          " 

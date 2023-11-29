@@ -6,7 +6,7 @@ import { NavLink, redirect, useNavigate ,Link} from "react-router-dom";
 import {FaEye} from 'react-icons/fa'
 import Sidebar from "../Sidebar/Sidebar";
 const Admin = (e) => {
-
+ const ADMIN_PRIVATE_KEY = 'u2BJLwh4jgIUL17jQvxN5pmZol2vvrEcyGv5c_1i_EE'
   const [id,setId]=useState('');
   const [password,setPassword]=useState('');
   const [message, setMessage] = useState("");
@@ -49,7 +49,7 @@ try {
     alert(json.error)
 }
 if(response.ok){
-    localStorage.setItem('user',JSON.stringify(json))
+    localStorage.setItem('admin',JSON.stringify(ADMIN_PRIVATE_KEY))
     // dispatch({type:'LOGIN',payload:json})
     navigate("/adminboard")
 }

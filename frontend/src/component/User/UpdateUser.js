@@ -17,6 +17,7 @@ export default function UpdateUser() {
   const [category, setcategory] = useState("looking-for-job");
   const [email, setemail] = useState("");
   const [desc, setDesc] = useState("");
+  const [goals, setGoals] = useState("");
   const user = useSelector(selectUser);
   const [selectedFile, setSelectedFile] = useState(null);
   const dispatch = useDispatch();
@@ -32,6 +33,7 @@ export default function UpdateUser() {
         setcategory(userData.category || '');
         setemail(userData.email || '');
         setDesc(userData.desc || '');
+        setGoals(userData.goals || '');
       } catch (error) {
         console.error('Error fetching user data:', error);
       }
@@ -52,9 +54,9 @@ export default function UpdateUser() {
       formData.append('uuid', user.uid);
       formData.append('name', user.displayName);
       formData.append('category', category);
-      formData.append('email', category === 'hiring' ? email : '');
+      formData.append('email', email);
       formData.append('desc', desc);
-     
+      formData.append('goals', goals);
 
       const response = await axios.put(`http://localhost:80/api/user/profile/${user.uid}`,formData);
 
@@ -66,6 +68,8 @@ export default function UpdateUser() {
       setcategory("looking-for-job");
       setemail("");
       setDesc("");
+      setGoals("");
+
       alert('User updated successfully!');
     } catch (error) {
       console.error('Error creating user:', error);
@@ -110,6 +114,15 @@ export default function UpdateUser() {
                    value={desc}
                            onChange={(e) => setDesc(e.target.value)}
                    placeholder="description"/>
+                          <label for="textarea1" class="my-3 block text-sm font-medium
+                           text-gray-700">Goals</label>
+                     <input type="text"
+                  class="w-full pl-10 pr-4 py-2 border 
+                   focus:ring focus:ring-blue-400 focus:ring-opacity-50 
+                   focus:border-transparent focus:outline-none rounded-lg"
+                   value={goals}
+                           onChange={(e) => setGoals(e.target.value)}
+                   placeholder="Your job category/goals"/>
                     <label for="textarea1" class="my-3 block text-sm font-medium text-gray-700">email</label>
                      <input type="email"
                   class="w-full pl-10 pr-4 py-2 border 
@@ -118,6 +131,7 @@ export default function UpdateUser() {
                    value={email}
                            onChange={(e) => setemail(e.target.value)}
                    placeholder="email"/>
+              
                    
              </div>
              <label for="textarea1" class="my-3 block text-sm font-medium text-gray-700">Category</label>

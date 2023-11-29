@@ -18,6 +18,7 @@ export default function     CreateProfileforms() {
     const [category, setcategory] = useState("looking-for-job");
     const [email, setemail] = useState("");
     const [desc, setDesc] = useState("");
+    const [goals, setGoals] = useState("");
     const user = useSelector(selectUser);
     const [selectedFile, setSelectedFile] = useState(null);
     const [ImageUrl, setImageUrl] = useState(null)
@@ -34,8 +35,9 @@ export default function     CreateProfileforms() {
         formData.append('user', user);
         formData.append('uuid', user.uid);
         formData.append('name', user.displayName);
+        formData.append('goals', goals);
         formData.append('category', category);
-        formData.append('email', category === 'hiring' ? email : '');
+        formData.append('email', email);
         formData.append('desc', desc);
        
 
@@ -50,6 +52,7 @@ export default function     CreateProfileforms() {
         setcategory("looking-for-job");
         setemail("");
         setDesc("");
+        setGoals("");
         alert('User created successfully!');
       } catch (error) {
         console.error('Error creating user:', error);
@@ -89,6 +92,17 @@ export default function     CreateProfileforms() {
                     value={desc}
                             onChange={(e) => setDesc(e.target.value)}
                     placeholder="description"/>
+
+<label for="textarea1" class="my-3 block text-sm font-medium text-gray-700">Goals</label>
+                      <input type="text"
+                   class="w-full pl-10 pr-4 py-2 border 
+                    focus:ring focus:ring-blue-300 focus:ring-opacity-50 
+                    focus:border-transparent focus:outline-none rounded-lg"
+                    value={goals}
+                            onChange={(e) => setGoals(e.target.value)}
+                    placeholder="your job category/goals"/>
+
+
                      <label for="textarea1" class="my-3 block text-sm font-medium text-gray-700">email</label>
                       <input type="email"
                    class="w-full pl-10 pr-4 py-2 border 

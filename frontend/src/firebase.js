@@ -9,14 +9,13 @@ import { getAuth, GoogleAuthProvider , connectAuthEmulator,
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyAMa88NjBCz_SJI2TD4RAenCCcXqZ1rgYU",
-  authDomain: "final-c4f40.firebaseapp.com",
-  databaseURL: "https://final-c4f40-default-rtdb.firebaseio.com",
-  projectId: "final-c4f40",
-  storageBucket: "final-c4f40.appspot.com",
-  messagingSenderId: "570846204998",
-  appId: "1:570846204998:web:197ce904435bc9ca926647",
-  measurementId: "G-EFC1GFP23V"
+  apiKey: "AIzaSyAGP8rdoDRgtgSeXwgprhqHJp-7yp04Guo",
+  authDomain: "devcommunity-621e5.firebaseapp.com",
+  projectId: "devcommunity-621e5",
+  storageBucket: "devcommunity-621e5.appspot.com",
+  messagingSenderId: "825220289289",
+  appId: "1:825220289289:web:a1df50a7c9d8379984f9d8",
+  measurementId: "G-3V8EM1B2CC"
   
 };
 

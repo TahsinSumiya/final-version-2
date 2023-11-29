@@ -1,7 +1,15 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link, Navigate } from 'react-router-dom'
 import './css/Sidebar.css'
+import { useNavigate } from 'react-router-dom';
 export default function AdminSideBar() {
+  const navigate = useNavigate()
+  const handlelogout = () => {
+
+   
+    localStorage.removeItem('admin');
+    navigate('/admin')
+  };
   return (
     <>
          <div class="fixed top-0 left-0 min-h-screen flex flex-col justify-center items-center">
@@ -58,7 +66,8 @@ export default function AdminSideBar() {
             </div>
             <div>
             <Link
-              to="/auth" 
+            onClick={handlelogout}
+              
               class="flex items-center text-white  rounded-md transition duration-300 py-2"
             >
               <i class="bi bi-box-arrow-left text-3xl flex items-center justify-center pb-2"></i>

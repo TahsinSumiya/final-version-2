@@ -10,7 +10,7 @@ const path = require('path');
 const fs = require('fs');
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount),
-  databaseURL: "https://final-c4f40-default-rtdb.firebaseio.com"
+  databaseURL: "https://devcommunity-621e5-default-rtdb.firebaseio.com/"
 });
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
@@ -35,7 +35,7 @@ const upload = multer({ storage: storage, fileFilter: fileFilter })
 
 router.post("/profile", upload.single('image'), async (req, res) => {
   try {
-    const { linkedin, github, uuid, name, user, category, email, desc } = req.body;
+    const { linkedin, github, uuid, name, user, category, email, desc ,goals} = req.body;
     const image = req.file.filename;
 
 
@@ -50,6 +50,7 @@ router.post("/profile", upload.single('image'), async (req, res) => {
       email,
       desc,
       image,
+      goals
 
     });
 
@@ -69,7 +70,7 @@ router.post("/profile", upload.single('image'), async (req, res) => {
   // Define an update profile route
   router.put("/profile/:uuid", upload.single('image'), async (req, res) => {
     try {
-      const { linkedin, github, uuid, name, user, category, email, desc } = req.body;
+      const { linkedin, github, uuid, name, user, category, email, desc ,goals} = req.body;
       const image = req.file.filename;
   
       // Update the user profile directly without creating a new instance
@@ -85,6 +86,7 @@ router.post("/profile", upload.single('image'), async (req, res) => {
             email,
             desc,
             image,
+            goals
           },
         },
         { new: true, upsert: true }

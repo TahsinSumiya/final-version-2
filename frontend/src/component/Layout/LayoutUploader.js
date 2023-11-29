@@ -2,6 +2,7 @@ import React, {useState,useEffect} from 'react'
 import axios from 'axios';
 import { login, logout, selectUser } from "../../features/Slice";
 import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from 'react-router-dom';
 import Sidebar from '../Sidebar/Sidebar';
 import TagsInput from 'react-tagsinput'
 import '../Add-Question/TagsInput.css'
@@ -9,6 +10,7 @@ import 'react-tagsinput/react-tagsinput.css'
 export default function LayoutUploader() {
     const user = useSelector(selectUser);
     const dispatch = useDispatch();
+    const navigate = useNavigate()
   const [categories, setCategories] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState('');
   // const [html,setHtml] = useState('')
@@ -64,6 +66,7 @@ export default function LayoutUploader() {
       // Reset the form
       setProduct({ html: '', css: '', js: '',author:'',email:'',tags:[]});
       setSelectedCategory('');
+      navigate('/getcategory')
       console.log('Product added successfully!');
     } catch (error) {
       console.error('Failed to add product:', error);

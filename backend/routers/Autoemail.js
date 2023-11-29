@@ -9,6 +9,7 @@ const router = express.Router();
 // const EMAIL_SERVICE_ID = process.env.EMAIL_SERVICE_ID;
 // const EMAIL_TEMPLATE_ID = process.env.EMAIL_TEMPLATE_ID;
 // const EMAIL_USER_ID = 'YOUR_EMAIL_USER_ID';
+const authenticateToken = require('../config/token')
 router.post('/', (req, res) => {
     const { userEmail, message } = req.body;
     const mailOptions = {

@@ -3,6 +3,7 @@ import { useNavigate ,Navigate,Outlet} from "react-router-dom";
 import { login, logout, selectUser } from "./features/Slice";
 import { useSelector, useDispatch } from "react-redux";
 import { auth } from "./firebase";
+import { getAuth, onAuthStateChanged } from 'firebase/auth';
 import AuthIndex from "./component/Auth/AuthIndex";
 const PrivateWrapper = ({ children }) => {
   const user = useSelector(selectUser);

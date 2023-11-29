@@ -12,6 +12,7 @@ const UserSchema = new mongoose.Schema({
   category:String,
   image:String,
   imageUrl:String,
+  goals:String
 
   // email: {
   //   type: String,
