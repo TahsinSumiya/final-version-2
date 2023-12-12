@@ -132,10 +132,14 @@ export default function Profile() {
                   >
                     GitHub
                   </Link>
+                  
                   <p class="text-gray-500 mb-4">{userProfile.desc}</p>
+                
+                  <p class="text-gray-500 mb-4 font-medium">Goals : {userProfile.goals}</p>
+                  <a href={`mailto:${userProfile.email}`} className="text-gray-500 mb-4">Contact Email: {userProfile.email}</a>
 
-                  <p class="text-gray-500 mb-4">{userProfile.goals}</p>
-                  <Link to={userProfile.email} class="text-gray-500 mb-4">Email: {userProfile.email}</Link>
+
+                  {/* <Link to={userProfile.email} class="text-gray-500 mb-4">ContactEmail: {userProfile.email}</Link> */}
                   <p class="text-gray-800 font-semibold mb-4"> {userProfile.category}</p>
                 </div>
               </div>

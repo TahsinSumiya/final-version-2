@@ -85,15 +85,15 @@ function App() {
 
           <Route path="searchjob" element={<Searchjob />} />
 
-       >
+       
 
-          <Route exact path="/categoryuploader" element={<CategoryUpload />} />
+       
 
           <Route exact path="/getcategory" element={<GetAllCategory />} />
 
           <Route exact path="/layoutuploader" element={<LayoutUploader />} />
 
-          <Route exact path="/layoutbyadmin" element={<LayoutByAdmin />} />
+       
 
           <Route exact path="/editor" element={<Editorindex />} />
 
@@ -124,6 +124,7 @@ function App() {
           />
           <Route exact path="/getnotice" element={<GetNotice />} />
           <Route exact path="/postnotice" element={<PostNotice />} />
+          <Route exact path="/categoryuploader" element={<CategoryUpload />} />
         </Route>
       </Routes>
     </>

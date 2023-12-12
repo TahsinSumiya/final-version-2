@@ -39,7 +39,6 @@ router.post("/profile", upload.single('image'), async (req, res) => {
     const image = req.file.filename;
 
 
-    // Create a new user data instance with image details
     const userData = new UserDb({
       linkedin,
       github,

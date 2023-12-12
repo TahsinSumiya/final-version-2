@@ -42,7 +42,7 @@ export default function Request() {
               </h1>
 
               <div class="flex justify-center items-center py-2 px-3 gap-3 mt-4">
-                <input
+                <textarea rows={10}
                   type="text"
                   class="w-full px-4 py-2 text-lg text-gray-900 bg-white border rounded-lg focus:ring focus:ring-blue-400 focus:ring-opacity-50 focus:border-transparent focus:outline-none"
                   placeholder="Send your notice" 

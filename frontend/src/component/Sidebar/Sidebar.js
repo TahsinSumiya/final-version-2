@@ -75,12 +75,6 @@ export default function Sidebar() {
             </Link>
         </li>
 
-        <li class="darkerli">
-            <Link to="/allusers">
-                <i class="bi bi-people"></i>
-                <span class="nav-text">All Users</span>
-            </Link>
-        </li>
 
         <li class="darkerli">
             <Link to="/allquestion">

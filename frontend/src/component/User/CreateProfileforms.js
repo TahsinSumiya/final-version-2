@@ -25,7 +25,10 @@ export default function     CreateProfileforms() {
     const dispatch = useDispatch();
     const handleSubmit = async (e) => {
       e.preventDefault();
-    
+      if (!selectedFile) {
+        alert('Please select an image file.');
+        return;
+    }
       try {
         const formData = new FormData();
         formData.append('image', selectedFile, selectedFile.name);
@@ -45,7 +48,6 @@ export default function     CreateProfileforms() {
   
 
         setImageUrl(response.data.imageUrl);
-        // Reset form fields after successful submission
         setSelectedFile(null);
         setlinkedin("");
         setgithub("");
@@ -59,7 +61,7 @@ export default function     CreateProfileforms() {
       }
     };
     
-    
+
     const [userProfile, setUserProfile] = useState(null);
   return (
     <>

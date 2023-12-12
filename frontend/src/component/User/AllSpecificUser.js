@@ -177,8 +177,8 @@ export default function AllSpecificUser() {
                       GitHub
                     </Link>
                     <p class="text-gray-500 mb-4">{userProfile.desc}</p>
-
-                    <p class="text-gray-500 mb-4">Email: {userProfile.email}</p>
+                    <p class="text-gray-500 mb-4 font-medium">Goals : {userProfile.goals}</p>
+                  <a href={`mailto:${userProfile.email}`} className="text-gray-500 mb-4">Contact Email: {userProfile.email}</a>
                   </div>
                 </div>
               </div>

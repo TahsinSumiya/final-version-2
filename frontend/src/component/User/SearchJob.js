@@ -85,6 +85,12 @@ function SearchJob() {
 
                <p class="text-gray-500 mb-4 w-full">{item.desc}</p>
                <p
+                   
+                   class="text-purple-900 text-sm font-medium hover:underline my-4"
+                 >
+                   JobType: {item.goals}
+                 </p>
+               <p
                  
                  class="text-purple-900 text-sm font-medium hover:underline"
                >
@@ -111,6 +117,12 @@ function SearchJob() {
 
                       <p class="text-gray-500 mb-4 w-full">{item.desc}</p>
                       <p
+                   
+                   class="text-purple-900 text-sm font-medium hover:underline my-4"
+                 >
+                   JobType: {item.goals}
+                 </p>
+                      <p
                         
                         class="text-purple-900 text-sm font-medium hover:underline"
                       >
@@ -135,6 +147,12 @@ function SearchJob() {
                  </Link>
 
                  <p class="text-gray-500 mb-4 w-full">{item.desc}</p>
+                 <p
+                   
+                   class="text-purple-900 text-sm font-medium hover:underline my-4"
+                 >
+                   JobType: {item.goals}
+                 </p>
                  <p
                    
                    class="text-purple-900 text-sm font-medium hover:underline"

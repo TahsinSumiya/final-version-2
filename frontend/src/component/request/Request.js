@@ -41,7 +41,7 @@ export default function Request() {
               </h1>
 
               <div class="flex justify-center items-center py-2 px-3 gap-3 mt-4">
-                <input
+                <textarea rows={10}
                   type="text"
                   class="w-full px-4 py-2 text-lg text-gray-900 bg-white border rounded-lg focus:ring focus:ring-blue-400 focus:ring-opacity-50 focus:border-transparent focus:outline-none"
                   placeholder="Send your request" 
@@ -55,7 +55,7 @@ export default function Request() {
                   type="submit"
                   class="inline-flex items-center text-sm font-medium text-center text-white bg-blue-400 hover:bg-blue-500 rounded-lg pr-5 py-2"
                 >
-                  <i class="bi bi-send-plus-fill pt-1"></i>
+                  <i class="bi bi-send-plus-fill pt-"></i>
                   Send
                 </button>
               </div>

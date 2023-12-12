@@ -146,7 +146,7 @@ text-white hover:text-gray-700 bg-blue-400 hover:bg-slate-300 hover:border-blue-
         <div
           class="bg-gradient-to-b from-slate-200 to-slate-300 w-48
                  h-screen px-4 py-9 
-                  relative md:relative"
+                  relative md:relative overflow-y-auto"
         >
           <h1 class="text-2xl font-semibold text-gray-700 mb-4">Categories</h1>
           {categories.map((category) => (

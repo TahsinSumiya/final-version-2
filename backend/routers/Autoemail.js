@@ -13,7 +13,7 @@ const authenticateToken = require('../config/token')
 router.post('/', (req, res) => {
     const { userEmail, message } = req.body;
     const mailOptions = {
-        from:process.env.EMAIL,
+        from:process.env.EMAIL_USER,
         to:userEmail,
         subject:"Layout Deleted",
         text:`your layout has been deleted due to some issues by admin`
