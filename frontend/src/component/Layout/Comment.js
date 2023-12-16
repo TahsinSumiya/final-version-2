@@ -29,8 +29,7 @@ export default function Comment({layoutId}) {
           console.log(response)
       };
  
-     const commentHeight = 80;
-     const totalHeight = comments.length * commentHeight;
+  
 useEffect(() => {
 	handlegetCommentSubmit ()
 }, [layoutId]);

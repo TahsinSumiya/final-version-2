@@ -48,6 +48,7 @@ import ViewNotice from "./component/Admin/ViewNotice";
 import GetNotice from "./component/Admin/GetNotice";
 import ListUser from "./component/Admin/ListUser";
 import AdminWraper from "./AdminWraper";
+
 function App() {
   const user = useSelector(selectUser);
   const dispatch = useDispatch();
@@ -73,7 +74,7 @@ function App() {
 
           <Route path="/specificuser" element={<AllSpecificUser />} />
 
-          <Route path="/userlist" element={<ListUser />} />
+
 
           <Route path="/search" element={<Search />} />
 
@@ -94,7 +95,7 @@ function App() {
           <Route exact path="/layoutuploader" element={<LayoutUploader />} />
 
        
-
+          
           <Route exact path="/editor" element={<Editorindex />} />
 
           <Route exact path="/request" element={<Request />} />
@@ -117,6 +118,7 @@ function App() {
           />
              <Route exact path="/adminboard" element={<AdminBoard />} />
           <Route exact path="/layoutbyadmin" element={<LayoutByAdmin />} />
+
           <Route
             exact
             path="adminboard/notification"
@@ -125,6 +127,7 @@ function App() {
           <Route exact path="/getnotice" element={<GetNotice />} />
           <Route exact path="/postnotice" element={<PostNotice />} />
           <Route exact path="/categoryuploader" element={<CategoryUpload />} />
+          <Route path="/userlist" element={<ListUser />} />
         </Route>
       </Routes>
     </>

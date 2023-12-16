@@ -212,7 +212,9 @@ function AuthIndex() {
                 </div>
                
                 <div
-                  class="mt-10 text-sm font-display font-semibold text-gray-700 text-center"
+
+                  class="mt-10 text-sm font-display font-semibold text-gray-700 
+                  text-center"
                 >
                
                 </div>
@@ -300,7 +302,11 @@ function AuthIndex() {
           </>
         )}
 
-        <p className="mt-2"
+    
+    <div className="grid grid-cols-3 mx-w-xs my-5 mx-auto items-center">
+      <hr className="border-2"/>
+      <p className=" text-center">
+      <p className="mt-2"
           onClick={() => setRegister(!register)}
           style={{
             marginTop: "2px",
@@ -322,17 +328,13 @@ function AuthIndex() {
         {error}
       </p>
     )}
-    <div className="grid grid-cols-3 mx-w-xs my-5 mx-auto items-center">
-      <hr className="border-2"/>
-      <p className=" text-center">
-        or
       </p>
       <hr className="border-2"/>
     </div>
     <div className="sign-option flex justify-center  ">
           
           
-          <button onClick={handleGoogleSignIN} className="
+          {/* <button onClick={handleGoogleSignIN} className="
           " style={{
             textAlign: "center",
             color: "#0095ff",
@@ -342,8 +344,8 @@ function AuthIndex() {
       
       <p><i class="bi bi-google text-white text-xs"></i> </p>
             Login with Google
-          </button>
-         
+          </button> */}
+            
         </div>
      
       </div>

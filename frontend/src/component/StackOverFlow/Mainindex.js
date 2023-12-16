@@ -12,7 +12,7 @@ export default function Mainindex() {
     async function getQuestion() {
       await axios.get("http://localhost:80/api/question/").then((res) => {
         setQuestions(res.data.reverse());
-        setAPIData(res.data);
+     setAPIData(res.data);   
       });
     }
     getQuestion();

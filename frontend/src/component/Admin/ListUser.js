@@ -144,7 +144,7 @@ export default function ListUser() {
     <>
         <div class="  overflow-y-auto ">
         <div class=" p-4">
-          <div class="bg-gradient-to-r from-slate-100  to-slate-200 p-4 rounded-lg shadow-md hover:shadow-xl transition duration-300 cursor-pointer">
+        <div class="bg-gradient-to-r from-slate-100  to-slate-200 p-4 rounded-lg shadow-md hover:shadow-xl transition duration-300 cursor-pointer">
             {userProfile ? (
               <div>
                 <div class="mb-4">
@@ -177,8 +177,9 @@ export default function ListUser() {
                       GitHub
                     </Link>
                     <p class="text-gray-500 mb-4">{userProfile.desc}</p>
-
-                    <p class="text-gray-500 mb-4">Email: {userProfile.email}</p>
+                    <p class="text-gray-500 mb-4 font-medium">Goals : {userProfile.goals}</p>
+                    <p class="text-gray-500 mb-4">{userProfile.category}</p>
+                  <a href={`mailto:${userProfile.email}`} className="text-gray-500 mb-4">Contact Email: {userProfile.email}</a>
                   </div>
                 </div>
               </div>

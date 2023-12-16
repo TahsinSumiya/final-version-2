@@ -13,7 +13,7 @@ export default function CategoryUpload() {
           { name: newCategory },
           
           );
-          console.log(response.data);
+  
           setNewCategory('');
           alert("uploaded")
         //   fetchCategories();

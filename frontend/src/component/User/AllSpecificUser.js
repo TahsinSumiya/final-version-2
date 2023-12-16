@@ -178,6 +178,7 @@ export default function AllSpecificUser() {
                     </Link>
                     <p class="text-gray-500 mb-4">{userProfile.desc}</p>
                     <p class="text-gray-500 mb-4 font-medium">Goals : {userProfile.goals}</p>
+                    <p class="text-gray-500 mb-4">{userProfile.category}</p>
                   <a href={`mailto:${userProfile.email}`} className="text-gray-500 mb-4">Contact Email: {userProfile.email}</a>
                   </div>
                 </div>
