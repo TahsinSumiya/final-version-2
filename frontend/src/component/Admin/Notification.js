@@ -102,12 +102,12 @@ export default function Notification() {
               class="flex justify-end items-center py-2 px-3 
                               gap-3  text-gray-900"
             >
-              <p
+              <Link to={`/userlist?s=${layout.uid}`}
                 class="inline-flex items-center py-2.5 px-4 text-xs 
                 font-medium text-center text-white hover:text-gray-700 bg-blue-400 hover:bg-slate-300 hover:border-blue-400 hover:border-b-4 border-blue-400 border-b-4 rounded-lg"
               >
                 {layout.author}
-              </p>
+              </Link>
               <button
                 class="inline-flex items-center py-2.5 px-4 text-xs
                 font-medium text-center border-blue-400 border-b-4 bg-slate-300 hover:bg-blue-400 text-gray-800 hover:text-white rounded-lg focus:border-transparent
